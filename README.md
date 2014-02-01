@@ -3,6 +3,10 @@ Comcast VLC DASH Plugin
 Grade A Software
 ================
 
+## We are referencing [this](https://github.com/Grade-A-Software/vlc/tree/master/modules/stream_filter/dash) portion of the VLC codebase as a model for using DASH with VLC.
+
+_We have not identified why this does not work for Comcast_
+
 Welcome to the project GitHub repository!
 
 ### [SCRUM](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Scrum-Process)
