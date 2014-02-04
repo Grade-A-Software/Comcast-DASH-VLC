@@ -47,6 +47,7 @@ include services_discovery/Makefile.am
 include stream_filter/Makefile.am
 include video_chroma/Makefile.am
 include video_splitter/Makefile.am
+#include comcast/Makefile.am
 
 BUILT_SOURCES += dummy.cpp
 

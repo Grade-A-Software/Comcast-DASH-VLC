@@ -421,3 +421,4 @@ $Id$
  * yuy2_i422: yuy2 to 4:2:2 conversions functions
  * zip: access+filter to extract different archives, based on zlib
  * zvbi: Teletext decoder using libzbvi
+ * comcast: Comcast custom DASH plugin
