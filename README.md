@@ -7,7 +7,7 @@ Grade A Software
 
 First, check out the source code for our version of VLC from `git clone https://github.com/Grade-A-Software/Comcast-DASH-VLC.git`
 
-Then build [(OSX)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions),[(Linux)](https://wiki.videolan.org/UnixCompile/) the project and the plugin will be in the build directory.
+Then build [(OSX)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-%28OSX%29),[(Linux)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-%28Linux%29) the project and the plugin will be in the build directory.
 
 Finally, from within the build directory, execute `./vlc --stream-filter comcast_dash`
 
