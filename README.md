@@ -9,7 +9,7 @@ First, check out the source code for our version of VLC from `git clone https://
 
 Then build [(OSX)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-%28OSX%29),[(Linux)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-%28Linux%29) the project and the plugin will be in the build directory.
 
-Finally, from within the build directory, execute `./vlc --stream_filter comcast_dash`
+Finally, from within the build directory, execute `./vlc --stream-filter comcast_dash`
 
 
 ### We are referencing [this](https://github.com/Grade-A-Software/vlc/tree/master/modules/stream_filter/dash) portion of the VLC codebase as a model for using DASH with VLC.
