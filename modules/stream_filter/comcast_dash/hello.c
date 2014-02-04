@@ -21,9 +21,9 @@ vlc_module_begin()
 set_shortname(N_("Comcast Dash"))
 set_description(N_("Comcast Dynamic Adaptive Streaming over HTTP"))
 set_capability("stream_filter", 19)
-set_callbacks(Open, Close)
+sfet_callbacks(Open, Close)
 set_category(CAT_INPUT)
-add_string("hello-who", "world", "Target", "Whom to say hello to.", false)
+
 vlc_module_end ()
 
 /* Internal state for an instance of the module */
