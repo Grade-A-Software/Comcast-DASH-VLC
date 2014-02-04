@@ -21,7 +21,7 @@ vlc_module_begin()
 set_shortname(N_("Comcast Dash"))
 set_description(N_("Comcast Dynamic Adaptive Streaming over HTTP"))
 set_capability("stream_filter", 19)
-sfet_callbacks(Open, Close)
+set_callbacks(Open, Close)
 set_category(CAT_INPUT)
 
 vlc_module_end ()
