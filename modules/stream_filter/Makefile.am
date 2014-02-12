@@ -8,8 +8,10 @@ if !HAVE_WIN32
 stream_filter_LTLIBRARIES += libdecomp_plugin.la
 endif
 
-libcomcast_dash_plugin_la_SOURCES = stream_filter/comcast_dash/hello.c
-libcomcast_dash_plugin_la_CFLAGS = $(AM_CFLAGS)
+libcomcast_dash_plugin_la_SOURCES = stream_filter/comcast_dash/dash.cpp
+
+libcomcast_dash_plugin_la_CXXFLAGS = $(AM_CFLAGS) -I$(srcdir)/stream_filter/comcast_dash
+libcomcast_dash_plugin_la_LIBADD = $(SOCKET_LIBS)
 stream_filter_LTLIBRARIES += libcomcast_dash_plugin.la
 
 libdash_plugin_la_SOURCES = \
