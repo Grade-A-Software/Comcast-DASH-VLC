@@ -32,7 +32,13 @@
 #include <vlc_common.h>
 #include <vlc_plugin.h>
 #include <vlc_stream.h>
+#include "xml/DOMParser.h"
 #include <errno.h>
+
+
+
+using namespace dash;
+
 
 
 #define SEEK 0
@@ -61,6 +67,7 @@ vlc_module_begin ()
         add_integer( "dash-prefwidth",  480, DASH_WIDTH_TEXT,  DASH_WIDTH_LONGTEXT,  true )
         add_integer( "dash-prefheight", 360, DASH_HEIGHT_TEXT, DASH_HEIGHT_LONGTEXT, true )
         add_integer( "dash-buffersize", 30, DASH_BUFFER_TEXT, DASH_BUFFER_LONGTEXT, true )
+        add_string( "dash-url", "", "URL", "URL of the XML file", false);
         set_callbacks( Open, Close )
 vlc_module_end ()
 
@@ -83,8 +90,22 @@ static int  Control         (stream_t *p_stream, int i_query, va_list args);
 static int Open(vlc_object_t *p_obj)
 {
     stream_t *p_stream = (stream_t*) p_obj;
+    if(!dash::xml::DOMParser::isDash(p_stream->p_source))
+      return VLC_EGENERIC;
+    else
+      msg_Info(p_stream,"Is DASH!");
 
-    msg_Dbg( p_stream, "Could not parse mpd file." );
+    //Build a XML tree                                                                                  
+    dash::xml::DOMParser        parser(p_stream->p_source);
+    if( !parser.parse() )
+      {
+        msg_Dbg( p_stream, "Could not parse mpd file." );
+        return VLC_EGENERIC;
+      }
+    else {
+      parser.print();
+    }
+
     
     stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
     if (unlikely(p_sys == NULL))
@@ -98,7 +119,6 @@ static int Open(vlc_object_t *p_obj)
     p_stream->pf_peek       = Peek;
     p_stream->pf_control    = Control;
 
-    msg_Info(p_stream, "Path: %s",p_stream->psz_path);
 
     return VLC_SUCCESS;
 }
@@ -122,7 +142,7 @@ static int  Seek            ( stream_t *p_stream, uint64_t pos )
     int                 i_ret           = 0;
     unsigned            i_len           = 0;
     long                i_read          = 0;
-
+    
 
     return VLC_SUCCESS;
 }
@@ -134,6 +154,7 @@ static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len
     int                 i_ret           = 0;
     int                 i_read          = 0;
 
+    
     return VLC_SUCCESS;
 }
 
