@@ -1,42 +1,37 @@
-<!doctype html>
-<!-- The Time Machine GitHub pages theme was designed and developed by Jon Rohan, on Feb 7, 2012. -->
-<!-- Follow him for fun. http://twitter.com/jonrohan. Tail his code on http://github.com/jonrohan -->
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <link rel="stylesheet" href="stylesheets/stylesheet.css" media="screen"/>
-  <link rel="stylesheet" href="stylesheets/pygment_trac.css"/>
-  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script type="text/javascript" src="javascripts/script.js"></script>
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Comcast-dash-vlc : The custom Comcast DASH plugin for VLC" />
 
-  <title>Comcast-dash-vlc</title>
-  <meta name="description" content="The custom Comcast DASH plugin for VLC">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
 
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comcast-dash-vlc</title>
+  </head>
 
-</head>
+  <body>
 
-<body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Grade-A-Software/Comcast-DASH-VLC">View on GitHub</a>
 
-  <div class="wrapper">
-    <header>
-      <h1 class="title">Comcast-dash-vlc</h1>
-    </header>
-    <div id="container">
-      <p class="tagline">The custom Comcast DASH plugin for VLC</p>
-      <div id="main" role="main">
-        <div class="download-bar">
-        <div class="inner">
-          <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tarball/master" class="download-button tar"><span>Download</span></a>
-          <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/zipball/master" class="download-button zip"><span>Download</span></a>
-          <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC" class="code">View Comcast-dash-vlc on GitHub</a>
-        </div>
-        <span class="blc"></span><span class="trc"></span>
-        </div>
-        <article class="markdown-body">
-          <h1>
+          <h1 id="project_title">Comcast-dash-vlc</h1>
+          <h2 id="project_tagline">The custom Comcast DASH plugin for VLC</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
 <a name="comcast-vlc-dash-plugin" class="anchor" href="#comcast-vlc-dash-plugin"><span class="octicon octicon-link"></span></a>Comcast VLC DASH Plugin</h1>
 
 <h1>
@@ -52,6 +47,9 @@
 <p>Finally, from within the build directory, execute <code>./vlc --stream-filter comcast_dash</code></p>
 
 <h3>
+<a name="our-code-is-right-here-please-scroll-down-to-read-the-readmemd-file-for-a-breakdown-of-code" class="anchor" href="#our-code-is-right-here-please-scroll-down-to-read-the-readmemd-file-for-a-breakdown-of-code"><span class="octicon octicon-link"></span></a>Our code is <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter">right here</a>. PLEASE scroll down to read the README.md file for a breakdown of code.</h3>
+
+<h3>
 <a name="we-are-referencing-this-portion-of-the-vlc-codebase-as-a-model-for-using-dash-with-vlc" class="anchor" href="#we-are-referencing-this-portion-of-the-vlc-codebase-as-a-model-for-using-dash-with-vlc"><span class="octicon octicon-link"></span></a>We are referencing <a href="https://github.com/Grade-A-Software/vlc/tree/master/modules/stream_filter/dash">this</a> portion of the VLC codebase as a model for using DASH with VLC.</h3>
 
 <p><em>We have not identified why this does not work for Comcast</em></p>
@@ -65,35 +63,29 @@
 <h3>
 <a name="user-stories" class="anchor" href="#user-stories"><span class="octicon octicon-link"></span></a>User Stories</h3>
 
-<ul>
-<li><p>Check the <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/issues">Issue Tracker</a> for issues tagged <em>USER STORY</em> for user stories. Stories flagged <em>CURRENT SPRINT</em> are to be addressed by the end of the weekly sprint.</p></li>
-<li><p>Check the <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/issues">Issue Tracker</a> for known bugs and other requirements as well.</p></li>
-</ul><h3>
+<p><em>User stories are on <a href="https://rally1.rallydev.com">Rally</a>.</em> 
+<em>You will need to log in to view this</em></p>
+
+<h3>
 <a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h3>
 
 <ul>
+<li>
+<em>PLEASE</em> read the README.md files in the <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/README.md">root directory</a>, the <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/README.md">modules/stream_filter directory</a>, and the <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash/README.md">modules/stream_filter/comcast_dash</a> directory</li>
 <li>For full documentation of project requirements, architecture, design, and code available on the <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki">Wiki</a>.</li>
 </ul>
-        </article>
-      </div>
+      </section>
     </div>
-    <footer>
-      <div class="owner">
-      <p><a href="https://github.com/Grade-A-Software" class="avatar"><img src="https://identicons.github.com/42eec121e2b503a9945bf6b6d37831b8.png" width="48" height="48"/></a> <a href="https://github.com/Grade-A-Software">Grade-A-Software</a> maintains <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC">Comcast-dash-vlc</a></p>
 
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Comcast-dash-vlc maintained by <a href="https://github.com/Grade-A-Software">Grade-A-Software</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
 
-      </div>
-      <div class="creds">
-        <small>This page generated using <a href="http://pages.github.com/">GitHub Pages</a><br/>theme by <a href="https://twitter.com/jonrohan/">Jon Rohan</a></small>
-      </div>
-    </footer>
-  </div>
-  <div class="current-section">
-    <a href="#top">Scroll to top</a>
-    <a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/tarball/master" class="tar">tar</a><a href="https://github.com/Grade-A-Software/Comcast-DASH-VLC/zipball/master" class="zip">zip</a><a href="" class="code">source code</a>
-    <p class="name"></p>
-  </div>
+    
 
-  
-</body>
+  </body>
 </html>
