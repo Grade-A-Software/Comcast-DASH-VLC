@@ -2,6 +2,12 @@
 
 *Details:*
 
+### Consult README files in appropriate subdirectories for details on those components
+
+### hello.c
+
+This is a demonstration of how a module will be loaded. This is trivial, and should be used only for reference.
+
 ### dash.cpp
 
 This is the module. Contained is the module definition, and essential methods for plugin creation.
