@@ -6,6 +6,13 @@
 
 * The existing DASH plugin is a stream filter, and we intend to emulate the behavior of this module in our own.
 
+### [dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/dash
+
+This directory contains the original DASH plugin that we are referencing
+
+### [comcast_dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash)
+
+This directory contains _our code_. Please reference this (especially the *README*)
 
 ### Known issues with the existing DASH plugin
 
