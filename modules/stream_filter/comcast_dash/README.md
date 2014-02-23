@@ -1,4 +1,4 @@
-##This is the Comcast DASH plugin
+##Comcast DASH plugin
 
 *Details:*
 
