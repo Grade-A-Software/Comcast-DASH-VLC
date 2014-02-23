@@ -1,7 +1,7 @@
 ### Comcast DASH plugin
 
 
-**Plugin Creation**
+**Plugin Creation**<br />
 Information for how we created this plugin can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Module-Creation)
 <br />
 <br />
@@ -9,17 +9,16 @@ Information for how we created this plugin can be found [HERE](https://github.co
 An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Playback-Loop-Logic)
 
 
-### Consult README files in appropriate subdirectories for details on those components
 
-### hello.c
+**hello.c**<br />
 
 This is a demonstration of how a module will be loaded. This is trivial, and should be used only for reference.
 
-### dash.cpp
+**dash.cpp**<br />
 
 This is the module. Contained is the module definition, and essential methods for plugin creation.
 
-### dash.cpp - functions
+**dash.cpp - functions**<br />
 
 _Open_
 
