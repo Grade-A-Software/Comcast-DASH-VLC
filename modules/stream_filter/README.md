@@ -1,31 +1,16 @@
-### You're getting close, our code is in the comcast_dash subdirectory
-
-## Stream Filter
+### Stream Filter
 
 * Stream filter modules allow VLC to stream media from a given resource.
+* The [comcast_dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash) directory contains our code. 
 
-* The existing DASH plugin is a stream filter, and we intend to emulate the behavior of this module in our own.
+* The [dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/dash) directory contains the existing DASH plugin which we are modeling our plugin after. There will be modifications that we'll make so that it will work with Comcast DASH files.
 
-### [dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/dash)
+### Makefile.am modifications
 
-This directory contains the original DASH plugin that we are referencing
-
-### [comcast_dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash)
-
-This directory contains _our code_. Please reference this (especially the *README*)
-
-### Known issues with the existing DASH plugin
-
-* Comcast's DASH Manifest (.mpd) file has a different format from traditional DASH Manifests
-* Existing DASH plugin plays videos with improper timing
-
-
-### Makefile.am details
-
-* The Makefile is essential to building the module. _All source files associated with the module must be included in the SOURCES
-* You must add the CXX flags
-* You must add Socket libraries for HTTP streaming to work
-* You must indicate the name of the object in the library
+* All source files associated with our plugin have to be included in the SOURCES
+* The CXX flags are added
+* The Socket libraries are added so that the HTTP streaming will work
+* Indicated the name of the object in the library
 
 ```
 libcomcast_dash_plugin_la_SOURCES = \
