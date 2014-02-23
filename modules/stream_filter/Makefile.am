@@ -10,6 +10,8 @@ endif
 
 libcomcast_dash_plugin_la_SOURCES = \
 	stream_filter/comcast_dash/dash.cpp \
+	stream_filter/comcast_dash/parser.h \
+	stream_filter/comcast_dash/parser.cpp \
 	stream_filter/comcast_dash/xml/Node.h \
 	stream_filter/comcast_dash/xml/Node.cpp \
 	stream_filter/comcast_dash/xml/DOMParser.h \
