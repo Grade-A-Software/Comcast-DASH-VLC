@@ -1,4 +1,4 @@
-### Stream Filter
+### Stream Filter Directory
 
 * Stream filter modules allow VLC to stream media from a given resource.
 * The [comcast_dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash) directory contains our code. 
