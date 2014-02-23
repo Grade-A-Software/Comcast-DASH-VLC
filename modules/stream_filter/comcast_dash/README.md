@@ -1,9 +1,8 @@
 ### Comcast DASH plugin
 
-*Details:*
 
-**Module Creation**
-Information for how we created this module can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Module-Creation)
+**Plugin Creation**
+Information for how we created this plugin can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Module-Creation)
 <br />
 <br />
 **Plugin Logic**<br />
