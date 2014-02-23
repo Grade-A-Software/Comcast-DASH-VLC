@@ -1,9 +1,9 @@
 ### Stream Filter Directory
 
-* Stream filter modules allow VLC to stream media from a given resource.
+* Stream filter plugins allow VLC to stream media from a given resource.
 * The [comcast_dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash) directory contains our code. 
 
-* The [dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/dash) directory contains the existing DASH plugin which we are modeling our plugin after. There will be modifications that we'll make so that it will work with Comcast DASH files.
+* The [dash/](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/dash) directory contains the existing DASH plugin which we are modeling our plugin after. This will not be a direct copy as our plugin  will contain modifications that will make it so our plugin will work with Comcast DASH files.
 
 ### Makefile.am modifications
 
