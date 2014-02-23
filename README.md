@@ -11,4 +11,4 @@ This repo holds the code and product documentation associated with a project for
 From within the build directory in your command line, execute `./vlc --stream-filter comcast_dash`
 
 ###### Documentation
-[Wiki](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki).
+[Wiki](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki)
