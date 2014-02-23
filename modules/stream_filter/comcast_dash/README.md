@@ -8,17 +8,15 @@ Information for how we created this plugin can be found [HERE](https://github.co
 **Plugin Logic**<br />
 An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Playback-Loop-Logic)
 
+#### Files
 
-
-**hello.c**<br />
+**[hello.c](https://github.com/Grade-A-Software/Comcast-DASH-VLC/blob/master/modules/stream_filter/comcast_dash/hello.c)**<br />
 
 This is a demonstration of how a module will be loaded. This is trivial, and should be used only for reference.
 
-**dash.cpp**<br />
+**[dash.cpp](https://github.com/Grade-A-Software/Comcast-DASH-VLC/blob/master/modules/stream_filter/comcast_dash/dash.cpp)**<br />
 
-This is the module. Contained is the module definition, and essential methods for plugin creation.
-
-**dash.cpp - functions**<br />
+This is the module. Contained is the module definition, and essential methods for plugin creation. The functions are:
 
 _Open_
 
