@@ -31,8 +31,9 @@
 
 #include <vlc_common.h>
 #include <vlc_plugin.h>
-#include <vlc_stream.h>
+
 #include "xml/DOMParser.h"
+#include "parser.h"
 #include <errno.h>
 
 
@@ -103,8 +104,13 @@ static int Open(vlc_object_t *p_obj)
         return VLC_EGENERIC;
       }
     else {
-      parser.print();
+      //      parser.print();
+      Parser * dashParser = new Parser(parser.getRootNode(),p_stream);
+      dashParser->parse();
     }
+
+
+
 
     
     stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
