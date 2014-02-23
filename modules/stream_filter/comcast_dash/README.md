@@ -1,15 +1,13 @@
-##Comcast DASH plugin
+### Comcast DASH plugin
 
 *Details:*
 
-**Module Creation**<br />
-Information for creating a module can be found at:<br /> 
-[Walk-through for Module Creation](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Module-Creation)
+**Module Creation**
+Information for how we created this module can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Module-Creation)
 <br />
 <br />
-**Playback Loop**<br />
-An overview of the playback loop can be found at:<br />
-[Playback Loop Logic](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Playback-Loop-Logic)
+**Plugin Logic**<br />
+An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Playback-Loop-Logic)
 
 
 ### Consult README files in appropriate subdirectories for details on those components
