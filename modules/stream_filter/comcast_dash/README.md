@@ -1,12 +1,8 @@
 ### Comcast DASH plugin
 
 This plugin is a work in progress.<br/>
-The purpose of this plugin is to get the Comcast version of a DASH file to play in VLC.
+The purpose of this plugin is to play Comcast's version of DASH in VLC.<br />
 
-**Plugin Creation**<br />
-Information for how we created this plugin can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Module-Creation)
-<br />
-<br />
 **Plugin Logic**<br />
 An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Playback-Loop-Logic)
 
