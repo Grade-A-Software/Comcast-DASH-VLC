@@ -20,7 +20,7 @@ The stream_filter directory is where all plugins for streaming content exists.
 [Linux](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-(Linux))
 
 ###### How do I update VLC and use the plugin?
-Instructions are [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/How-do-I-update-VLC-and-use-the-plugin)<br/>
+Instructions are [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/How-do-I-update-VLC-and-use-the-plugin%3F)<br/>
 Note: Functionality on future builds of VLC should work but are not guarenteed.
 
 ###### How do I run this?
