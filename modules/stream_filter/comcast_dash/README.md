@@ -3,8 +3,8 @@
 Note: This plugin is a work in progress.<br/><br/>
 The purpose of this plugin is to play Comcast's version of DASH in VLC.<br />
 
-**Plugin Logic**<br />
-An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Playback-Loop-Logic)
+**Plugin Process**<br />
+An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Plugin-Process)
 
 #### Files
 
