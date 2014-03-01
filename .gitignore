@@ -49,6 +49,7 @@ include/vlc/libvlc_version.h
 
 # Ignore build dirs
 build-*
+build/
 contrib-*
 install-*
 
