@@ -15,7 +15,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: vlc\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2013-05-28 11:42+0200\n"
+"POT-Creation-Date: 2013-06-06 17:40+0200\n"
 "PO-Revision-Date: 2011-04-04 12:45+0600\n"
 "Last-Translator: israt <israt@ankur.org.bd>\n"
 "Language-Team: Bengali <ankur-bd-l10n@googlegroups.com>\n"
@@ -1230,8 +1230,8 @@ msgstr "ডিকোডার"
 
 #: src/input/decoder.c:276 src/input/decoder.c:467
 #: modules/codec/avcodec/encoder.c:248 modules/codec/avcodec/encoder.c:256
-#: modules/codec/avcodec/encoder.c:290 modules/codec/avcodec/encoder.c:750
-#: modules/codec/avcodec/encoder.c:803 modules/stream_out/es.c:362
+#: modules/codec/avcodec/encoder.c:290 modules/codec/avcodec/encoder.c:763
+#: modules/codec/avcodec/encoder.c:816 modules/stream_out/es.c:362
 #: modules/stream_out/es.c:377
 msgid "Streaming / Transcoding failed"
 msgstr "স্ট্রীমিং/ট্রান্সকোডিং ব্যর্থ"
@@ -7096,9 +7096,9 @@ msgid ""
 "HTTP proxy to be used It must be of the form http://[user@]myproxy.mydomain:"
 "myport/ ; if empty, the http_proxy environment variable will be tried."
 msgstr ""
-"যে HTTP প্রক্সি ব্যবহার করা হবে, সেটি অবশ্যই এই বিন্যাসে হতে হবে http://[user@]"
-"myproxy.mydomain:myport/ ; যদি খালি থাকে, http_proxy environment ভেরিয়েবল "
-"ব্যবহারের চেষ্টা করা হবে।"
+"যে HTTP প্রক্সি ব্যবহার করা হবে, সেটি অবশ্যই এই বিন্যাসে হতে হবে http://"
+"[user@]myproxy.mydomain:myport/ ; যদি খালি থাকে, http_proxy environment "
+"ভেরিয়েবল ব্যবহারের চেষ্টা করা হবে।"
 
 #: modules/access/http.c:70
 msgid "HTTP proxy password"
@@ -10660,24 +10660,24 @@ msgstr "FFmpeg অডিও/ভিডিও ডিকোডার"
 msgid "Decoding"
 msgstr "ডিকোড করা হচ্ছে"
 
-#: modules/codec/avcodec/avcodec.c:153 modules/codec/omxil/omxil.c:87
+#: modules/codec/avcodec/avcodec.c:154 modules/codec/omxil/omxil.c:87
 #: modules/codec/schroedinger.c:370
 msgid "Encoding"
 msgstr "এনকোড করা হচ্ছে"
 
-#: modules/codec/avcodec/avcodec.c:154
+#: modules/codec/avcodec/avcodec.c:155
 msgid "FFmpeg audio/video encoder"
 msgstr "FFmpeg অডিও/ভিডিও এনকোডার"
 
-#: modules/codec/avcodec/avcodec.h:70
+#: modules/codec/avcodec/avcodec.h:69
 msgid "Direct rendering"
 msgstr "সরাসরি রেন্ডারিং"
 
-#: modules/codec/avcodec/avcodec.h:73
+#: modules/codec/avcodec/avcodec.h:72
 msgid "Error resilience"
 msgstr "ত্রুটি কাটিয়ে উঠা"
 
-#: modules/codec/avcodec/avcodec.h:75
+#: modules/codec/avcodec/avcodec.h:74
 #, fuzzy
 msgid ""
 "libavcodec can do error resilience.\n"
@@ -10690,11 +10690,11 @@ msgstr ""
 "সমস্যা উৎপন্ন করতে পারে।\n"
 "বৈধ মানের সীমা 0 থেকে 4 পর্যন্ত (0 সব ত্রুটি কাটিয়ে উঠা নিষ্ক্রিয় করে)।"
 
-#: modules/codec/avcodec/avcodec.h:80
+#: modules/codec/avcodec/avcodec.h:79
 msgid "Workaround bugs"
 msgstr "বাগ নিয়ে কাজ করা হবে"
 
-#: modules/codec/avcodec/avcodec.h:82
+#: modules/codec/avcodec/avcodec.h:81
 msgid ""
 "Try to fix some bugs:\n"
 "1  autodetect\n"
@@ -10718,12 +10718,12 @@ msgstr ""
 "এটি মানসমূহের যোগফল হতে হবে। উদাহরণস্বরূপ, \"ac vlc\" এবং \"ump4\" ঠিক করার জন্য "
 "40 প্রবেশ করাতে হবে।"
 
-#: modules/codec/avcodec/avcodec.h:93 modules/codec/avcodec/avcodec.h:204
+#: modules/codec/avcodec/avcodec.h:92 modules/codec/avcodec/avcodec.h:203
 #: modules/demux/rawdv.c:42 modules/stream_out/transcode/transcode.c:139
 msgid "Hurry up"
 msgstr "তাড়াতাড়ি"
 
-#: modules/codec/avcodec/avcodec.h:95
+#: modules/codec/avcodec/avcodec.h:94
 msgid ""
 "The decoder can partially decode or skip frame(s) when there is not enough "
 "time. It's useful with low CPU power but it can produce distorted pictures."
@@ -10731,20 +10731,20 @@ msgstr ""
 "যথেষ্ট সময় না থাকলে ডিকোডার ফ্রেমগুলোকে আংশিকভাবে ডিকোড বা উপেক্ষা করতে পারে। "
 "নিম্ন CPU শক্তির জন্যও এটি কার্যকর কিন্তু এতে বিকৃত ছবি উৎপন্ন হতে পারে।"
 
-#: modules/codec/avcodec/avcodec.h:99
+#: modules/codec/avcodec/avcodec.h:98
 msgid "Allow speed tricks"
 msgstr "গতি সম্পর্কিত কৌশল অনুমোদন করা হবে"
 
-#: modules/codec/avcodec/avcodec.h:101
+#: modules/codec/avcodec/avcodec.h:100
 msgid ""
 "Allow non specification compliant speedup tricks. Faster but error-prone."
 msgstr "স্পেসিফিকেশন বহির্ভূত গতিবর্ধক কৌশল অনুমোদন করা হবে। দ্রুততর কিন্তু ত্রুটিপ্রবণ।"
 
-#: modules/codec/avcodec/avcodec.h:103
+#: modules/codec/avcodec/avcodec.h:102
 msgid "Skip frame (default=0)"
 msgstr "ফ্রেম উপেক্ষা করা হবে (পূর্বনির্ধারিত=0)"
 
-#: modules/codec/avcodec/avcodec.h:105
+#: modules/codec/avcodec/avcodec.h:104
 msgid ""
 "Force skipping of frames to speed up decoding (-1=None, 0=Default, 1=B-"
 "frames, 2=P-frames, 3=B+P frames, 4=all frames)."
@@ -10752,11 +10752,11 @@ msgstr ""
 "ডিকোডিং-এর গতি বাড়ানোর জন্য ফ্রেম উপেক্ষা কার্যকরী করা হবে (-1=None, 0=Default, "
 "1=B-frames, 2=P-frames, 3=B+P frames, 4=all frames)।"
 
-#: modules/codec/avcodec/avcodec.h:108
+#: modules/codec/avcodec/avcodec.h:107
 msgid "Skip idct (default=0)"
 msgstr "idct উপেক্ষা করা হবে (পূর্বনির্ধারিত=0)"
 
-#: modules/codec/avcodec/avcodec.h:110
+#: modules/codec/avcodec/avcodec.h:109
 #, fuzzy
 msgid ""
 "Force skipping of idct to speed up decoding for frame types (-1=None, "
@@ -10766,37 +10766,37 @@ msgstr ""
 "0=Default, 1=B-frames, 2=P-frames, 3=B+P frames, 4=all frames)।"
 
 # checked by sazzad
-#: modules/codec/avcodec/avcodec.h:113
+#: modules/codec/avcodec/avcodec.h:112
 #, fuzzy
 msgid "Discard cropping information"
 msgstr "HRD-সময়জ্ঞান তথ্য"
 
-#: modules/codec/avcodec/avcodec.h:114
+#: modules/codec/avcodec/avcodec.h:113
 msgid "Discard internal cropping parameters (e.g. from H.264 SPS)."
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:116
+#: modules/codec/avcodec/avcodec.h:115
 msgid "Debug mask"
 msgstr "ডিবাগ মাস্ক"
 
-#: modules/codec/avcodec/avcodec.h:117
+#: modules/codec/avcodec/avcodec.h:116
 msgid "Set FFmpeg debug mask"
 msgstr "FFmpeg ডিবাগ মাস্ক নির্ধারণ করা হবে"
 
-#: modules/codec/avcodec/avcodec.h:119
+#: modules/codec/avcodec/avcodec.h:118
 #, fuzzy
 msgid "Codec name"
 msgstr "কোডেক"
 
-#: modules/codec/avcodec/avcodec.h:120
+#: modules/codec/avcodec/avcodec.h:119
 msgid "Internal libavcodec codec name"
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:123
+#: modules/codec/avcodec/avcodec.h:122
 msgid "Visualize motion vectors"
 msgstr "গতিশীল ভেক্টর ভিজুয়ালাইজ করা হবে"
 
-#: modules/codec/avcodec/avcodec.h:125
+#: modules/codec/avcodec/avcodec.h:124
 msgid ""
 "You can overlay the motion vectors (arrows showing how the images move) on "
 "the image. This value is a mask, based on these values:\n"
@@ -10812,11 +10812,11 @@ msgstr ""
 "4 - B ফ্রেমের পূর্ববর্তী অনুমানকৃত MV প্রদর্শন করা হবে\n"
 "সব ভেক্টর প্রদর্শনের জন্য, 7 দিতে হবে।"
 
-#: modules/codec/avcodec/avcodec.h:132 modules/gui/macosx/simple_prefs.m:215
+#: modules/codec/avcodec/avcodec.h:131 modules/gui/macosx/simple_prefs.m:215
 msgid "Skip the loop filter for H.264 decoding"
 msgstr "H.264 ডিকোডিং এর জন্য পুনরাবৃত্তি পরিশোধক উপেক্ষা করা হবে"
 
-#: modules/codec/avcodec/avcodec.h:133
+#: modules/codec/avcodec/avcodec.h:132
 msgid ""
 "Skipping the loop filter (aka deblocking) usually has a detrimental effect "
 "on quality. However it provides a big speedup for high definition streams."
@@ -10824,85 +10824,85 @@ msgstr ""
 "পুনরাবৃত্তি পরিশোধক (ডিব্লকিং) উপেক্ষা করা হলে সাধারণত গুণগত মানের ওপর খারাপ প্রভাব "
 "পড়ে। যদিও এর ফলে উচ্চ ডেফিনেশন স্ট্রীমের গতি অত্যন্ত বৃদ্ধি পায়।"
 
-#: modules/codec/avcodec/avcodec.h:137
+#: modules/codec/avcodec/avcodec.h:136
 msgid "Hardware decoding"
 msgstr "হার্ডওয়্যার ডিকোডিং"
 
-#: modules/codec/avcodec/avcodec.h:138
+#: modules/codec/avcodec/avcodec.h:137
 msgid "This allows hardware decoding when available."
 msgstr "বিদ্যমান থাকলে এটি হার্ডওয়্যার ডিকোডিং অনুমোদন করে।"
 
-#: modules/codec/avcodec/avcodec.h:140
+#: modules/codec/avcodec/avcodec.h:139
 #, fuzzy
 msgid "VDA output pixel format"
 msgstr "আউটপুট ফরম্যাট"
 
-#: modules/codec/avcodec/avcodec.h:141
+#: modules/codec/avcodec/avcodec.h:140
 msgid "The pixel format for output image buffers."
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:143
+#: modules/codec/avcodec/avcodec.h:142
 msgid "Threads"
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:144
+#: modules/codec/avcodec/avcodec.h:143
 #, fuzzy
 msgid "Number of threads used for decoding, 0 meaning auto"
 msgstr "ট্রান্সকোডিং এর জন্য ব্যবহৃত থ্রেডের সংখ্যা।"
 
-#: modules/codec/avcodec/avcodec.h:151
+#: modules/codec/avcodec/avcodec.h:150
 msgid "Ratio of key frames"
 msgstr "কী ফ্রেমের অনুপাত"
 
-#: modules/codec/avcodec/avcodec.h:152
+#: modules/codec/avcodec/avcodec.h:151
 msgid "Number of frames that will be coded for one key frame."
 msgstr "একটি কী ফ্রেমের জন্য যতোগুলো ফ্রেমকে কোড করা হবে।"
 
-#: modules/codec/avcodec/avcodec.h:155
+#: modules/codec/avcodec/avcodec.h:154
 msgid "Ratio of B frames"
 msgstr "B ফ্রেমের অনুপাত"
 
-#: modules/codec/avcodec/avcodec.h:156
+#: modules/codec/avcodec/avcodec.h:155
 msgid "Number of B frames that will be coded between two reference frames."
 msgstr "দুটি রেফারেন্স ফ্রেমের মধ্যে কোড করা হবে এমন B ফ্রেমের সংখ্যা।"
 
-#: modules/codec/avcodec/avcodec.h:159
+#: modules/codec/avcodec/avcodec.h:158
 msgid "Video bitrate tolerance"
 msgstr "ভিডিও বিটরেটের সহিষ্ণুতা"
 
-#: modules/codec/avcodec/avcodec.h:160
+#: modules/codec/avcodec/avcodec.h:159
 msgid "Video bitrate tolerance in kbit/s."
 msgstr "কিলোবিট/সেকেন্ডে ভিডিও বিটরেটের সহিষ্ণুতা।"
 
-#: modules/codec/avcodec/avcodec.h:162
+#: modules/codec/avcodec/avcodec.h:161
 msgid "Interlaced encoding"
 msgstr "ইন্টারলেসড এনকোডিং"
 
-#: modules/codec/avcodec/avcodec.h:163
+#: modules/codec/avcodec/avcodec.h:162
 msgid "Enable dedicated algorithms for interlaced frames."
 msgstr "ইন্টারলেস করা ফ্রেমের জন্য ডেডিকেটেড এলগরিদম সক্রিয় করা হবে।"
 
-#: modules/codec/avcodec/avcodec.h:166
+#: modules/codec/avcodec/avcodec.h:165
 msgid "Interlaced motion estimation"
 msgstr "ইন্টারলেসড মোশন এস্টিমেশন"
 
-#: modules/codec/avcodec/avcodec.h:167
+#: modules/codec/avcodec/avcodec.h:166
 msgid "Enable interlaced motion estimation algorithms. This requires more CPU."
 msgstr "ইন্টারলেসড মোশন এস্টিমেশন এলগরিদম সক্রিয় করা হবে। এতে বেশি CPU প্রয়োজন।"
 
-#: modules/codec/avcodec/avcodec.h:170
+#: modules/codec/avcodec/avcodec.h:169
 msgid "Pre-motion estimation"
 msgstr "প্রি-মোশন এস্টিমেশন"
 
-#: modules/codec/avcodec/avcodec.h:171
+#: modules/codec/avcodec/avcodec.h:170
 msgid "Enable the pre-motion estimation algorithm."
 msgstr "প্রি-মোশন এস্টিমেশন এলগরিদম সক্রিয় করা হবে।"
 
-#: modules/codec/avcodec/avcodec.h:174
+#: modules/codec/avcodec/avcodec.h:173
 msgid "Rate control buffer size"
 msgstr "রেট কন্ট্রোল বাফারের আকার"
 
-#: modules/codec/avcodec/avcodec.h:175
+#: modules/codec/avcodec/avcodec.h:174
 msgid ""
 "Rate control buffer size (in kbytes). A bigger buffer will allow for better "
 "rate control, but will cause a delay in the stream."
@@ -10910,19 +10910,19 @@ msgstr ""
 "রেট কন্ট্রোল বাফারের আকার (কিলোবাইটে)। একটি বড় বাফার ভালো রেট কন্ট্রোল করবে, "
 "কিন্তু স্ট্রীমে একটি বিলম্ব তৈরি করবে।"
 
-#: modules/codec/avcodec/avcodec.h:179
+#: modules/codec/avcodec/avcodec.h:178
 msgid "Rate control buffer aggressiveness"
 msgstr "রেট কন্ট্রোল বাফারের আক্রমনাত্মকতা"
 
-#: modules/codec/avcodec/avcodec.h:180
+#: modules/codec/avcodec/avcodec.h:179
 msgid "Rate control buffer aggressiveness."
 msgstr "রেট কন্ট্রোল বাফারের আক্রমনাত্মকতা।"
 
-#: modules/codec/avcodec/avcodec.h:183
+#: modules/codec/avcodec/avcodec.h:182
 msgid "I quantization factor"
 msgstr "I কোয়ান্টাইজেশন ফ্যাক্টর"
 
-#: modules/codec/avcodec/avcodec.h:185
+#: modules/codec/avcodec/avcodec.h:184
 msgid ""
 "Quantization factor of I frames, compared with P frames (for instance 1.0 => "
 "same qscale for I and P frames)."
@@ -10930,12 +10930,12 @@ msgstr ""
 "I ফ্রেমের কোয়ান্টাইজেশন ফ্যাক্টর, P ফ্রেমের সাথে তুলনা করে (উদাহরণস্বরূপ 1.0 => I "
 "এবং P ফ্রেমের জন্য একই qscale)।"
 
-#: modules/codec/avcodec/avcodec.h:188 modules/codec/x264.c:360
+#: modules/codec/avcodec/avcodec.h:187 modules/codec/x264.c:360
 #: modules/demux/mod.c:78
 msgid "Noise reduction"
 msgstr "নয়েজ রিডাকশন"
 
-#: modules/codec/avcodec/avcodec.h:189
+#: modules/codec/avcodec/avcodec.h:188
 msgid ""
 "Enable a simple noise reduction algorithm to lower the encoding length and "
 "bitrate, at the expense of lower quality frames."
@@ -10943,11 +10943,11 @@ msgstr ""
 "এনকোডিং দৈর্ঘ্য এবং বিটরেট কমানোর জন্য একটি সরল নয়েজ রিডাকশন এলগরিদম সক্রিয় করা "
 "হবে, নিম্ন মানের ফ্রেমের বিনিময়ে।"
 
-#: modules/codec/avcodec/avcodec.h:193
+#: modules/codec/avcodec/avcodec.h:192
 msgid "MPEG4 quantization matrix"
 msgstr "MPEG4 কোয়ান্টাইজেশন ম্যাট্রিক্স"
 
-#: modules/codec/avcodec/avcodec.h:194
+#: modules/codec/avcodec/avcodec.h:193
 msgid ""
 "Use the MPEG4 quantization matrix for MPEG2 encoding. This generally yields "
 "a better looking picture, while still retaining the compatibility with "
@@ -10957,11 +10957,11 @@ msgstr ""
 "সাধারণত ভালো ছবি পাওয়া যায়, যদিও স্ট্যান্ডার্ড MPEG2 ডিকোডারের সাথে তখনও "
 "সামঞ্জস্যতা থাকে।"
 
-#: modules/codec/avcodec/avcodec.h:199
+#: modules/codec/avcodec/avcodec.h:198
 msgid "Quality level"
 msgstr "গুণগত মানের স্তর"
 
-#: modules/codec/avcodec/avcodec.h:200
+#: modules/codec/avcodec/avcodec.h:199
 msgid ""
 "Quality level for the encoding of motions vectors (this can slow down the "
 "encoding very much)."
@@ -10969,7 +10969,7 @@ msgstr ""
 "মোশন ভেক্টরের এনকোডিং-এর জন্য গুণগত মানের স্তর (এর ফলে এনকোডিং অত্যন্ত ধীর হয়ে "
 "যেতে পারে)।"
 
-#: modules/codec/avcodec/avcodec.h:205
+#: modules/codec/avcodec/avcodec.h:204
 msgid ""
 "The encoder can make on-the-fly quality tradeoffs if your CPU can't keep up "
 "with the encoding rate. It will disable trellis quantization, then the rate "
@@ -10981,35 +10981,35 @@ msgstr ""
 "(hg) রেট বিকৃতি নিষ্ক্রিয় করে, এবং এনকোডারের কাজ সহজ করার জন্য নয়েজ রিডাকশন "
 "থ্রেশহোল্ড বাড়িয়ে দেয়।"
 
-#: modules/codec/avcodec/avcodec.h:211
+#: modules/codec/avcodec/avcodec.h:210
 msgid "Minimum video quantizer scale"
 msgstr "সর্বনিম্ন ভিডিও কোয়ান্টাইজার স্কেল"
 
-#: modules/codec/avcodec/avcodec.h:212
+#: modules/codec/avcodec/avcodec.h:211
 msgid "Minimum video quantizer scale."
 msgstr "সর্বনিম্ন ভিডিও কোয়ান্টাইজার স্কেল।"
 
-#: modules/codec/avcodec/avcodec.h:215
+#: modules/codec/avcodec/avcodec.h:214
 msgid "Maximum video quantizer scale"
 msgstr "সর্বোচ্চ ভিডিও কোয়ান্টাইজার স্কেল"
 
-#: modules/codec/avcodec/avcodec.h:216
+#: modules/codec/avcodec/avcodec.h:215
 msgid "Maximum video quantizer scale."
 msgstr "সর্বোচ্চ ভিডিও কোয়ান্টাইজার স্কেল।"
 
-#: modules/codec/avcodec/avcodec.h:219
+#: modules/codec/avcodec/avcodec.h:218
 msgid "Trellis quantization"
 msgstr "ট্রেলিস কোয়ান্টাইজেশন"
 
-#: modules/codec/avcodec/avcodec.h:220
+#: modules/codec/avcodec/avcodec.h:219
 msgid "Enable trellis quantization (rate distortion for block coefficients)."
 msgstr "ট্রেলিস কোয়ান্টাইজেশন সক্রিয় করা হবে (ব্লক সহগের জন্য রেট বিকৃতি)।"
 
-#: modules/codec/avcodec/avcodec.h:223
+#: modules/codec/avcodec/avcodec.h:222
 msgid "Fixed quantizer scale"
 msgstr "নির্দিষ্ট কোয়ান্টাইজার স্কেল"
 
-#: modules/codec/avcodec/avcodec.h:224
+#: modules/codec/avcodec/avcodec.h:223
 msgid ""
 "A fixed video quantizer scale for VBR encoding (accepted values: 0.01 to "
 "255.0)."
@@ -11017,11 +11017,11 @@ msgstr ""
 "VBR এনকোডিং এর জন্য একটি নির্দিষ্ট ভিডিও কোয়ান্টাইজার স্কেল (গ্রহণযোগ্য মান: 0.01 "
 "থেকে 255.0)।"
 
-#: modules/codec/avcodec/avcodec.h:227
+#: modules/codec/avcodec/avcodec.h:226
 msgid "Strict standard compliance"
 msgstr "স্ট্রিক্ট স্ট্যান্ডার্ড কমপ্লাইয়েন্স"
 
-#: modules/codec/avcodec/avcodec.h:228
+#: modules/codec/avcodec/avcodec.h:227
 #, fuzzy
 msgid ""
 "Force a strict standard compliance when encoding (accepted values: -2 to 2)."
@@ -11029,27 +11029,27 @@ msgstr ""
 "এনকোডিং করার সময় একটি স্ট্রিক্ট স্ট্যান্ডার্ড কমপ্লাইয়েন্স কার্যকর করা হবে (গ্রহণযোগ্য "
 "মান: -1, 0, 1)।"
 
-#: modules/codec/avcodec/avcodec.h:231
+#: modules/codec/avcodec/avcodec.h:230
 msgid "Luminance masking"
 msgstr "উজ্জ্বল মাস্কিং"
 
-#: modules/codec/avcodec/avcodec.h:232
+#: modules/codec/avcodec/avcodec.h:231
 msgid "Raise the quantizer for very bright macroblocks (default: 0.0)."
 msgstr "অতি উজ্জ্বল ম্যাক্রোব্লকের জন্য কোয়ান্টাইজার বাড়ানো হবে (পূর্বনির্ধারিত: 0.0)।"
 
-#: modules/codec/avcodec/avcodec.h:235
+#: modules/codec/avcodec/avcodec.h:234
 msgid "Darkness masking"
 msgstr "অন্ধকার মাস্কিং"
 
-#: modules/codec/avcodec/avcodec.h:236
+#: modules/codec/avcodec/avcodec.h:235
 msgid "Raise the quantizer for very dark macroblocks (default: 0.0)."
 msgstr "অতি অন্ধকার ম্যাক্রোব্লকের জন্য কোয়ান্টাইজার বাড়ানো হবে (পূর্বনির্ধারিত: 0.0)।"
 
-#: modules/codec/avcodec/avcodec.h:239
+#: modules/codec/avcodec/avcodec.h:238
 msgid "Motion masking"
 msgstr "মোশন মাস্কিং"
 
-#: modules/codec/avcodec/avcodec.h:240
+#: modules/codec/avcodec/avcodec.h:239
 msgid ""
 "Raise the quantizer for macroblocks with a high temporal complexity "
 "(default: 0.0)."
@@ -11057,22 +11057,22 @@ msgstr ""
 "অতি ক্ষনস্থায়ী কমপ্লেক্সিটির সাথে ম্যাক্রোব্লকের জন্য কোয়ান্টাইজার বাড়ানো হবে "
 "(পূর্বনির্ধারিত: 0.0)।"
 
-#: modules/codec/avcodec/avcodec.h:243
+#: modules/codec/avcodec/avcodec.h:242
 msgid "Border masking"
 msgstr "সীমানা মাস্কিং"
 
-#: modules/codec/avcodec/avcodec.h:244
+#: modules/codec/avcodec/avcodec.h:243
 msgid ""
 "Raise the quantizer for macroblocks at the border of the frame (default: "
 "0.0)."
 msgstr ""
 "ফ্রেমের সীমানার ম্যাক্রোব্লকগুলোর জন্য কোয়ান্টাইজার বাড়ানো হবে (পূর্বনির্ধারিত: 0.0)।"
 
-#: modules/codec/avcodec/avcodec.h:247
+#: modules/codec/avcodec/avcodec.h:246
 msgid "Luminance elimination"
 msgstr "উজ্জ্বলতা বাদ দেয়া হবে"
 
-#: modules/codec/avcodec/avcodec.h:248
+#: modules/codec/avcodec/avcodec.h:247
 msgid ""
 "Eliminates luminance blocks when the PSNR isn't much changed (default: 0.0). "
 "The H264 specification recommends -4."
@@ -11080,11 +11080,11 @@ msgstr ""
 "PSNR বেশি পরিবর্তিত না হলে উজ্জ্বলতা ব্লক বাদ দেয়া হয় (পূর্বনির্ধারিত: 0.0)। H264 "
 "স্পেসিফিকেশন -4 নির্ধারণ করার জন্য সুপারিশ করে।"
 
-#: modules/codec/avcodec/avcodec.h:252
+#: modules/codec/avcodec/avcodec.h:251
 msgid "Chrominance elimination"
 msgstr "ক্রমিন্যান্স বাদ দেয়া হবে"
 
-#: modules/codec/avcodec/avcodec.h:253
+#: modules/codec/avcodec/avcodec.h:252
 msgid ""
 "Eliminates chrominance blocks when the PSNR isn't much changed (default: "
 "0.0). The H264 specification recommends 7."
@@ -11092,11 +11092,11 @@ msgstr ""
 "PSNR বেশি পরিবর্তিত না হলে ক্রমিন্যান্স ব্লক বাদ দেয়া হয় (পূর্বনির্ধারিত: 0.0)। H264 "
 "স্পেসিফিকেশন 7 নির্ধারণ করার জন্য সুপারিশ করে।"
 
-#: modules/codec/avcodec/avcodec.h:257
+#: modules/codec/avcodec/avcodec.h:256
 msgid "Specify AAC audio profile to use"
 msgstr "ব্যবহার করার জন্য AAC আউটপুট প্রোফাইল উল্লেখ করা হবে"
 
-#: modules/codec/avcodec/avcodec.h:258
+#: modules/codec/avcodec/avcodec.h:257
 #, fuzzy
 msgid ""
 "Specify the AAC audio profile to use for encoding the audio bitstream. It "
@@ -11143,7 +11143,7 @@ msgstr ""
 "এটি VLC মিডিয়া প্লেয়ারের অভ্যন্তরের কোনো সমস্যা নয়।\n"
 "এ ব্যাপারে ভিডিওল্যান প্রজেক্টের সাথে যোগাযোগ করবেন না।\n"
 
-#: modules/codec/avcodec/encoder.c:751 modules/codec/avcodec/encoder.c:804
+#: modules/codec/avcodec/encoder.c:764 modules/codec/avcodec/encoder.c:817
 msgid "VLC could not open the encoder."
 msgstr "VLC এনকোডারটি খুলতে পারেনি।"
 
@@ -11511,7 +11511,7 @@ msgstr "মেকি ডিকোডার"
 msgid "AAC audio decoder (using libfaad2)"
 msgstr "AAC অডিও ডিকোডার (libfaad2 ব্যবহার করা হয়েছে)"
 
-#: modules/codec/faad.c:429
+#: modules/codec/faad.c:430
 msgid "AAC extension"
 msgstr "AAC এক্সটেনশন"
 
@@ -13881,8 +13881,8 @@ msgstr "D-Bus কন্ট্রোল ইন্টারফেস"
 #: modules/gui/qt4/main_interface.cpp:1158
 #: modules/gui/qt4/main_interface.cpp:1175
 #: modules/gui/qt4/main_interface.cpp:1183
-#: modules/gui/qt4/main_interface.cpp:1206 modules/notify/growl.m:281
-#: modules/video_output/xcb/window.c:313
+#: modules/gui/qt4/main_interface.cpp:1206 modules/lua/libs/httpd.c:80
+#: modules/notify/growl.m:281 modules/video_output/xcb/window.c:313
 msgid "VLC media player"
 msgstr "VLC মিডিয়া প্লেয়ার"
 
@@ -16166,8 +16166,8 @@ msgstr "অতিরিক্ত PMT"
 #: modules/demux/ts.c:96
 msgid "Allows a user to specify an extra pmt (pmt_pid=pid:stream_type[,...])."
 msgstr ""
-"কোনো ব্যবহারকারীকে একটি অতিরিক্ত pmt উল্লেখ করতে দেয় (pmt_pid=pid:stream_type"
-"[,...])।"
+"কোনো ব্যবহারকারীকে একটি অতিরিক্ত pmt উল্লেখ করতে দেয় (pmt_pid=pid:"
+"stream_type[,...])।"
 
 #: modules/demux/ts.c:98
 msgid "Set id of ES to PID"
@@ -22347,16 +22347,11 @@ msgstr "স্কিন নির্বাচন করা হবে"
 msgid "Open skin ..."
 msgstr "স্কিন খুলুন ..."
 
-#: modules/lua/libs/httpd.c:64
+#: modules/lua/libs/httpd.c:75
 msgid ""
-"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3."
-"org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
-"<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv="
-"\"Content-Type\" content=\"text/html;charset=utf-8\" /><title>VLC media "
-"player</title></head><body><p>Password for Web interface has not been set.</"
-"p><p>Please use --http-password, or set a password in </p><p>Preferences "
-"&gt; All &gt; Main interfaces &gt; Lua &gt; Lua HTTP &gt; Password.</p><!-- "
-"VLC_PASSWORD_NOT_SET --></body></html>"
+"<p>Password for Web interface has not been set.</p><p>Please use --http-"
+"password, or set a password in </p><p>Preferences &gt; All &gt; Main "
+"interfaces &gt; Lua &gt; Lua HTTP &gt; Password.</p>"
 msgstr ""
 
 #: modules/lua/vlc.c:48
