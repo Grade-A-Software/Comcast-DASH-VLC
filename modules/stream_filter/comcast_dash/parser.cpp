@@ -17,6 +17,7 @@ void Parser::parse() {
       std::string url = DOMHelper::getElementByTagName(adaptationSet.at(i),"BaseURL",false).at(0)->getText();
       std::vector<Node *> rep = this->getRepresentations(adaptationSet.at(i));
       std::vector<Node *> seg = this->getSegments(adaptationSet.at(i));
+      if ( url.find("muxed") != std::string::npos )
       for (size_t r = 0; r < rep.size(); r++) {
 	for (size_t s = 0; s < seg.size(); s++) {
 	  std::stringstream ss;
@@ -24,7 +25,7 @@ void Parser::parse() {
 	  std::string rep_id = rep.at(r)->getAttributeValue("id");
 	  if (seg.at(s)->getAttributeValue("r") != "0") {
 
-	    ss << url << rep_id << "-" << t << ".ts";
+	    ss << "http://nh.lab.xcal.tc/rfliam/testdash/" << url << rep_id << "-" << t << ".ts";
 	    if (r == rep.size() - 1) ss << " - Highest Bit Rate - ";
 	    msg_Info(this->p_stream,ss.str().c_str());
 	  }
