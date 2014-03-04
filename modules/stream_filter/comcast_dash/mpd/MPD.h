@@ -1,5 +1,4 @@
-/*
- * MPD.h
+/* * MPD.h
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -29,7 +28,7 @@
 #include <string>
 #include <map>
 
-#include "mpd/Period.h"
+#include "Period.h"
 
 
 namespace dash
@@ -43,31 +42,31 @@ namespace dash
                 virtual ~MPD();
 
 
-                void                            setProfile( Profile profile );
-                bool                            isLive() const;
-                void                            setLive( bool live );
-                time_t                          getAvailabilityStartTime() const;
-                void                            setAvailabilityStartTime( time_t time );
-                time_t                          getAvailabilityEndTime() const;
-                void                            setAvailabilityEndTime( time_t time );
-                time_t                          getDuration() const;
-                void                            setDuration( time_t duration );
-                time_t                          getMinUpdatePeriod() const;
-                void                            setMinUpdatePeriod( time_t period );
-                time_t                          getMinBufferTime() const;
-                void                            setMinBufferTime( time_t time );
-                time_t                          getTimeShiftBufferDepth() const;
-                void                            setTimeShiftBufferDepth( time_t depth );
-                const std::vector<std::string *>&   getBaseUrls() const;
-                const std::vector<Period *>&    getPeriods() const;
+		
+                virtual bool                            isLive() const;
+                virtual void                            setLive( bool live );
+                virtual time_t                          getAvailabilityStartTime() const;
+                virtual void                            setAvailabilityStartTime( time_t time );
+                virtual time_t                          getAvailabilityEndTime() const;
+                virtual void                            setAvailabilityEndTime( time_t time );
+                virtual time_t                          getDuration() const;
+                virtual void                            setDuration( time_t duration );
+                virtual time_t                          getMinUpdatePeriod() const;
+                virtual void                            setMinUpdatePeriod( time_t period );
+                virtual time_t                          getMinBufferTime() const;
+                virtual void                            setMinBufferTime( time_t time );
+                virtual time_t                          getTimeShiftBufferDepth() const;
+                virtual void                            setTimeShiftBufferDepth( time_t depth );
+                virtual const std::vector<std::string *>&   getBaseUrls() const;
+                virtual const std::vector<Period *>&    getPeriods() const;
    
+		virtual void addPeriod(Period * p);
 
-                void    addPeriod               (Period *period);
-                void    addBaseUrl              (std:;string *url);
+                virtual void    addBaseUrl              (std::string *url);
    
 
             private:
-                Profile                             profile;
+
                 bool                                live;
                 time_t                              availabilityStartTime;
                 time_t                              availabilityEndTime;

@@ -28,9 +28,12 @@
 #include <string>
 #include <sstream>
 #include <vector>
-#include "mpd/BaseUrl.h"
-#include "http/Chunk.h"
-
+#include "../http/Chunk.h"
+#include "../xml/Node.h"
+#include "../xml/DOMParser.h"
+using namespace dash;
+using namespace dash::http;
+using namespace dash::xml;
 namespace dash
 {
     namespace mpd
@@ -39,29 +42,35 @@ namespace dash
         class Segment
         {
             public:
-                Segment( const Representation *parent );
+	  Segment( Node * root, const Representation *parent );
                 virtual ~Segment(){}
-                virtual std::string getSourceUrl() const;
-                virtual void        setSourceUrl( const std::string &url );
+                std::string getSourceUrl() const;
+                void        setSourceUrl( const std::string &url );
                 /**
                  *  @return true if the segment should be dropped after being read.
                  *          That is basically true when using an Url, and false
                  *          when using an UrlTemplate
                  */
-                virtual bool                            isSingleShot    () const;
-                virtual void                            done            ();
-                virtual void                            addBaseUrl      (BaseUrl *url);
-                virtual const std::vector<BaseUrl *>&   getBaseUrls     () const;
-                virtual void                            setByteRange    (int start, int end);
-                virtual int                             getStartByte    () const;
-                virtual int                             getEndByte      () const;
-                virtual dash::http::Chunk*              toChunk         ();
+                bool                            isSingleShot    () const;
+                void                            done            ();
+                void                            addBaseUrl      (std::string *url);
+                void setTime(std::string *time);
+	        std::string* getTime();
+                void setRepeat(std::string *repeat);
+	        std::string* getRepeat();
+		void setDuration(std::string *duration);
+	        std::string* getDuration();
+
+                void                            setByteRange    (int start, int end);
+                int                             getStartByte    () const;
+                int                             getEndByte      () const;
+                dash::http::Chunk*              toChunk         ();
                 const Representation*                   getParentRepresentation() const;
-                virtual int                             getSize() const;
+                int                             getSize() const;
 
             protected:
                 std::string             sourceUrl;
-                std::vector<BaseUrl *>  baseUrls;
+                std::vector<std::string *>  baseUrls;
                 int                     startByte;
                 int                     endByte;
                 const Representation*   parentRepresentation;

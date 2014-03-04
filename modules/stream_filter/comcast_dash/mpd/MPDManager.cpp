@@ -28,19 +28,22 @@
 
 #include "MPDManager.h"
 
-using namespace dash::mpd;
 
-MPDManager::MPDManager(MPD * mpd)
+using namespace dash;
+using namespace dash::mpd;
+using namespace dash::xml;
+MPDManager::MPDManager(Node * root, stream_t *stream) : p_stream(stream), count(0)
 {
-    this->mpd = mpd;
-    this->initSchedule();
+  MPDParser *parser = new MPDParser(root,stream->p_source);
+  this->mpd = parser->getMPD();
+  delete [] parser;
 }
 MPDManager::~MPDManager()
 {
     delete this->mpd;
 }
 
-std::vector<Segment*> MPDManager::getSegments(const Representation *rep)
+const std::vector<Segment*> MPDManager::getSegments(const Representation *rep)
 {
   return rep->getParentGroup()->getSegments();
 }
@@ -181,9 +184,10 @@ void MPDManager::initSchedule()
     
     if(best != NULL)
     {
-      std::vector<Segment *> segments = best->getParent()->getSegments();
+      const std::vector<Segment *> segments = best->getParentGroup()->getSegments();
       for(size_t j = 0; j < segments.size(); j++)
       {
+	for (int k = 0; k < std::atoi(segments.at(i)->getRepeat()->c_str()); k++)
 	this->schedule.push_back(segments.at(j));
       }
     }

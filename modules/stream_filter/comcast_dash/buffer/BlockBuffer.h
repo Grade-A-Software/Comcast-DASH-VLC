@@ -25,7 +25,6 @@
 #ifndef BLOCKBUFFER_H_
 #define BLOCKBUFFER_H_
 
-#include "buffer/IBufferObserver.h"
 
 #include <vlc_stream.h>
 #include <vlc_block_helper.h>
@@ -53,8 +52,7 @@ namespace dash
                 void    setEOF        (bool value);
                 bool    getEOF        ();
                 mtime_t size          ();
-                void    attach        (IBufferObserver *observer);
-                void    notify        ();
+
 
             private:
                 mtime_t             capacityMicroSec;
@@ -67,8 +65,6 @@ namespace dash
                 bool                isEOF;
                 block_bytestream_t  buffer;
                 block_t             *peekBlock;
-
-                std::vector<IBufferObserver *> bufferObservers;
 
                 void updateBufferSize(size_t bytes);
         };

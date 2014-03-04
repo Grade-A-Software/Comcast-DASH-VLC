@@ -29,7 +29,7 @@
 #include <string>
 #include <map>
 
-#include "mpd/Representation.h"
+#include "Representation.h"
 
 namespace dash
 {
@@ -45,20 +45,21 @@ namespace dash
 
                 bool                            getSubsegmentAlignmentFlag() const;
                 void                            setSubsegmentAlignmentFlag( bool alignment );
-                std::vector<Representation *>   getRepresentations      ();
-		std::vector<Segment *>   getSegments      ();
+                const std::vector<Representation *>   getRepresentations      () const;
+		const std::vector<Segment *>   getSegments      () const;
                 const Representation*           getRepresentationById   ( const std::string &id ) const;
-
-
+		void                            setBaseURL(const std::string url);
+		const std::string               getBaseURL() const;
                 void                            setBitstreamSwitching(bool value);
                 bool                            getBitstreamSwitching() const;
                 void                            addRepresentation( Representation *rep );
 		void                            addSegment( Segment *seg );
             private:
+		
                 bool                            subsegmentAlignmentFlag;
                 std::vector<Representation *>   representations;
 		std::vector<Segment *>          segments;
-                const SegmentInfoDefault*       segmentInfoDefault;
+		const std::string                     baseURL;
                 bool                            isBitstreamSwitching;
         };
     }

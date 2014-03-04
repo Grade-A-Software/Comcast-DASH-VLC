@@ -166,15 +166,7 @@ bool    BlockBuffer::getEOF               ()
 
     return this->isEOF;
 }
-void    BlockBuffer::attach               (IBufferObserver *observer)
-{
-    this->bufferObservers.push_back(observer);
-}
-void    BlockBuffer::notify               ()
-{
-    for(size_t i = 0; i < this->bufferObservers.size(); i++)
-        this->bufferObservers.at(i)->bufferLevelChanged(this->sizeMicroSec, ((float)this->sizeMicroSec / this->capacityMicroSec) * 100);
-}
+
 void    BlockBuffer::updateBufferSize     (size_t bytes)
 {
     block_t *block = this->buffer.p_block;

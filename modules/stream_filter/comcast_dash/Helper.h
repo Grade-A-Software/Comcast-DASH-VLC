@@ -1,9 +1,9 @@
 /*
- * DOMHelper.h
+ * Helper.h
  *****************************************************************************
- * Copyright (C) 2010 - 2011 Klagenfurt University
+ * Copyright (C) 2010 - 2012 Klagenfurt University
  *
- * Created on: Aug 10, 2010
+ * Created on: Feb 20, 2012
  * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
  *
@@ -22,29 +22,19 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef DOMHELPER_H_
-#define DOMHELPER_H_
+#ifndef HELPER_H_
+#define HELPER_H_
 
-#include <vector>
 #include <string>
-
-#include "Node.h"
 
 namespace dash
 {
-    namespace xml
+    class Helper
     {
-        class DOMHelper
-        {
-            public:
-                static std::vector<Node *> getElementByTagName      (Node *root, const std::string& name, bool selfContain);
-                static std::vector<Node *> getChildElementByTagName (Node *root, const std::string& name);
-                static Node*               getFirstChildElementByName( Node *root, const std::string& name );
-
-            private:
-                static void getElementsByTagName(Node *root, const std::string& name, std::vector<Node *> *elements, bool selfContain);
-        };
-    }
+        public:
+            static std::string combinePaths     (const std::string &path1, const std::string &path2);
+            static std::string getDirectoryPath (const std::string &path);
+    };
 }
 
-#endif /* DOMHELPER_H_ */
+#endif /* HELPER_H_ */

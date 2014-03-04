@@ -1,9 +1,9 @@
 /*
- * DOMHelper.h
+ * Helper.cpp
  *****************************************************************************
- * Copyright (C) 2010 - 2011 Klagenfurt University
+ * Copyright (C) 2010 - 2012 Klagenfurt University
  *
- * Created on: Aug 10, 2010
+ * Created on: Feb 20, 2012
  * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
  *
@@ -21,30 +21,30 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
+#ifdef HAVE_CONFIG_H
+# include "config.h"
+#endif
 
-#ifndef DOMHELPER_H_
-#define DOMHELPER_H_
+#include "Helper.h"
 
-#include <vector>
-#include <string>
+using namespace dash;
 
-#include "Node.h"
-
-namespace dash
+std::string Helper::combinePaths        (const std::string &path1, const std::string &path2)
 {
-    namespace xml
-    {
-        class DOMHelper
-        {
-            public:
-                static std::vector<Node *> getElementByTagName      (Node *root, const std::string& name, bool selfContain);
-                static std::vector<Node *> getChildElementByTagName (Node *root, const std::string& name);
-                static Node*               getFirstChildElementByName( Node *root, const std::string& name );
+    char path1Last  = path1.at(path1.size() - 1);
+    char path2First = path2.at(0);
 
-            private:
-                static void getElementsByTagName(Node *root, const std::string& name, std::vector<Node *> *elements, bool selfContain);
-        };
-    }
+    if(path1Last == '/' && path2First == '/')
+        return path1 + path2.substr(1, path2.size());
+
+    if(path1Last != '/' && path2First != '/')
+        return path1 + "/" + path2;
+
+    return path1 + path2;
 }
+std::string Helper::getDirectoryPath    (const std::string &path)
+{
+    int pos = path.find_last_of('/');
 
-#endif /* DOMHELPER_H_ */
+    return path.substr(0, pos);
+}

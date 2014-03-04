@@ -27,7 +27,7 @@
 
 #include <string>
 
-#include "mpd/Segment.h"
+#include "Segment.h"
 
 namespace dash
 {
@@ -35,30 +35,30 @@ namespace dash
     {
         class AdaptationSet;
 
-        class Representation : public CommonAttributesElements
+        class Representation
         {
             public:
                 Representation();
                 virtual ~Representation ();
 
-                const std::string&  getId                   () const;
-                void                setId                   ( const std::string &id );
+                virtual const std::string&  getId                   () const;
+                virtual void                setId                   ( const std::string &id );
                 /*
                  *  @return The bitrate required for this representation
                  *          in bits per seconds.
                  *          Will be a valid value, as the parser refuses Representation
                  *          without bandwidth.
                  */
-                uint64_t            getBandwidth            () const;
-                void                setBandwidth            ( uint64_t bandwidth );
-		const AdaptationSet*        getParentGroup() const;
-                void                setParentGroup( const AdaptationSet *group );
+                virtual uint64_t            getBandwidth            () const;
+                virtual void                setBandwidth            ( uint64_t bandwidth );
+		virtual const AdaptationSet*        getParentGroup() const;
+                virtual void                setParentGroup( const AdaptationSet *group );
 
                 
-                void                setWidth                (int width);
-                int                 getWidth                () const;
-                void                setHeight               (int height);
-                int                 getHeight               () const;
+                virtual void                setWidth                (int width);
+                virtual int                 getWidth                () const;
+                virtual void                setHeight               (int height);
+                virtual int                 getHeight               () const;
 
             private:
                 uint64_t                            bandwidth;

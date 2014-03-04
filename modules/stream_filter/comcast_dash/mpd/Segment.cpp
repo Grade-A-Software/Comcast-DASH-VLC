@@ -44,6 +44,30 @@ Segment::Segment(Node * segmentNode, Representation * rep) :
   this->setSourceUrl();
 }
 
+void Segment::setTime(std::string * time) {
+  this->time = time;
+}
+
+std::string * Segment::getTime() {
+  return this->time;
+}
+
+void Segment::setRepeat(std::string * repeat) {
+  this->repeat = repeat;
+}
+
+std::string * Segment::getRepeat() {
+  return this->repeat;
+}
+void Segment::setDuration(std::string * duration) {
+  this->duration = duration;
+}
+
+std::string * Segment::getDuration() {
+  return this->duration;
+}
+
+
 bool                    Segment::isSingleShot   () const
 {
     return true;

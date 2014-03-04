@@ -45,14 +45,27 @@ AdaptationSet::~AdaptationSet   ()
     vlc_delete_all( this->representations );
 }
 
+const std::string AdaptationSet::getBaseURL() const {
+  reutrn this->baseURL;
+}
+
+void AdaptationSet::setBaseURL(const std::string url) {
+  this->baseURL = url;
+}
+
 std::vector<Representation*>    AdaptationSet::getRepresentations       ()
 {
     return this->representations;
 }
 
-std::vector<Segment*> AdaptationSet::getSegments ()
+const std::vector<Segment*> AdaptationSet::getSegments (Representation * rep)
 {
-  return this->segments;
+  std::vector<Segment*> retVal;
+  for (size_t i = 0; i < this->segments.size(); i++) {
+    if (this->segments.at(i)->getRepresentation()->getID() == rep->getID()) 
+      retVal.push_back(this->segments.at(i));
+  }
+  return retVal;
 }
 
 const Representation *AdaptationSet::getRepresentationById(const std::string &id) const

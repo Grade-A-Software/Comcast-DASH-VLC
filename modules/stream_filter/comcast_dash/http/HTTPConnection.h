@@ -35,9 +35,9 @@
 #include <iostream>
 #include <sstream>
 
-#include "http/IHTTPConnection.h"
-#include "http/Chunk.h"
-#include "Helper.h"
+#include "IHTTPConnection.h"
+#include "Chunk.h"
+#include "../Helper.h"
 
 #define PEEKBUFFER 4096
 
@@ -45,13 +45,13 @@ namespace dash
 {
     namespace http
     {
-        class HTTPConnection : public IHTTPConnection
+      class HTTPConnection //: public IHTTPConnection
         {
             public:
                 HTTPConnection          (stream_t *stream);
                 virtual ~HTTPConnection ();
 
-                virtual bool    init        (Chunk *chunk);
+                bool    init        (Chunk *chunk);
                 void            closeSocket ();
                 virtual int     read        (void *p_buffer, size_t len);
                 virtual int     peek        (const uint8_t **pp_peek, size_t i_peek);
@@ -66,7 +66,7 @@ namespace dash
                 bool                sendData        (const std::string& data);
                 bool                parseHeader     ();
                 std::string         readLine        ();
-                virtual std::string prepareRequest  (Chunk *chunk);
+                std::string prepareRequest  (Chunk *chunk);
                 bool                setUrlRelative  (Chunk *chunk);
         };
     }

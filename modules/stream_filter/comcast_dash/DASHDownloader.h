@@ -26,7 +26,6 @@
 #define DASHDOWNLOADER_H_
 
 #include "http/HTTPConnectionManager.h"
-#include "adaptationlogic/IAdaptationLogic.h"
 #include "buffer/BlockBuffer.h"
 
 #define BLOCKSIZE           32768

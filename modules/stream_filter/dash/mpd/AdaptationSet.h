@@ -29,8 +29,8 @@
 #include <string>
 #include <map>
 
-#include "mpd/Representation.h"
-#include "mpd/CommonAttributesElements.h"
+#include "Representation.h"
+
 
 namespace dash
 {
@@ -38,7 +38,7 @@ namespace dash
     {
         class SegmentInfoDefault;
 
-        class AdaptationSet : public CommonAttributesElements
+        class AdaptationSet 
         {
             public:
                 AdaptationSet();

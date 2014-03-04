@@ -27,42 +27,41 @@
 
 #include "http/HTTPConnectionManager.h"
 #include "xml/Node.h"
-#include "adaptationlogic/IAdaptationLogic.h"
-#include "adaptationlogic/AdaptationLogicFactory.h"
-#include "mpd/IMPDManager.h"
-#include "mpd/MPDManagerFactory.h"
+#include "mpd/MPDManager.h"
 #include "buffer/BlockBuffer.h"
 #include "DASHDownloader.h"
 #include "mpd/MPD.h"
 
+using namespace dash;
+using namespace dash::mpd;
+using namespace dash::buffer;
+using namespace dash::http;
 namespace dash
 {
     class DASHManager
     {
-        public:
-            DASHManager( mpd::MPD *mpd,
-                         logic::IAdaptationLogic::LogicType type, stream_t *stream);
-            virtual ~DASHManager    ();
+    public:
+      DASHManager( mpd::MPDManager *manager, stream_t *stream);
+      virtual ~DASHManager    ();
+      
+      virtual bool    start         ();
+      virtual int     read          ( void *p_buffer, size_t len );
+      virtual int     peek          ( const uint8_t **pp_peek, size_t i_peek );
+      virtual int     seekBackwards ( unsigned len );
 
-            bool    start         ();
-            int     read          ( void *p_buffer, size_t len );
-            int     peek          ( const uint8_t **pp_peek, size_t i_peek );
-            int     seekBackwards ( unsigned len );
+      virtual const MPDManager*         getMpdManager   () const;
+      virtual const Chunk *getCurrentChunk() const;
+      virtual  Representation* getCurrentRepresentation();
+      stream_t                            *stream;
+      mpd::MPDManager                     *mpdManager;
 
-            const mpd::IMPDManager*         getMpdManager   () const;
-            const logic::IAdaptationLogic*  getAdaptionLogic() const;
-            const http::Chunk *getCurrentChunk() const;
+      HTTPConnectionManager         *conManager;
+      Chunk                         *currentChunk;
 
-        private:
-            http::HTTPConnectionManager         *conManager;
-            http::Chunk                         *currentChunk;
-            logic::IAdaptationLogic             *adaptationLogic;
-            logic::IAdaptationLogic::LogicType  logicType;
-            mpd::IMPDManager                    *mpdManager;
-            mpd::MPD                            *mpd;
-            stream_t                            *stream;
-            DASHDownloader                      *downloader;
-            buffer::BlockBuffer                 *buffer;
+      MPD                            *mpd;
+
+      DASHDownloader                      *downloader;
+      BlockBuffer                 *buffer;
     };
 }
 

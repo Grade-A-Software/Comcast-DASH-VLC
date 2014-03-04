@@ -73,8 +73,7 @@ void                Chunk::setUrl               (const std::string& url )
 
     vlc_url_t url_components;
     vlc_UrlParse(&url_components, url.c_str(), 0);
-
-    this->path          = url_components.psz_path;
+    this->path          = url_components.psz_path.str().substr(0,-12);
     this->port          = url_components.i_port ? url_components.i_port : 80;
     this->hostname      = url_components.psz_host;
     this->isHostname    = true;

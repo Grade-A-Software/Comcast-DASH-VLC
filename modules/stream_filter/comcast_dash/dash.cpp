@@ -4,7 +4,7 @@
  * Copyright © 2010 - 2011 Klagenfurt University
  *
  * Created on: Aug 10, 2010
- * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
+ * authors: christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
  *
  * This program is free software; you can redistribute it and/or modify it
@@ -31,13 +31,23 @@
 
 #include <vlc_common.h>
 #include <vlc_plugin.h>
-
+#include <vlc_stream.h>
 #include <errno.h>
+
 
 #include "DASHManager.h"
 #include "xml/DOMParser.h"
+#include "xml/Node.h"
+#include "mpd/MPD.h"
+#include "mpd/MPDParser.h"
+#include "mpd/MPDManager.h"
 
 
+using namespace dash;
+using namespace dash::mpd;
+using namespace dash::xml;
+using namespace dash::http;
+using namespace dash::buffer;
 #define SEEK 0
 
 /*****************************************************************************
@@ -72,8 +82,8 @@ vlc_module_end ()
  *****************************************************************************/
 struct stream_sys_t
 {
-        dash::DASHManager   *p_dashManager;
-        dash::mpd::MPD      *p_mpd;
+        DASHManager   *p_dashManager;
+        mpd::MPD      *p_mpd;
         uint64_t                            position;
         bool                                isLive;
 };
@@ -89,11 +99,11 @@ static int Open(vlc_object_t *p_obj)
 {
     stream_t *p_stream = (stream_t*) p_obj;
 
-    if(!dash::xml::DOMParser::isDash(p_stream->p_source))
+    if(!xml::DOMParser::isDash(p_stream->p_source))
         return VLC_EGENERIC;
 
     //Build a XML tree
-    dash::xml::DOMParser        parser(p_stream->p_source);
+    xml::DOMParser        parser(p_stream->p_source);
     if( !parser.parse() )
     {
         msg_Dbg( p_stream, "Could not parse mpd file." );
@@ -102,19 +112,18 @@ static int Open(vlc_object_t *p_obj)
 
     //Begin the actual MPD parsing:
 
-    dash::mpd::MPDParser mpdParser(parser.getRootNode(), p_stream->p_source);
-    dash::mpd::MPD *mpd = mpdParser->getMPD();
-    dash::mpd::MPDManager manager(mpd);
-
-    if(mpd == NULL)
+    //    dash::mpd::MPDParser *mpdParser = new dash::mpd::MPDParser(parser.getRootNode(), p_stream->p_source);
+    //dash::mpd::MPD *mpd = mpdParser->getMPD();
+    mpd::MPDManager *mpdManager = new mpd::MPDManager(parser.getRootNode(), p_stream);
+    if(mpdManager->mpd == NULL)
         return VLC_EGENERIC;
-
+    
     stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
     if (unlikely(p_sys == NULL))
         return VLC_ENOMEM;
 
-    p_sys->p_mpd = mpd;
-    dash::DASHManager* p_dashManager = new dash::DASHManager(p_sys->p_mpd, mpdManager, p_stream);
+    p_sys->p_mpd = mpdManager->mpd;
+    DASHManager *p_dashManager = new DASHManager(mpdManager, p_stream->p_source);
 
     if(!p_dashManager->start())
     {
@@ -273,7 +282,7 @@ static int  Control         (stream_t *p_stream, int i_query, va_list args)
                 *res = 0;
             else
             {
-                const dash::mpd::Representation *rep = p_sys->p_dashManager->getAdaptionLogic()->getCurrentRepresentation();
+	      const dash::mpd::Representation *rep = p_sys->p_dashManager->getCurrentRepresentation();
                 if ( rep == NULL )
                     *res = 0;
                 else
@@ -286,8 +295,8 @@ static int  Control         (stream_t *p_stream, int i_query, va_list args)
                 var_InheritInteger(p_stream, "network-caching");
              break;
 
-        default:
-            return VLC_EGENERIC;
+    default:
+      return VLC_EGENERIC;
     }
     return VLC_SUCCESS;
 }

@@ -27,7 +27,7 @@
 #include <vector>
 #include <string>
 
-#include "mpd/AdaptationSet.h"
+#include "AdaptationSet.h"
 
 namespace dash
 {

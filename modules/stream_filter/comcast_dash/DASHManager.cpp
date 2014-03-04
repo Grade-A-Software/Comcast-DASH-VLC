@@ -28,20 +28,18 @@
 #include "DASHManager.h"
 
 using namespace dash;
-using namespace dash::http;
-using namespace dash::xml;
-using namespace dash::mpd;
-using namespace dash::buffer;
 
-DASHManager::DASHManager    ( MPD *mpd, MPDManager* manager, stream_t *stream) :
+
+DASHManager::DASHManager    ( mpd::MPDManager *manager, stream_t *stream) :
              conManager     ( NULL ),
              currentChunk   ( NULL ),
              mpdManager     ( manager ),
-             mpd            ( mpd ),
+             mpd            ( NULL ),
              stream         ( stream ),
              downloader     ( NULL ),
              buffer         ( NULL )
 {
+  this->mpd = null; //manager->mpd;
 }
 DASHManager::~DASHManager   ()
 {
@@ -58,8 +56,8 @@ bool    DASHManager::start()
     return false;
   
   
-  this->conManager = new dash::http::HTTPConnectionManager(this->mpdManager, this->stream);
-  this->buffer     = new BlockBuffer(this->stream);
+  this->conManager = new http::HTTPConnectionManager(this->mpdManager, this->stream);
+  this->buffer     = new buffer::BlockBuffer(this->stream);
   this->downloader = new DASHDownloader(this->conManager, this->buffer);
   
   return this->downloader->start();
@@ -82,4 +80,8 @@ int     DASHManager::peek( const uint8_t **pp_peek, size_t i_peek )
 const Chunk *DASHManager::getCurrentChunk() const
 {
     return this->currentChunk;
+}
+
+dash::mpd::Representation DASHManager::getCurrentRepresentation() {
+  return this->mpdManager->getCurrentRepresentation();
 }

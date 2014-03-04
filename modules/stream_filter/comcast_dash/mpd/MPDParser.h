@@ -22,16 +22,16 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef ISOFFMAINPARSER_H_
-#define ISOFFMAINPARSER_H_
+#ifndef MPDPARSER_H_
+#define MPDPARSER_H_
 
-#include "xml/Node.h"
-#include "xml/DOMHelper.h"
-#include "mpd/MPD.h"
-#include "mpd/Period.h"
-#include "mpd/AdaptationSet.h"
-#include "mpd/Representation.h"
-#include "mpd/Segment.h"
+#include "../xml/Node.h"
+#include "../xml/DOMHelper.h"
+#include "MPD.h"
+#include "Period.h"
+#include "AdaptationSet.h"
+#include "Representation.h"
+#include "Segment.h"
 
 #include <cstdlib>
 #include <sstream>
@@ -39,7 +39,8 @@
 #include <vlc_common.h>
 #include <vlc_stream.h>
 #include <vlc_strings.h>
-
+using namespace dash;
+using namespace dash::xml;
 namespace dash
 {
     namespace mpd
@@ -47,26 +48,27 @@ namespace dash
         class MPDParser
         {
             public:
-                MPDParser             (dash::xml::Node *root, stream_t *p_stream);
+                MPDParser             (Node *root, stream_t *p_stream);
                 virtual ~MPDParser    ();
 
-                bool    parse  ();
-                MPD*    getMPD ();
+                virtual bool    parse  ();
+                virtual MPD*    getMPD ();
 
+
+                virtual void    setPeriods          ();
+                virtual void    setAdaptationSets   (Node *periodNode, Period *period);
+                virtual void    setRepresentations  (Node *adaptationSetNode, AdaptationSet *adaptationSet);
+
+                virtual void    setSegments         (Node *adaptationSetNode, AdaptationSet *adaptationSet);
+		virtual void    setBaseURL          (Node *adaptationSetNode, AdaptationSet *adaptationSet);
             private:
-                dash::xml::Node *root;
+                Node *root;
                 stream_t        *p_stream;
                 MPD             *mpd;
                 Representation  *currentRepresentation;
 
-                void    setPeriods          ();
-                void    setAdaptationSets   (dash::xml::Node *periodNode, Period *period);
-                void    setRepresentations  (dash::xml::Node *adaptationSetNode, AdaptationSet *adaptationSet);
-
-                void    setSegments         (dash::xml::Node *adaptatinoSetNode, AdaptationSet *adaptationSet);
-		void    setBaseURL          (dash::xml::Node *adaptationSetNode, AdaptationSet *adaptationSet)
         };
     }
 }
 
-#endif /* ISOFFMAINPARSER_H_ */
+#endif /* MPDPARSER_H_ */

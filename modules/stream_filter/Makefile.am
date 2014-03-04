@@ -10,19 +10,48 @@ endif
 
 libcomcast_dash_plugin_la_SOURCES = \
 	stream_filter/comcast_dash/dash.cpp \
-	stream_filter/comcast_dash/parser.h \
-	stream_filter/comcast_dash/parser.cpp \
+	stream_filter/comcast_dash/Helper.h \
+	stream_filter/comcast_dash/Helper.cpp \
 	stream_filter/comcast_dash/xml/Node.h \
 	stream_filter/comcast_dash/xml/Node.cpp \
 	stream_filter/comcast_dash/xml/DOMParser.h \
 	stream_filter/comcast_dash/xml/DOMParser.cpp \
 	stream_filter/comcast_dash/xml/DOMHelper.h \
 	stream_filter/comcast_dash/xml/DOMHelper.cpp
+	stream_filter/comcast_dash/buffer/BlockBuffer.cpp \
+	stream_filter/comcast_dash/buffer/BlockBuffer.h \
+	stream_filter/comcast_dash/http/Chunk.cpp \
+	stream_filter/comcast_dash/http/Chunk.h \
+	stream_filter/comcast_dash/http/HTTPConnection.cpp \
+	stream_filter/comcast_dash/http/HTTPConnection.h \
+	stream_filter/comcast_dash/http/HTTPConnectionManager.cpp \
+	stream_filter/comcast_dash/http/HTTPConnectionManager.h \
+	stream_filter/comcast_dash/http/IHTTPConnection.h \
+	stream_filter/comcast_dash/http/PersistentConnection.cpp \
+	stream_filter/comcast_dash/http/PersistentConnection.h \
+	stream_filter/comcast_dash/mpd/AdaptationSet.cpp \
+	stream_filter/comcast_dash/mpd/AdaptationSet.h \
+	stream_filter/comcast_dash/mpd/Representation.cpp \
+	stream_filter/comcast_dash/mpd/Representation.h \
+	stream_filter/comcast_dash/mpd/Period.cpp \
+	stream_filter/comcast_dash/mpd/Period.h \
+	stream_filter/comcast_dash/mpd/Segment.cpp \
+	stream_filter/comcast_dash/mpd/Segment.h \
+	stream_filter/comcast_dash/mpd/MPD.cpp \
+	stream_filter/comcast_dash/mpd/MPD.h \
+	stream_filter/comcast_dash/mpd/MPDManager.cpp \
+	stream_filter/comcast_dash/mpd/MPDManager.h \
+	stream_filter/comcast_dash/mpd/MPDParser.cpp \
+	stream_filter/comcast_dash/mpd/MPDParser.h \
+	stream_filter/comcast_dash/DASHManager.cpp \
+	stream_filter/comcast_dash/DASHManager.h \
+	stream_filter/comcast_dash/DASHDownloader.cpp \
+	stream_filter/comcast_dash/DASHDownloader.h \
 libcomcast_dash_plugin_la_CXXFLAGS = $(AM_CFLAGS) -I$(srcdir)/stream_filter/comcast_dash
 libcomcast_dash_plugin_la_LIBADD = $(SOCKET_LIBS)
 stream_filter_LTLIBRARIES += libcomcast_dash_plugin.la
 
-libdash_plugin_la_SOURCES = \
+#libdash_plugin_la_SOURCES = \
     stream_filter/dash/adaptationlogic/AbstractAdaptationLogic.cpp \
     stream_filter/dash/adaptationlogic/AbstractAdaptationLogic.h \
     stream_filter/dash/adaptationlogic/AdaptationLogicFactory.cpp \
@@ -105,9 +134,9 @@ libdash_plugin_la_SOURCES = \
     stream_filter/dash/DASHManager.h \
     stream_filter/dash/Helper.cpp \
     stream_filter/dash/Helper.h
-libdash_plugin_la_CXXFLAGS = $(AM_CFLAGS) -I$(srcdir)/stream_filter/dash
-libdash_plugin_la_LIBADD = $(SOCKET_LIBS)
-stream_filter_LTLIBRARIES += libdash_plugin.la
+#libdash_plugin_la_CXXFLAGS = $(AM_CFLAGS) -I$(srcdir)/stream_filter/dash
+#libdash_plugin_la_LIBADD = $(SOCKET_LIBS)
+#stream_filter_LTLIBRARIES += libdash_plugin.la
 
 libsmooth_plugin_la_SOURCES = \
     stream_filter/smooth/smooth.c \

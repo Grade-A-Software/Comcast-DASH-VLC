@@ -34,8 +34,8 @@
 #include <ctime>
 #include <limits.h>
 
-#include "http/PersistentConnection.h"
-#include "adaptationlogic/IAdaptationLogic.h"
+#include "PersistentConnection.h"
+#include "../mpd/MPDManager.h"
 
 namespace dash
 {
@@ -44,17 +44,14 @@ namespace dash
         class HTTPConnectionManager
         {
             public:
-	  HTTPConnectionManager          (MPDManager *manager,, stream_t *stream);
+	  HTTPConnectionManager          (dash::mpd::MPDManager *manager, stream_t *stream);
                 virtual ~HTTPConnectionManager  ();
 
                 void    closeAllConnections ();
                 bool    addChunk            (Chunk *chunk);
                 int     read                (block_t *block);
-                void    attach              (dash::logic::IDownloadRateObserver *observer);
-                void    notify              ();
 
             private:
-                std::vector<dash::logic::IDownloadRateObserver *>   rateObservers;
                 std::deque<Chunk *>                                 downloadQueue;
                 std::vector<PersistentConnection *>                 connectionPool;
 		mpd::MPDManager                                     *manager;

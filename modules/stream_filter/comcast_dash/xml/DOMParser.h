@@ -30,7 +30,7 @@
 #include <vlc_xml.h>
 
 //#include "mpd/IMPDManager.h"
-#include "xml/Node.h"
+#include "Node.h"
 
 namespace dash
 {

@@ -29,12 +29,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "mpd/MPD.h"
-#include "mpd/Period.h"
-#include "mpd/AdaptationSet.h"
-#include "mpd/Representation.h"
-
-#include "mpd/Segment.h"
+#include "MPD.h"
+#include "Period.h"
+#include "AdaptationSet.h"
+#include "Representation.h"
+#include "MPDParser.h"
+#include "Segment.h"
 
 
 namespace dash
@@ -44,25 +44,29 @@ namespace dash
         class MPDManager
         {
             public:
-                MPDManager            (MPD *mpd);
+	        MPDManager            (Node * root,stream_t * p_stream);
                 virtual ~MPDManager   ();
 		
 
-                const std::vector<Period *>&    getPeriods              () const;
-                Period*                         getFirstPeriod          ();
-                Period*                         getNextPeriod           (Period *period);
-                Representation*                 getBestRepresentation   (Period *period);
-                std::vector<Segment *>          getSegments             (const Representation *rep);
-                Representation*                 getRepresentation       (Period *period, uint64_t bitrate) const;
-                const MPD*                      getMPD                  () const;
-                Representation*                 getRepresentation       (Period *period, uint64_t bitrate,
+                virtual const std::vector<Period *>&    getPeriods              () const;
+                virtual Period*                         getFirstPeriod          ();
+                virtual Period*                         getNextPeriod           (Period *period);
+                virtual Representation*                 getBestRepresentation   (Period *period);
+                virtual const std::vector<Segment *>          getSegments             (const Representation *rep);
+		virtual  Representation*                 getRepresentation       (Period *period, uint64_t bitrate) const;
+                virtual const MPD*                      getMPD                  () const;
+                virtual Representation*                 getRepresentation       (Period *period, uint64_t bitrate,
                                                                          int width, int height) const;
-		dash::http::Chunk* getNextChunk();
-                const mpd::Representation *getCurrentRepresentation() const;
-            private:
+		virtual dash::http::Chunk* getNextChunk();
+                virtual const mpd::Representation *getCurrentRepresentation() const;
                 MPD *mpd;
-		const std::vector<Segment *> schedule;
-		void initSchedule();
+		
+		size_t count;
+		std::vector<Segment *> schedule;
+            private:
+
+		stream_t * p_stream;
+		virtual void initSchedule();
         };
     }
 }

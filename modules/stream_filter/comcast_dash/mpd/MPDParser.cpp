@@ -28,10 +28,7 @@
 
 #include "MPDParser.h"
 
-using namespace dash::mpd;
-using namespace dash::xml;
-
-MPDParser::MPDParser    (Node *root, stream_t *p_stream) :
+dash::mpd::MPDParser::MPDParser    (Node *root, stream_t *p_stream) :
                  root               (root),
                  p_stream           (p_stream),
                  mpd                (NULL),
@@ -42,6 +39,7 @@ MPDParser::MPDParser    (Node *root, stream_t *p_stream) :
 }
 MPDParser::~MPDParser   ()
 {
+  delete this->mpd;
 }
 
 MPD* MPDParser::getMPD             ()
@@ -68,6 +66,7 @@ void MPDParser::setAdaptationSets(Node *periodNode, Period *period)
     {
         AdaptationSet *adaptationSet = new AdaptationSet();
         this->setRepresentations(adaptationSets.at(i), adaptationSet);
+	
 	this->setSegments(adaptationSets.at(i), adaptationSet);
 	this->setBaseURL(adaptationSets.at(i), adaptationSet);
         period->addAdaptationSet(adaptationSet);
@@ -86,7 +85,7 @@ void MPDParser::setRepresentations(Node *adaptationSetNode, AdaptationSet *adapt
 
     for(size_t i = 0; i < representations.size(); i++)
     {
-        this->currentRepresentation = new Representation;
+      this->currentRepresentation = new Representation;
         Node *repNode = representations.at(i);
 
         if(repNode->hasAttribute("width"))
@@ -103,13 +102,13 @@ void MPDParser::setRepresentations(Node *adaptationSetNode, AdaptationSet *adapt
     }
 }
 
-void MPDParser::setSegments(Node * adaptationSetNode, AdaptationSet *adaptationSet, Representation *rep)
+void MPDParser::setSegments(Node * adaptationSetNode, AdaptationSet *adaptationSet)
 {
     std::vector<Node *> segments = DOMHelper::getElementByTagName(adaptationSetNode, "S", false);
-
+    std::vector<Representation *> representations = adaptationSet->getRepresentations();
     for(size_t i = 0; i < segments.size(); i++)
     {
-      Segment * seg = new Segment(segments.at(i),rep);
+      Segment * seg = new Segment(segments.at(i),representations.at(i));
       adaptationSet->addSegment(seg);
     }
 }
