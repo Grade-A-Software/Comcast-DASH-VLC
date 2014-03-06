@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: VLC - Trans\n"
 "Report-Msgid-Bugs-To: vlc-devel@videolan.org\n"
-"POT-Creation-Date: 2013-05-28 11:42+0200\n"
+"POT-Creation-Date: 2013-06-06 17:40+0200\n"
 "PO-Revision-Date: 2013-05-04 08:00+0000\n"
 "Last-Translator: Christoph Miebach <christoph.miebach@web.de>\n"
 "Language-Team: Khmer (http://www.transifex.com/projects/p/vlc-trans/language/"
@@ -1156,8 +1156,8 @@ msgstr "ឌិកូឌ័រ"
 
 #: src/input/decoder.c:276 src/input/decoder.c:467
 #: modules/codec/avcodec/encoder.c:248 modules/codec/avcodec/encoder.c:256
-#: modules/codec/avcodec/encoder.c:290 modules/codec/avcodec/encoder.c:750
-#: modules/codec/avcodec/encoder.c:803 modules/stream_out/es.c:362
+#: modules/codec/avcodec/encoder.c:290 modules/codec/avcodec/encoder.c:763
+#: modules/codec/avcodec/encoder.c:816 modules/stream_out/es.c:362
 #: modules/stream_out/es.c:377
 msgid "Streaming / Transcoding failed"
 msgstr "បរាជ័យ​ក្នុង​ការ​ស្ទ្រីម / ការ​បម្លែង​ត្រឡប់"
@@ -10109,24 +10109,24 @@ msgstr "ឌិកូឌ័រ​វីដេអូ​/​អូឌីយ៉ូ F
 msgid "Decoding"
 msgstr "ការ​ឌិកូដ"
 
-#: modules/codec/avcodec/avcodec.c:153 modules/codec/omxil/omxil.c:87
+#: modules/codec/avcodec/avcodec.c:154 modules/codec/omxil/omxil.c:87
 #: modules/codec/schroedinger.c:370
 msgid "Encoding"
 msgstr "ការ​អ៊ិនកូដ"
 
-#: modules/codec/avcodec/avcodec.c:154
+#: modules/codec/avcodec/avcodec.c:155
 msgid "FFmpeg audio/video encoder"
 msgstr "អ៊ិនកូឌ័រ​វីដេអូ​/​អូឌីយ៉ូ FFmpeg"
 
-#: modules/codec/avcodec/avcodec.h:70
+#: modules/codec/avcodec/avcodec.h:69
 msgid "Direct rendering"
 msgstr "ការ​បង្ហាញ​ផ្ទាល់​"
 
-#: modules/codec/avcodec/avcodec.h:73
+#: modules/codec/avcodec/avcodec.h:72
 msgid "Error resilience"
 msgstr "កំហុស​ការ​បត់បែន"
 
-#: modules/codec/avcodec/avcodec.h:75
+#: modules/codec/avcodec/avcodec.h:74
 msgid ""
 "libavcodec can do error resilience.\n"
 "However, with a buggy encoder (such as the ISO MPEG-4 encoder from M$) this "
@@ -10134,11 +10134,11 @@ msgid ""
 "Valid values range from 0 to 4 (0 disables all errors resilience)."
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:80
+#: modules/codec/avcodec/avcodec.h:79
 msgid "Workaround bugs"
 msgstr "កំហុស​នៅ​ជុំវិញ​ការងារ"
 
-#: modules/codec/avcodec/avcodec.h:82
+#: modules/codec/avcodec/avcodec.h:81
 msgid ""
 "Try to fix some bugs:\n"
 "1  autodetect\n"
@@ -10162,12 +10162,12 @@ msgstr ""
 "វា​ត្រូវ​តែ​ជា​ផល​បូក​នៃ​តម្លៃ ។ ឧទាហរណ៍ ដើម្បី​ជួសជុល \"ac vlc\" និង \"ump4\" គឺ​យើង​ត្រូវ​បញ្ចូល​លេខ "
 "40 ។"
 
-#: modules/codec/avcodec/avcodec.h:93 modules/codec/avcodec/avcodec.h:204
+#: modules/codec/avcodec/avcodec.h:92 modules/codec/avcodec/avcodec.h:203
 #: modules/demux/rawdv.c:42 modules/stream_out/transcode/transcode.c:139
 msgid "Hurry up"
 msgstr "លឿន​ឡើង"
 
-#: modules/codec/avcodec/avcodec.h:95
+#: modules/codec/avcodec/avcodec.h:94
 msgid ""
 "The decoder can partially decode or skip frame(s) when there is not enough "
 "time. It's useful with low CPU power but it can produce distorted pictures."
@@ -10175,20 +10175,20 @@ msgstr ""
 "អ៊ិនកូឌ័រ​អាច​ឌិកូដ​តាម​ផ្នែក ឬ​រំលង​ស៊ុម​បាន នៅ​ពេល​ដែល​វា​គ្មាន​ពេលវេលា​គ្រប់គ្រាន់ ។ វា​មាន​ប្រយោជន៍​ចំពោះ​"
 "ថាមពល​ស៊ីភីយូ​ទាប ប៉ុន្តែ​វា​អាច​ធ្វើ​ឲ្យ​រូបភាព​ខូច​ទ្រង់ទ្រាយ ។"
 
-#: modules/codec/avcodec/avcodec.h:99
+#: modules/codec/avcodec/avcodec.h:98
 msgid "Allow speed tricks"
 msgstr "អនុញ្ញាត​ដំណោះស្រាយ​ល្បឿន​"
 
-#: modules/codec/avcodec/avcodec.h:101
+#: modules/codec/avcodec/avcodec.h:100
 msgid ""
 "Allow non specification compliant speedup tricks. Faster but error-prone."
 msgstr "អនុញ្ញាត​ដំណោះស្រាយ​បង្កើន​ល្បឿន​សមស្រប​ដែល​មិន​ជាក់លាក់ ។ លឿន​ប៉ុន្តែ​មាន​កំហុស​ច្រើន ។"
 
-#: modules/codec/avcodec/avcodec.h:103
+#: modules/codec/avcodec/avcodec.h:102
 msgid "Skip frame (default=0)"
 msgstr "រំលង​ស៊ុម (លំនាំដើម=០)"
 
-#: modules/codec/avcodec/avcodec.h:105
+#: modules/codec/avcodec/avcodec.h:104
 msgid ""
 "Force skipping of frames to speed up decoding (-1=None, 0=Default, 1=B-"
 "frames, 2=P-frames, 3=B+P frames, 4=all frames)."
@@ -10196,45 +10196,45 @@ msgstr ""
 "តម្រូវ​ឲ្យ​រំលង​ស៊ុម​ដើម្បី​បង្កើន​ល្បឿន​ការ​ឌិកូដ (-១=គ្មាន ០=លំនាំដើម ១=B-frames ២=P-frames ៣=B+P "
 "frames ៤=ស៊ុម​ទាំងអស់) ។"
 
-#: modules/codec/avcodec/avcodec.h:108
+#: modules/codec/avcodec/avcodec.h:107
 msgid "Skip idct (default=0)"
 msgstr "រំលង idct (លំនាំដើម=០)"
 
-#: modules/codec/avcodec/avcodec.h:110
+#: modules/codec/avcodec/avcodec.h:109
 msgid ""
 "Force skipping of idct to speed up decoding for frame types (-1=None, "
 "0=Default, 1=B-frames, 2=P-frames, 3=B+P frames, 4=all frames)."
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:113
+#: modules/codec/avcodec/avcodec.h:112
 msgid "Discard cropping information"
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:114
+#: modules/codec/avcodec/avcodec.h:113
 msgid "Discard internal cropping parameters (e.g. from H.264 SPS)."
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:116
+#: modules/codec/avcodec/avcodec.h:115
 msgid "Debug mask"
 msgstr "របាំង​បំបាត់​កំហុស"
 
-#: modules/codec/avcodec/avcodec.h:117
+#: modules/codec/avcodec/avcodec.h:116
 msgid "Set FFmpeg debug mask"
 msgstr "កំណត់​របាំង​បំបាត់​កំហុស FFmpeg"
 
-#: modules/codec/avcodec/avcodec.h:119
+#: modules/codec/avcodec/avcodec.h:118
 msgid "Codec name"
 msgstr "កូឌិក​ឈ្មោះ"
 
-#: modules/codec/avcodec/avcodec.h:120
+#: modules/codec/avcodec/avcodec.h:119
 msgid "Internal libavcodec codec name"
 msgstr "​កូឌីក​ឈ្មោះ libavcodec ខាង​ក្នុង"
 
-#: modules/codec/avcodec/avcodec.h:123
+#: modules/codec/avcodec/avcodec.h:122
 msgid "Visualize motion vectors"
 msgstr "វ៉ិចទ័រ​ចលនា​ដែល​​មើល​ឃើញ"
 
-#: modules/codec/avcodec/avcodec.h:125
+#: modules/codec/avcodec/avcodec.h:124
 msgid ""
 "You can overlay the motion vectors (arrows showing how the images move) on "
 "the image. This value is a mask, based on these values:\n"
@@ -10250,11 +10250,11 @@ msgstr ""
 "៤ - ធ្វើឲ្យ​មើល​ឃើញ​ត្រឡប់​ទៅ MVs ដែល​បាន​ស្មាន​នៃ​ស៊ុម B\n"
 "ដើម្បី​ធ្វើឲ្យ​មើល​ឃើញ​វ៉ិចទ័រ​ទាំងអស់ លុះត្រាតែ​ដាក់​តម្លៃ ៧ ។"
 
-#: modules/codec/avcodec/avcodec.h:132 modules/gui/macosx/simple_prefs.m:215
+#: modules/codec/avcodec/avcodec.h:131 modules/gui/macosx/simple_prefs.m:215
 msgid "Skip the loop filter for H.264 decoding"
 msgstr "រំលង​​តម្រង​រង្វិល​ជុំ​សម្រាប់​ការ​អ៊ិនកូដ H.264"
 
-#: modules/codec/avcodec/avcodec.h:133
+#: modules/codec/avcodec/avcodec.h:132
 msgid ""
 "Skipping the loop filter (aka deblocking) usually has a detrimental effect "
 "on quality. However it provides a big speedup for high definition streams."
@@ -10262,83 +10262,83 @@ msgstr ""
 "រំលង​តម្រង​រង្វិល​ជុំ (aka deblocking) ជាទូទៅ​ធ្វើឲ្យ​មាន​ការ​ធ្វើ​ឲ្យ​ខូច​បែបផែន​គុណភាព ។ ទោះ​យ៉ាងណា "
 "វា​ផ្ដល់​ឲ្យ​នូវ​ការ​បង្កើន​ល្បឿន​ខ្លាំង​សម្រាប់​ស្ទ្រីម​​ការ​កំណត់​ខ្ពស់ ។"
 
-#: modules/codec/avcodec/avcodec.h:137
+#: modules/codec/avcodec/avcodec.h:136
 msgid "Hardware decoding"
 msgstr "ការ​ឌិកូដ​ផ្នែក​រឹង"
 
-#: modules/codec/avcodec/avcodec.h:138
+#: modules/codec/avcodec/avcodec.h:137
 msgid "This allows hardware decoding when available."
 msgstr "វា​នឹង​អនុញ្ញាត​ការ​ឌិកូដ​ផ្នែក​រឹង​នៅ​ពេល​ដែលមាន ។"
 
-#: modules/codec/avcodec/avcodec.h:140
+#: modules/codec/avcodec/avcodec.h:139
 msgid "VDA output pixel format"
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:141
+#: modules/codec/avcodec/avcodec.h:140
 msgid "The pixel format for output image buffers."
 msgstr ""
 
-#: modules/codec/avcodec/avcodec.h:143
+#: modules/codec/avcodec/avcodec.h:142
 msgid "Threads"
 msgstr "សែស្រឡាយ"
 
-#: modules/codec/avcodec/avcodec.h:144
+#: modules/codec/avcodec/avcodec.h:143
 msgid "Number of threads used for decoding, 0 meaning auto"
 msgstr "ចំនួន​សែស្រឡាយ​ដែល​បាន​ប្រើ​សម្រាប់​ការ​ឌិកូដ ០ មានន័យថា​ស្វ័យប្រវត្តិ"
 
-#: modules/codec/avcodec/avcodec.h:151
+#: modules/codec/avcodec/avcodec.h:150
 msgid "Ratio of key frames"
 msgstr "សមាមាត្រ​របស់​ស៊ុម​សោ"
 
-#: modules/codec/avcodec/avcodec.h:152
+#: modules/codec/avcodec/avcodec.h:151
 msgid "Number of frames that will be coded for one key frame."
 msgstr "ចំនួន​ស៊ុម​ដែល​នឹង​ត្រូវ​បាន​សរសេរ​កូដ​សម្រាប់​ស៊ុម​សោ​មួយ ។"
 
-#: modules/codec/avcodec/avcodec.h:155
+#: modules/codec/avcodec/avcodec.h:154
 msgid "Ratio of B frames"
 msgstr "សមាមាត្រ​របស់​ស៊ុម B"
 
-#: modules/codec/avcodec/avcodec.h:156
+#: modules/codec/avcodec/avcodec.h:155
 msgid "Number of B frames that will be coded between two reference frames."
 msgstr "ចំនួន​ស៊ុម B ដែល​នឹង​ត្រូវ​បាន​សរសេរ​កូដ​រវាង​ស៊ុម​សេចក្ដី​យោង​ពីរ ។"
 
-#: modules/codec/avcodec/avcodec.h:159
+#: modules/codec/avcodec/avcodec.h:158
 msgid "Video bitrate tolerance"
 msgstr "ភាព​ស្រដៀងគ្នា​នៃ​អត្រា​ប៊ីត​វីដេអូ"
 
-#: modules/codec/avcodec/avcodec.h:160
+#: modules/codec/avcodec/avcodec.h:159
 msgid "Video bitrate tolerance in kbit/s."
 msgstr "ភាព​ស្រដៀង​គ្នា​នៃ​អត្រាប៊ីត​វីដេអូ​គិត​ជា kbit/s ។"
 
-#: modules/codec/avcodec/avcodec.h:162
+#: modules/codec/avcodec/avcodec.h:161
 msgid "Interlaced encoding"
 msgstr "ការ​អ៊ិនកូដ​ត្របាញ់"
 
-#: modules/codec/avcodec/avcodec.h:163
+#: modules/codec/avcodec/avcodec.h:162
 msgid "Enable dedicated algorithms for interlaced frames."
 msgstr "បើក​ក្បួន​ដោះស្រាយ​ដែល​បាន​ផ្ដល់​សម្រាប់​ស៊ុម​ត្របាញ់ ។"
 
-#: modules/codec/avcodec/avcodec.h:166
+#: modules/codec/avcodec/avcodec.h:165
 msgid "Interlaced motion estimation"
 msgstr "ការ​វាយតម្លៃ​ចលនា​ត្របាញ់"
 
-#: modules/codec/avcodec/avcodec.h:167
+#: modules/codec/avcodec/avcodec.h:166
 msgid "Enable interlaced motion estimation algorithms. This requires more CPU."
 msgstr "បើក​ក្បួន​ដោះស្រាយ​ការ​វាយតម្លៃ​ចលនា​ត្របាញ់ ។ វា​ត្រូវការ​ស៊ីភីយូ​ខ្ពស់ ។"
 
-#: modules/codec/avcodec/avcodec.h:170
+#: modules/codec/avcodec/avcodec.h:169
 msgid "Pre-motion estimation"
 msgstr "ការ​វាយតម្លៃ​ចលនា​ជាមុន"
 
-#: modules/codec/avcodec/avcodec.h:171
+#: modules/codec/avcodec/avcodec.h:170
 msgid "Enable the pre-motion estimation algorithm."
 msgstr "បើក​ក្បួន​ដោះស្រាយ​ការ​វាយតម្លៃ​ចលនា​ជាមុន ។"
 
-#: modules/codec/avcodec/avcodec.h:174
+#: modules/codec/avcodec/avcodec.h:173
 msgid "Rate control buffer size"
 msgstr "អត្រា​វត្ថុ​បញ្ជា​ទំហំ​អង្គ​ចងចាំ​បណ្ដោះ​អាសន្ន"
 
-#: modules/codec/avcodec/avcodec.h:175
+#: modules/codec/avcodec/avcodec.h:174
 msgid ""
 "Rate control buffer size (in kbytes). A bigger buffer will allow for better "
 "rate control, but will cause a delay in the stream."
@@ -10346,19 +10346,19 @@ msgstr ""
 "អត្រា​វត្ថុ​បញ្ជា​ទំហំ​អង្គ​ចងចាំ​បណ្ដោះ​អាសន្ន (គិតជា គីឡូបៃ) ។ អង្គ​ចងចាំ​បណ្ដោះ​អាសន្ន​កាន់តែ​ធំ នឹង​អនុញ្ញាត​"
 "អត្រា​វត្ថុ​បញ្ជា​កាន់តែ​ប្រសើរ ប៉ុន្តែ​នឹង​ធ្វើ​ឲ្យ​មាន​ការ​ពន្យារពេល​នៅ​ក្នុង​ស្ទ្រីម ។"
 
-#: modules/codec/avcodec/avcodec.h:179
+#: modules/codec/avcodec/avcodec.h:178
 msgid "Rate control buffer aggressiveness"
 msgstr "អត្រា​វត្ថុ​បញ្ជា​ការ​បង្ខំ​អង្គ​ចងចាំ​បណ្ដោះ​អាសន្ន"
 
-#: modules/codec/avcodec/avcodec.h:180
+#: modules/codec/avcodec/avcodec.h:179
 msgid "Rate control buffer aggressiveness."
 msgstr "អត្រា​វត្ថុ​បញ្ជា​ការ​បង្ខំ​អង្គ​ចងចាំ​បណ្ដោះ​អាសន្ន ។"
 
-#: modules/codec/avcodec/avcodec.h:183
+#: modules/codec/avcodec/avcodec.h:182
 msgid "I quantization factor"
 msgstr "កត្តា​ការ​កំណត់​បរិមាណ I"
 
-#: modules/codec/avcodec/avcodec.h:185
+#: modules/codec/avcodec/avcodec.h:184
 msgid ""
 "Quantization factor of I frames, compared with P frames (for instance 1.0 => "
 "same qscale for I and P frames)."
@@ -10366,12 +10366,12 @@ msgstr ""
 "កត្តា​ការ​កំណត់​បរិមាណ​របស់​ស៊ុម I ដោយ​ប្រៀប​ធៀប​ទៅ​នឹង​ស៊ុម P (ឧទាហរណ៍ 1.0 => qscale ដូចគ្នា​សម្រាប់​ស៊ុម "
 "I និង P) ។"
 
-#: modules/codec/avcodec/avcodec.h:188 modules/codec/x264.c:360
+#: modules/codec/avcodec/avcodec.h:187 modules/codec/x264.c:360
 #: modules/demux/mod.c:78
 msgid "Noise reduction"
 msgstr "ការ​កាត់​បន្ថយ​ភាព​រំខាន"
 
-#: modules/codec/avcodec/avcodec.h:189
+#: modules/codec/avcodec/avcodec.h:188
 msgid ""
 "Enable a simple noise reduction algorithm to lower the encoding length and "
 "bitrate, at the expense of lower quality frames."
@@ -10379,11 +10379,11 @@ msgstr ""
 "បើក​ក្បួន​ដោះស្រាយ​ការ​កាត់បន្ថយ​ភាព​រំខាន ដើម្បី​បន្ទាប​ប្រវែង​អ៊ិនកូដ និង​អត្រា​ប៊ីត នៅ​លើ​ការ​ចំណាយ​ស៊ុម​គុណភាព​"
 "ទាប ។"
 
-#: modules/codec/avcodec/avcodec.h:193
+#: modules/codec/avcodec/avcodec.h:192
 msgid "MPEG4 quantization matrix"
 msgstr "ម៉ាទ្រីស​ការ​កំណត់​បរិមាណ MPEG4"
 
-#: modules/codec/avcodec/avcodec.h:194
+#: modules/codec/avcodec/avcodec.h:193
 msgid ""
 "Use the MPEG4 quantization matrix for MPEG2 encoding. This generally yields "
 "a better looking picture, while still retaining the compatibility with "
@@ -10392,17 +10392,17 @@ msgstr ""
 "ប្រើ​ម៉ាទ្រីស​ការ​កំណត់​បរិមាណ MPEG4 សម្រាប់​ការ​អ៊ិនកូដ MPEG2 ។ ជាទូទៅ​វា​ផ្ដល់​នូវ​រូបភាព​ដែល​មាន​រូបរាង​"
 "ស្អាត ប៉ុន្តែ​វា​នៅ​មាន​ភាព​ឆបគ្នា​ជាមួយ​នឹង​ឌិកូឌ័រ MPEG2 ស្តង់ដារ ។"
 
-#: modules/codec/avcodec/avcodec.h:199
+#: modules/codec/avcodec/avcodec.h:198
 msgid "Quality level"
 msgstr "កម្រិត​គុណភាព"
 
-#: modules/codec/avcodec/avcodec.h:200
+#: modules/codec/avcodec/avcodec.h:199
 msgid ""
 "Quality level for the encoding of motions vectors (this can slow down the "
 "encoding very much)."
 msgstr "កម្រិត​គុណភាព​សម្រាប់​ការ​អ៊ិនកូដ​របស់​វ៉ិចទ័រ​ចលនា (វា​អាច​ធ្វើឲ្យ​ការ​អ៊ិនកូដ​យឺត​ខ្លាំង) ។"
 
-#: modules/codec/avcodec/avcodec.h:205
+#: modules/codec/avcodec/avcodec.h:204
 msgid ""
 "The encoder can make on-the-fly quality tradeoffs if your CPU can't keep up "
 "with the encoding rate. It will disable trellis quantization, then the rate "
@@ -10413,35 +10413,35 @@ msgstr ""
 "ការ​កំណត់​បរិមាណ trellis បន្ទាប់​មក​អត្រា​នៃ​ការ​បង្ខូច​ទ្រង់ទ្រាយ​របស់​វ៉ិចទ័រ​ចលនា (hq) និង​បង្កើន​ការ​កាត់​"
 "បន្ថយ​ភាព​រំខាន ដើម្បី​ផ្ដល់​ភាព​​ងាយស្រួល​ដល់​ភារកិច្ច​អ៊ិនកូឌ័រ ។"
 
-#: modules/codec/avcodec/avcodec.h:211
+#: modules/codec/avcodec/avcodec.h:210
 msgid "Minimum video quantizer scale"
 msgstr "មាត្រដ្ឋាន​កម្មវិធី​កំណត់​បរិមាណ​វីដេអូ​អប្បបរមា"
 
-#: modules/codec/avcodec/avcodec.h:212
+#: modules/codec/avcodec/avcodec.h:211
 msgid "Minimum video quantizer scale."
 msgstr "មាត្រដ្ឋាន​កម្មវិធី​កំណត់​បរិមាណ​វីដេអូ​អប្បបរមា ។"
 
-#: modules/codec/avcodec/avcodec.h:215
+#: modules/codec/avcodec/avcodec.h:214
 msgid "Maximum video quantizer scale"
 msgstr "មាត្រដ្ឋាន​កម្មវិធី​កំណត់​បរិមាណ​វីដេអូ​អតិបរមា"
 
-#: modules/codec/avcodec/avcodec.h:216
+#: modules/codec/avcodec/avcodec.h:215
 msgid "Maximum video quantizer scale."
 msgstr "មាត្រដ្ឋាន​កម្មវិធី​កំណត់​បរិមាណ​វីដេអូ​អតិបរមា ។"
 
-#: modules/codec/avcodec/avcodec.h:219
+#: modules/codec/avcodec/avcodec.h:218
 msgid "Trellis quantization"
 msgstr "ការ​កំណត់​បរិមាណ​ជន្លង់"
 
-#: modules/codec/avcodec/avcodec.h:220
+#: modules/codec/avcodec/avcodec.h:219
 msgid "Enable trellis quantization (rate distortion for block coefficients)."
 msgstr "បើក​ការ​កំណត់​បរិមាណ​ជន្លង់ (អត្រា​ការ​បង្ខូច​ទ្រង់ទ្រាយ​សម្រាប់​មេគុណ​ប្លុក) ។"
 
-#: modules/codec/avcodec/avcodec.h:223
+#: modules/codec/avcodec/avcodec.h:222
 msgid "Fixed quantizer scale"
 msgstr "មាត្រដ្ឋាន​កម្មវិធី​កំណត់​បរិមាណ​ថេរ"
 
-#: modules/codec/avcodec/avcodec.h:224
+#: modules/codec/avcodec/avcodec.h:223
 msgid ""
 "A fixed video quantizer scale for VBR encoding (accepted values: 0.01 to "
 "255.0)."
@@ -10449,57 +10449,57 @@ msgstr ""
 "មាត្រដ្ឋាន​កម្មវិធី​កំណត់​បរិមាណ​វីដេអូ​ថេរ​សម្រាប់​ការ​អ៊ិនកូដ VBR (តម្លៃ​ដែល​អាច​ទទួល​យក​បាន​គឺ ៖ 0.01 ដល់ "
 "255.0) ។"
 
-#: modules/codec/avcodec/avcodec.h:227
+#: modules/codec/avcodec/avcodec.h:226
 msgid "Strict standard compliance"
 msgstr "ការ​ប្រព្រឹត្តិ​តាម​ស្តង់ដារ​តឹងរ៉ឹង"
 
-#: modules/codec/avcodec/avcodec.h:228
+#: modules/codec/avcodec/avcodec.h:227
 msgid ""
 "Force a strict standard compliance when encoding (accepted values: -2 to 2)."
 msgstr "តម្រូវ​តាម​ស្តង់ដារ​នៅ​ពេល​អ៊ិនកូដ (តម្លៃ ៖ -២ ទៅ ២)"
 
-#: modules/codec/avcodec/avcodec.h:231
+#: modules/codec/avcodec/avcodec.h:230
 msgid "Luminance masking"
 msgstr "ដាក់​​របាំង​កម្រិត​ពន្លឺ"
 
-#: modules/codec/avcodec/avcodec.h:232
+#: modules/codec/avcodec/avcodec.h:231
 msgid "Raise the quantizer for very bright macroblocks (default: 0.0)."
 msgstr "បង្កើន​កម្មវិធី​កំណត់​បរិមាណ​សម្រាប់ macroblocks ភ្លឺ​ខ្លាំង(លំនាំដើម ៖ 0.0) ។"
 
-#: modules/codec/avcodec/avcodec.h:235
+#: modules/codec/avcodec/avcodec.h:234
 msgid "Darkness masking"
 msgstr "ភាព​ងងឹត​របស់​របាំង"
 
-#: modules/codec/avcodec/avcodec.h:236
+#: modules/codec/avcodec/avcodec.h:235
 msgid "Raise the quantizer for very dark macroblocks (default: 0.0)."
 msgstr "បង្កើន​កម្មវិធី​កំណត់​បរិមាណ​សម្រាប់ macroblocks ងងឹត​ខ្លាំង (លំនាំដើម ៖ 0.0) ។"
 
-#: modules/codec/avcodec/avcodec.h:239
+#: modules/codec/avcodec/avcodec.h:238
 msgid "Motion masking"
 msgstr "ដាក់​របាំង​ចលនា"
 
-#: modules/codec/avcodec/avcodec.h:240
+#: modules/codec/avcodec/avcodec.h:239
 msgid ""
 "Raise the quantizer for macroblocks with a high temporal complexity "
 "(default: 0.0)."
 msgstr ""
 "បង្កើន​កម្មវិធី​កំណត់​បរិមាណ​សម្រាប់ macroblocks ជាមួយ​នឹង​ភាព​ស្មុគស្មាញ​ខ្ពស់ (លំនាំដើម ៖ 0.0) ។"
 
-#: modules/codec/avcodec/avcodec.h:243
+#: modules/codec/avcodec/avcodec.h:242
 msgid "Border masking"
 msgstr "ដាក់​របាំង​ស៊ុម"
 
-#: modules/codec/avcodec/avcodec.h:244
+#: modules/codec/avcodec/avcodec.h:243
 msgid ""
 "Raise the quantizer for macroblocks at the border of the frame (default: "
 "0.0)."
 msgstr "បង្កើន​កម្មវិធី​កំណត់​បរិមាណ​សម្រាប់ macroblocks នៅ​ព្រំ​ដែន​របស់​ស៊ុម (លំនាំដើម ៖ 0.0) ។"
 
-#: modules/codec/avcodec/avcodec.h:247
+#: modules/codec/avcodec/avcodec.h:246
 msgid "Luminance elimination"
 msgstr "ការ​បញ្ចេញ​កម្រិត​ពន្លឺ"
 
-#: modules/codec/avcodec/avcodec.h:248
+#: modules/codec/avcodec/avcodec.h:247
 msgid ""
 "Eliminates luminance blocks when the PSNR isn't much changed (default: 0.0). "
 "The H264 specification recommends -4."
@@ -10507,11 +10507,11 @@ msgstr ""
 "បំបាត់​បណ្ដុំ​ពន្លឺ​នៅ​ពេល​ដែល PSNR មិន​មាន​អ្វី​ផ្លាស់ប្ដូរ​ច្រើន (លំនាំដើម​ ៖ 0.0) ។ ​H264 អនុសាសន៍​ការ​"
 "បញ្ជាក់ -4 ។"
 
-#: modules/codec/avcodec/avcodec.h:252
+#: modules/codec/avcodec/avcodec.h:251
 msgid "Chrominance elimination"
 msgstr "ការ​បំបាត់ Chrominance"
 
-#: modules/codec/avcodec/avcodec.h:253
+#: modules/codec/avcodec/avcodec.h:252
 msgid ""
 "Eliminates chrominance blocks when the PSNR isn't much changed (default: "
 "0.0). The H264 specification recommends 7."
@@ -10519,11 +10519,11 @@ msgstr ""
 "បំបាត់​ប្លុក chrominance នៅ​ពេល​ដែល​មិន​បាន​ផ្លាស់ប្ដូរ PSNR អ្វី​ច្រើន​នោះ (លំនាំដើម ៖ 0.0) ។ ការ​"
 "បញ្ជាក់ H264 ផ្ដល់​អនុសាសន៍ ៧ ។"
 
-#: modules/codec/avcodec/avcodec.h:257
+#: modules/codec/avcodec/avcodec.h:256
 msgid "Specify AAC audio profile to use"
 msgstr "បញ្ជាក់​ទម្រង់​អូឌីយ៉ូ AAC ដែល​ត្រូវ​ប្រើ"
 
-#: modules/codec/avcodec/avcodec.h:258
+#: modules/codec/avcodec/avcodec.h:257
 msgid ""
 "Specify the AAC audio profile to use for encoding the audio bitstream. It "
 "takes the following options: main, low, ssr (not supported),ltp, hev1, hev2 "
@@ -10557,7 +10557,7 @@ msgid ""
 "Do not contact the VideoLAN project about this issue.\n"
 msgstr ""
 
-#: modules/codec/avcodec/encoder.c:751 modules/codec/avcodec/encoder.c:804
+#: modules/codec/avcodec/encoder.c:764 modules/codec/avcodec/encoder.c:817
 msgid "VLC could not open the encoder."
 msgstr "VLC មិន​អាច​បើក​អ៊ិនកូឌ័រ​បានទេ ។"
 
@@ -10917,7 +10917,7 @@ msgstr "គ្មាន​អ៊ិនកូឌ័រ"
 msgid "AAC audio decoder (using libfaad2)"
 msgstr "ឌិកូឌ័រ​អូឌីយ៉ូ AAC (ប្រើ libfaad2)"
 
-#: modules/codec/faad.c:429
+#: modules/codec/faad.c:430
 msgid "AAC extension"
 msgstr "កន្ទុយ​ឯកសារ AAC"
 
@@ -13162,8 +13162,8 @@ msgstr "ចំណុច​ប្រទាក់​ឧបករណ៍​បញ្
 #: modules/gui/qt4/main_interface.cpp:1158
 #: modules/gui/qt4/main_interface.cpp:1175
 #: modules/gui/qt4/main_interface.cpp:1183
-#: modules/gui/qt4/main_interface.cpp:1206 modules/notify/growl.m:281
-#: modules/video_output/xcb/window.c:313
+#: modules/gui/qt4/main_interface.cpp:1206 modules/lua/libs/httpd.c:80
+#: modules/notify/growl.m:281 modules/video_output/xcb/window.c:313
 msgid "VLC media player"
 msgstr "កម្មវិធី​ចាក់​មេឌៀ VLC"
 
@@ -21126,16 +21126,11 @@ msgstr "ជ្រើស​ស្បែក"
 msgid "Open skin ..."
 msgstr "បើក​ស្បែក..."
 
-#: modules/lua/libs/httpd.c:64
+#: modules/lua/libs/httpd.c:75
 msgid ""
-"<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3."
-"org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n"
-"<html xmlns=\"http://www.w3.org/1999/xhtml\"><head><meta http-equiv="
-"\"Content-Type\" content=\"text/html;charset=utf-8\" /><title>VLC media "
-"player</title></head><body><p>Password for Web interface has not been set.</"
-"p><p>Please use --http-password, or set a password in </p><p>Preferences "
-"&gt; All &gt; Main interfaces &gt; Lua &gt; Lua HTTP &gt; Password.</p><!-- "
-"VLC_PASSWORD_NOT_SET --></body></html>"
+"<p>Password for Web interface has not been set.</p><p>Please use --http-"
+"password, or set a password in </p><p>Preferences &gt; All &gt; Main "
+"interfaces &gt; Lua &gt; Lua HTTP &gt; Password.</p>"
 msgstr ""
 
 #: modules/lua/vlc.c:48

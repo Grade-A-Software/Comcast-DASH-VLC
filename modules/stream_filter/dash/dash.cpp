@@ -114,7 +114,7 @@ static int Open(vlc_object_t *p_obj)
 
     p_sys->p_mpd = mpd;
     dash::DASHManager*p_dashManager = new dash::DASHManager(p_sys->p_mpd,
-                                          dash::logic::IAdaptationLogic::RateBased,
+                                          //dash::logic::IAdaptationLogic::RateBased,
                                           p_stream);
 
     if(!p_dashManager->start())
@@ -274,7 +274,7 @@ static int  Control         (stream_t *p_stream, int i_query, va_list args)
                 *res = 0;
             else
             {
-                const dash::mpd::Representation *rep = p_sys->p_dashManager->getAdaptionLogic()->getCurrentRepresentation();
+               const dash::mpd::Representation *rep =NULL; //p_sys->p_dashManager->getAdaptionLogic()->getCurrentRepresentation();
                 if ( rep == NULL )
                     *res = 0;
                 else

@@ -34,12 +34,13 @@ using namespace dash::logic;
 using namespace dash::mpd;
 using namespace dash::buffer;
 
-DASHManager::DASHManager    ( MPD *mpd,
-                              IAdaptationLogic::LogicType type, stream_t *stream) :
+DASHManager::DASHManager   ( MPD *mpd,
+                         /*     IAdaptationLogic::LogicType type,*/
+				 stream_t *stream) :
              conManager     ( NULL ),
              currentChunk   ( NULL ),
-             adaptationLogic( NULL ),
-             logicType      ( type ),
+            // adaptationLogic( NULL ),
+             //logicType      ( type ),
              mpdManager     ( NULL ),
              mpd            ( mpd ),
              stream         ( stream ),
@@ -52,7 +53,7 @@ DASHManager::~DASHManager   ()
     delete this->downloader;
     delete this->buffer;
     delete this->conManager;
-    delete this->adaptationLogic;
+  //  delete this->adaptationLogic;
     delete this->mpdManager;
 }
 
@@ -63,17 +64,19 @@ bool    DASHManager::start()
     if ( this->mpdManager == NULL )
         return false;
 
-    this->adaptationLogic = AdaptationLogicFactory::create( this->logicType, this->mpdManager, this->stream);
+   /* this->adaptationLogic = AdaptationLogicFactory::create( this->logicType, this->mpdManager, this->stream);
 
     if ( this->adaptationLogic == NULL )
         return false;
-
-    this->conManager = new dash::http::HTTPConnectionManager(this->adaptationLogic, this->stream);
+*/
+    this->conManager = new dash::http::HTTPConnectionManager(
+				//this->adaptationLogic,
+						 this->stream);
     this->buffer     = new BlockBuffer(this->stream);
     this->downloader = new DASHDownloader(this->conManager, this->buffer);
 
-    this->conManager->attach(this->adaptationLogic);
-    this->buffer->attach(this->adaptationLogic);
+   // this->conManager->attach(this->adaptationLogic);
+   // this->buffer->attach(this->adaptationLogic);
 
     return this->downloader->start();
 }
@@ -96,12 +99,12 @@ const mpd::IMPDManager*         DASHManager::getMpdManager() const
 {
     return this->mpdManager;
 }
-
+/*
 const logic::IAdaptationLogic*  DASHManager::getAdaptionLogic() const
 {
     return this->adaptationLogic;
 }
-
+*/
 const Chunk *DASHManager::getCurrentChunk() const
 {
     return this->currentChunk;

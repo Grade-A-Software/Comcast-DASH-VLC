@@ -27,8 +27,8 @@
 
 #include "http/HTTPConnectionManager.h"
 #include "xml/Node.h"
-#include "adaptationlogic/IAdaptationLogic.h"
-#include "adaptationlogic/AdaptationLogicFactory.h"
+//#include "adaptationlogic/IAdaptationLogic.h"
+//#include "adaptationlogic/AdaptationLogicFactory.h"
 #include "mpd/IMPDManager.h"
 #include "mpd/MPDManagerFactory.h"
 #include "buffer/BlockBuffer.h"
@@ -41,7 +41,8 @@ namespace dash
     {
         public:
             DASHManager( mpd::MPD *mpd,
-                         logic::IAdaptationLogic::LogicType type, stream_t *stream);
+                        // logic::IAdaptationLogic::LogicType type,
+			 stream_t *stream);
             virtual ~DASHManager    ();
 
             bool    start         ();
@@ -50,14 +51,14 @@ namespace dash
             int     seekBackwards ( unsigned len );
 
             const mpd::IMPDManager*         getMpdManager   () const;
-            const logic::IAdaptationLogic*  getAdaptionLogic() const;
+          //  const logic::IAdaptationLogic*  getAdaptionLogic() const;
             const http::Chunk *getCurrentChunk() const;
 
         private:
             http::HTTPConnectionManager         *conManager;
             http::Chunk                         *currentChunk;
-            logic::IAdaptationLogic             *adaptationLogic;
-            logic::IAdaptationLogic::LogicType  logicType;
+           // logic::IAdaptationLogic             *adaptationLogic;
+           // logic::IAdaptationLogic::LogicType  logicType;
             mpd::IMPDManager                    *mpdManager;
             mpd::MPD                            *mpd;
             stream_t                            *stream;

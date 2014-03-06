@@ -44,7 +44,8 @@ namespace dash
         class HTTPConnectionManager
         {
             public:
-                HTTPConnectionManager           (logic::IAdaptationLogic *adaptationLogic, stream_t *stream);
+                HTTPConnectionManager           (//logic::IAdaptationLogic *adaptationLogic,
+							 stream_t *stream);
                 virtual ~HTTPConnectionManager  ();
 
                 void    closeAllConnections ();
@@ -57,7 +58,7 @@ namespace dash
                 std::vector<dash::logic::IDownloadRateObserver *>   rateObservers;
                 std::deque<Chunk *>                                 downloadQueue;
                 std::vector<PersistentConnection *>                 connectionPool;
-                logic::IAdaptationLogic                             *adaptationLogic;
+               // logic::IAdaptationLogic                             *adaptationLogic;
                 stream_t                                            *stream;
                 int                                                 chunkCount;
                 int64_t                                             bpsAvg;
