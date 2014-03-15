@@ -43,7 +43,7 @@ void Parser::parse() {
                                 }
                             }
                             
-                            ss << "http//" << pathRoot << url << rep_id << "-" << t << ".ts";
+                            ss << "http://" << pathRoot << url << rep_id << "-" << t << ".ts";
                             if (r == rep.size() - 1) ss << " - Highest Bit Rate - ";
                             msg_Info(this->p_stream,ss.str().c_str());
                         }
