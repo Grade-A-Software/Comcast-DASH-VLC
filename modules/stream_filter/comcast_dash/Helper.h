@@ -27,7 +27,7 @@
 
 #include <string>
 
-namespace dash
+namespace comcast_dash
 {
     class Helper
     {

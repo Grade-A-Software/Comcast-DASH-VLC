@@ -34,24 +34,24 @@
 #include "mpd/BasicCMManager.h"
 #include <vector>
 
-namespace dash
+namespace comcast_dash
 {
     namespace logic
     {
         class AlwaysBestAdaptationLogic : public AbstractAdaptationLogic
         {
             public:
-                AlwaysBestAdaptationLogic           (dash::mpd::IMPDManager *mpdManager, stream_t *stream);
+                AlwaysBestAdaptationLogic           (comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
                 virtual ~AlwaysBestAdaptationLogic  ();
 
-                dash::http::Chunk* getNextChunk();
+                comcast_dash::http::Chunk* getNextChunk();
                 const mpd::Representation *getCurrentRepresentation() const;
 
             private:
                 std::vector<mpd::Segment *>         schedule;
-                dash::mpd::IMPDManager              *mpdManager;
+                comcast_dash::mpd::IMPDManager              *mpdManager;
                 size_t                              count;
-                dash::mpd::Representation           *bestRepresentation;
+                comcast_dash::mpd::Representation           *bestRepresentation;
 
                 void initSchedule();
         };

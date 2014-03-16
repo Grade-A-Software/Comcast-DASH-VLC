@@ -27,12 +27,12 @@
 
 #include "DASHManager.h"
 
-using namespace dash;
-using namespace dash::http;
-using namespace dash::xml;
-using namespace dash::logic;
-using namespace dash::mpd;
-using namespace dash::buffer;
+using namespace comcast_dash;
+using namespace comcast_dash::http;
+using namespace comcast_dash::xml;
+using namespace comcast_dash::logic;
+using namespace comcast_dash::mpd;
+using namespace comcast_dash::buffer;
 
 DASHManager::DASHManager   ( MPD *mpd,
                          /*     IAdaptationLogic::LogicType type,*/
@@ -69,7 +69,7 @@ bool    DASHManager::start()
     if ( this->adaptationLogic == NULL )
         return false;
 */
-    this->conManager = new dash::http::HTTPConnectionManager(
+    this->conManager = new comcast_dash::http::HTTPConnectionManager(
 				//this->adaptationLogic,
 						 this->stream);
     this->buffer     = new BlockBuffer(this->stream);

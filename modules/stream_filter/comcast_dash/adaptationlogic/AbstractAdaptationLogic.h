@@ -36,14 +36,14 @@
 
 struct stream_t;
 
-namespace dash
+namespace comcast_dash
 {
     namespace logic
     {
         class AbstractAdaptationLogic : public IAdaptationLogic
         {
             public:
-                AbstractAdaptationLogic             (dash::mpd::IMPDManager *mpdManager, stream_t *stream);
+                AbstractAdaptationLogic             (comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
                 virtual ~AbstractAdaptationLogic    ();
 
                 virtual void                downloadRateChanged     (uint64_t bpsAvg, uint64_t bpsLastChunk);
@@ -56,7 +56,7 @@ namespace dash
             private:
                 int                     bpsAvg;
                 long                    bpsLastChunk;
-                dash::mpd::IMPDManager  *mpdManager;
+                comcast_dash::mpd::IMPDManager  *mpdManager;
                 stream_t                *stream;
                 mtime_t                 bufferedMicroSec;
                 int                     bufferedPercent;

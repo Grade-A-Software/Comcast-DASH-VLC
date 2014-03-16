@@ -27,9 +27,9 @@
 
 #include "AbstractAdaptationLogic.h"
 
-using namespace dash::logic;
-using namespace dash::xml;
-using namespace dash::mpd;
+using namespace comcast_dash::logic;
+using namespace comcast_dash::xml;
+using namespace comcast_dash::mpd;
 
 AbstractAdaptationLogic::AbstractAdaptationLogic    (IMPDManager *mpdManager, stream_t *stream) :
                          bpsAvg                     (0),

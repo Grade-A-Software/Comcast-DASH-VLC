@@ -36,22 +36,22 @@
 
 #define MINBUFFER 30
 
-namespace dash
+namespace comcast_dash
 {
     namespace logic
     {
         class RateBasedAdaptationLogic : public AbstractAdaptationLogic
         {
             public:
-                RateBasedAdaptationLogic            (dash::mpd::IMPDManager *mpdManager, stream_t *stream);
+                RateBasedAdaptationLogic            (comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
 
-                dash::http::Chunk*      getNextChunk();
-                const dash::mpd::Representation *getCurrentRepresentation() const;
+                comcast_dash::http::Chunk*      getNextChunk();
+                const comcast_dash::mpd::Representation *getCurrentRepresentation() const;
 
             private:
-                dash::mpd::IMPDManager  *mpdManager;
+                comcast_dash::mpd::IMPDManager  *mpdManager;
                 size_t                  count;
-                dash::mpd::Period       *currentPeriod;
+                comcast_dash::mpd::Period       *currentPeriod;
                 int                     width;
                 int                     height;
         };

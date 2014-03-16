@@ -41,7 +41,7 @@
 
 #define PEEKBUFFER 4096
 
-namespace dash
+namespace comcast_dash
 {
     namespace http
     {

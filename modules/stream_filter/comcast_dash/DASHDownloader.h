@@ -34,11 +34,11 @@
 
 #include <iostream>
 
-namespace dash
+namespace comcast_dash
 {
     struct thread_sys_t
     {
-        dash::http::HTTPConnectionManager   *conManager;
+        comcast_dash::http::HTTPConnectionManager   *conManager;
         buffer::BlockBuffer                 *buffer;
     };
 

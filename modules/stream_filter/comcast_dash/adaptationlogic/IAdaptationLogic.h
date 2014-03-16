@@ -30,11 +30,11 @@
 #include "mpd/Representation.h"
 #include "buffer/IBufferObserver.h"
 
-namespace dash
+namespace comcast_dash
 {
     namespace logic
     {
-        class IAdaptationLogic : public IDownloadRateObserver, public dash::buffer::IBufferObserver
+        class IAdaptationLogic : public IDownloadRateObserver, public comcast_dash::buffer::IBufferObserver
         {
             public:
 
@@ -46,8 +46,8 @@ namespace dash
                     RateBased
                 };
 
-                virtual dash::http::Chunk*                  getNextChunk            ()          = 0;
-                virtual const dash::mpd::Representation*    getCurrentRepresentation() const    = 0;
+                virtual comcast_dash::http::Chunk*                  getNextChunk            ()          = 0;
+                virtual const comcast_dash::mpd::Representation*    getCurrentRepresentation() const    = 0;
                 /**
                  *  \return     The average bitrate in bits per second.
                  */

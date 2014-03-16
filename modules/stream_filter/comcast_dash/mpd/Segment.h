@@ -1,11 +1,10 @@
 /*
  * Segment.h
  *****************************************************************************
- * Copyright (C) 2010 - 2011 Klagenfurt University
+ * Copyright (C) 2014 Grade-A-Software
  *
- * Created on: Aug 10, 2010
- * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
- *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
+ * Created on: March 5, 2014
+ * Author: Scott Allen
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -26,53 +25,36 @@
 #define SEGMENT_H_
 
 #include <string>
-#include <sstream>
-#include <vector>
-
+#include <cstdlib>
 
 namespace comcast_dash
 {
     namespace mpd
     {
-        class Representation;
+        
         class Segment
         {
-            public:
-                Segment( const Representation *parent );
-                virtual ~Segment(){}
-                virtual std::string getSourceUrl() const;
-                virtual void        setSourceUrl( const std::string &url );
-                /**
-                 *  @return true if the segment should be dropped after being read.
-                 *          That is basically true when using an Url, and false
-                 *          when using an UrlTemplate
-                 */
-                 
-                virtual void                            setByteRange    (int start, int end);
-                virtual int                             getStartByte    () const;
-                virtual int                             getEndByte      () const;
-                
-                
-                virtual void 		setTime(int time);
-                virtual std::string						getTime() const;
-                
-                virtual void 		setId(int id);
-                virtual int 							getId() const;
-                
-                virtual void		setMedia(std::string media);
-                virtual std::string						getMedia() const;          
-                
-                virtual	void		setDuration(int duration);
-                virutal int 							getDuration() const;
+        public:
+            Segment();
+            virtual ~Segment ();
+            
+            int getDuration();
+            void setDuration(int d);
+            
+            int getRepeat();
+            void setRepeat(int r);
+            
+            int getTime();
+            void setTime(int t);
 
-            protected:
-                std::string             sourceUrl;
-                int						id;
-                std::string				time;
-                int                     startByte;
-                int                     endByte;
-                int						duration;
-                std::string				media;
+            std::string getSegmentTemplate();
+            void setSegmentTemplate(std::string st);
+            
+        private:
+            int duration;
+            int repeat;
+            int time;
+            std::string segmentTemplate;
         };
     }
 }

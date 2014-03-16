@@ -27,7 +27,7 @@
 
 #include "HTTPConnection.h"
 
-using namespace dash::http;
+using namespace comcast_dash::http;
 
 HTTPConnection::HTTPConnection  (stream_t *stream) :
                 stream          (stream),

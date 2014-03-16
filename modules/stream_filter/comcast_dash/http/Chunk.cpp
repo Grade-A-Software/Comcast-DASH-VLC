@@ -27,7 +27,7 @@
 
 #include "Chunk.h"
 
-using namespace dash::http;
+using namespace comcast_dash::http;
 
 Chunk::Chunk        () :
        startByte    (0),

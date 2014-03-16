@@ -27,10 +27,10 @@
 
 #include "DASHDownloader.h"
 
-using namespace dash;
-using namespace dash::http;
-using namespace dash::logic;
-using namespace dash::buffer;
+using namespace comcast_dash;
+using namespace comcast_dash::http;
+using namespace comcast_dash::logic;
+using namespace comcast_dash::buffer;
 
 
 DASHDownloader::DASHDownloader  (HTTPConnectionManager *conManager, BlockBuffer *buffer)

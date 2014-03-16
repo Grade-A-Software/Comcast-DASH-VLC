@@ -28,7 +28,7 @@
 #include "HTTPConnection.h"
 #include <deque>
 
-namespace dash
+namespace comcast_dash
 {
     namespace http
     {

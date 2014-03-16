@@ -27,9 +27,9 @@
 
 #include "AdaptationLogicFactory.h"
 
-using namespace dash::logic;
-using namespace dash::xml;
-using namespace dash::mpd;
+using namespace comcast_dash::logic;
+using namespace comcast_dash::xml;
+using namespace comcast_dash::mpd;
 
 IAdaptationLogic* AdaptationLogicFactory::create ( IAdaptationLogic::LogicType logic,
                                                   IMPDManager *mpdManager, stream_t *stream)

@@ -35,7 +35,7 @@
 #include "DASHDownloader.h"
 #include "mpd/MPD.h"
 
-namespace dash
+namespace comcast_dash
 {
     class DASHManager
     {

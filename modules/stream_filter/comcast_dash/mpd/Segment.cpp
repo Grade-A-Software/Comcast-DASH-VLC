@@ -1,11 +1,10 @@
 /*
  * Segment.cpp
  *****************************************************************************
- * Copyright (C) 2010 - 2011 Klagenfurt University
+ * Copyright (C) 2014 Grade-A-Software
  *
- * Created on: Aug 10, 2010
- * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
- *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
+ * Created on: March 5, 2014
+ * Author: Scott Allen
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,71 +24,59 @@
 # include "config.h"
 #endif
 
-#include "Segment.h"
-#include "Representation.h"
+#include <cstdlib>
 
-#include <cassert>
+#include "Segment.h"
 
 using namespace comcast_dash::mpd;
 
-Segment::Segment(const Representation *parent) :
-        startByte  (-1),
-        endByte    (-1),
-        parentRepresentation( parent )
+Segment::Segment() :
+duration(0),
+repeat(0),
+time(0)
 {
-    assert( parent != NULL );
-    if ( parent->getSegmentInfo() != NULL && parent->getSegmentInfo()->getDuration() >= 0 )
-        this->size = parent->getBandwidth() * parent->getSegmentInfo()->getDuration();
-    else
-        this->size = -1;
+    
 }
 
-std::string             Segment::getSourceUrl   () const
+Segment::~Segment()
 {
-    return this->sourceUrl;
+    
 }
 
-void                    Segment::setSourceUrl   ( const std::string &url )
+
+int Segment::getDuration()
 {
-    if ( url.empty() == false )
-        this->sourceUrl = url;
+    return this->duration;
+}
+void Segment::setDuration(int d)
+{
+    this->duration = d;
 }
 
-void                    Segment::done           ()
+int Segment::getRepeat()
 {
-    //Only used for a SegmentTemplate.
+    return this->repeat;
+}
+void Segment::setRepeat(int r)
+{
+    this->repeat = r;
 }
 
-void                    Segment::setByteRange   (int start, int end)
+int Segment::getTime()
 {
-    this->startByte = start;
-    this->endByte   = end;
+    return this->time;
 }
-int                     Segment::getStartByte   () const
+void Segment::setTime(int t)
 {
-    return this->startByte;
-}
-int                     Segment::getEndByte     () const
-{
-    return this->endByte;
+    this->time = t;
 }
 
-int						Segment::getTime		() const
+std::string Segment::getSegmentTemplate()
 {
-	return this->time;
+    return this->segmentTemplate;
+}
+void Segment::setSegmentTemplate(std::string st)
+{
+    this->segmentTemplate = st;
 }
 
-int						Segment::getId			() const
-{
-	return this->id;
-}
-
-int						Segment::getDuration	() const
-{
-	return this->duration;
-}
-
-int						Segment::getMedia		() const
-{
-	return this->media;
-}

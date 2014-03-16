@@ -33,14 +33,14 @@
 
 struct stream_t;
 
-namespace dash
+namespace comcast_dash
 {
     namespace logic
     {
         class AdaptationLogicFactory
         {
             public:
-                static IAdaptationLogic* create (IAdaptationLogic::LogicType logic, dash::mpd::IMPDManager *mpdManager, stream_t *stream);
+                static IAdaptationLogic* create (IAdaptationLogic::LogicType logic, comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
         };
     }
 }

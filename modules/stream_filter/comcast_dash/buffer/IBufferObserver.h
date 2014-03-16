@@ -27,7 +27,7 @@
 
 #include <vlc_common.h>
 
-namespace dash
+namespace comcast_dash
 {
     namespace buffer
     {

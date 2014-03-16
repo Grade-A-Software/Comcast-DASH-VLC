@@ -28,7 +28,7 @@
 #include <stdint.h>
 #include <unistd.h>
 
-namespace dash
+namespace comcast_dash
 {
     namespace http
     {

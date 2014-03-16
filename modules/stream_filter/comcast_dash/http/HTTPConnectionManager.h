@@ -37,7 +37,7 @@
 #include "http/PersistentConnection.h"
 #include "adaptationlogic/IAdaptationLogic.h"
 
-namespace dash
+namespace comcast_dash
 {
     namespace http
     {
@@ -51,11 +51,11 @@ namespace dash
                 void    closeAllConnections ();
                 bool    addChunk            (Chunk *chunk);
                 int     read                (block_t *block);
-                void    attach              (dash::logic::IDownloadRateObserver *observer);
+                void    attach              (comcast_dash::logic::IDownloadRateObserver *observer);
                 void    notify              ();
 
             private:
-                std::vector<dash::logic::IDownloadRateObserver *>   rateObservers;
+                std::vector<comcast_dash::logic::IDownloadRateObserver *>   rateObservers;
                 std::deque<Chunk *>                                 downloadQueue;
                 std::vector<PersistentConnection *>                 connectionPool;
                // logic::IAdaptationLogic                             *adaptationLogic;

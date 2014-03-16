@@ -28,8 +28,8 @@
 #include "HTTPConnectionManager.h"
 #include "mpd/Segment.h"
 
-using namespace dash::http;
-using namespace dash::logic;
+using namespace comcast_dash::http;
+using namespace comcast_dash::logic;
 
 const size_t    HTTPConnectionManager::PIPELINE               = 80;
 const size_t    HTTPConnectionManager::PIPELINELENGTH         = 2;

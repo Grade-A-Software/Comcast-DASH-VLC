@@ -27,10 +27,10 @@
 
 #include "RateBasedAdaptationLogic.h"
 
-using namespace dash::logic;
-using namespace dash::xml;
-using namespace dash::http;
-using namespace dash::mpd;
+using namespace comcast_dash::logic;
+using namespace comcast_dash::xml;
+using namespace comcast_dash::http;
+using namespace comcast_dash::mpd;
 
 RateBasedAdaptationLogic::RateBasedAdaptationLogic  (IMPDManager *mpdManager, stream_t *stream) :
                           AbstractAdaptationLogic   (mpdManager, stream),

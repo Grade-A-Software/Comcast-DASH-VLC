@@ -30,7 +30,7 @@
 #include <map>
 #include <iostream>
 
-namespace dash
+namespace comcast_dash
 {
     namespace xml
     {

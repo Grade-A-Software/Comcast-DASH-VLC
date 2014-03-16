@@ -38,7 +38,8 @@
 
 
 
-using namespace dash;
+using namespace comcast_dash;
+using namespace comcast_dash::mpd;
 
 
 
@@ -60,16 +61,16 @@ static void Close   (vlc_object_t *);
 #define DASH_BUFFER_LONGTEXT N_("Buffer size in seconds")
 
 vlc_module_begin ()
-        set_shortname( N_("DASH"))
-        set_description( N_("Dynamic Adaptive Streaming over HTTP") )
-        set_capability( "stream_filter", 19 )
-        set_category( CAT_INPUT )
-        set_subcategory( SUBCAT_INPUT_STREAM_FILTER )
-        add_integer( "dash-prefwidth",  480, DASH_WIDTH_TEXT,  DASH_WIDTH_LONGTEXT,  true )
-        add_integer( "dash-prefheight", 360, DASH_HEIGHT_TEXT, DASH_HEIGHT_LONGTEXT, true )
-        add_integer( "dash-buffersize", 30, DASH_BUFFER_TEXT, DASH_BUFFER_LONGTEXT, true )
-        add_string( "dash-url", "", "URL", "URL of the XML file", false);
-        set_callbacks( Open, Close )
+set_shortname( N_("DASH"))
+set_description( N_("Dynamic Adaptive Streaming over HTTP") )
+set_capability( "stream_filter", 19 )
+set_category( CAT_INPUT )
+set_subcategory( SUBCAT_INPUT_STREAM_FILTER )
+add_integer( "dash-prefwidth",  480, DASH_WIDTH_TEXT,  DASH_WIDTH_LONGTEXT,  true )
+add_integer( "dash-prefheight", 360, DASH_HEIGHT_TEXT, DASH_HEIGHT_LONGTEXT, true )
+add_integer( "dash-buffersize", 30, DASH_BUFFER_TEXT, DASH_BUFFER_LONGTEXT, true )
+add_string( "dash-url", "", "URL", "URL of the XML file", false);
+set_callbacks( Open, Close )
 vlc_module_end ()
 
 /*****************************************************************************
@@ -77,8 +78,8 @@ vlc_module_end ()
  *****************************************************************************/
 struct stream_sys_t
 {
-        uint64_t                            position;
-        bool                                isLive;
+    uint64_t                            position;
+    bool                                isLive;
 };
 
 static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len);
@@ -91,32 +92,39 @@ static int  Control         (stream_t *p_stream, int i_query, va_list args);
 static int Open(vlc_object_t *p_obj)
 {
     stream_t *p_stream = (stream_t*) p_obj;
-    if(!dash::xml::DOMParser::isDash(p_stream->p_source))
-      return VLC_EGENERIC;
+    if(!comcast_dash::xml::DOMParser::isDash(p_stream->p_source))
+        return VLC_EGENERIC;
     else
-      msg_Info(p_stream,"Is DASH!");
-
-    //Build a XML tree                                                                                  
-    dash::xml::DOMParser        parser(p_stream->p_source);
+        msg_Info(p_stream,"Is DASH!");
+    
+    //Build a XML tree
+    comcast_dash::xml::DOMParser        parser(p_stream->p_source);
     if( !parser.parse() )
-      {
+    {
         msg_Dbg( p_stream, "Could not parse mpd file." );
         return VLC_EGENERIC;
-      }
-    else {
-      //      parser.print();
-      Parser * dashParser = new Parser(parser.getRootNode(),p_stream);
-      dashParser->parse();
     }
-
-
-
-
+    else {
+        //      parser.print();
+        Parser * dashParser = new Parser(parser.getRootNode(),p_stream);
+        MPD *mpd = dashParser->parse();
+        
+        std::vector<std::string> urls = mpd->getURLs();
+        
+        for (size_t i = 0; i < urls.size(); i++) {
+            
+            msg_Info(p_stream,urls.at(i).c_str());
+        }
+    }
+    
+    
+    
+    
     
     stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
     if (unlikely(p_sys == NULL))
         return VLC_ENOMEM;
-
+    
     
     p_sys->position         = 0;
     p_sys->isLive           = true;
@@ -124,8 +132,8 @@ static int Open(vlc_object_t *p_obj)
     p_stream->pf_read       = Read;
     p_stream->pf_peek       = Peek;
     p_stream->pf_control    = Control;
-
-
+    
+    
     return VLC_SUCCESS;
 }
 /*****************************************************************************
@@ -135,7 +143,7 @@ static void Close(vlc_object_t *p_obj)
 {
     stream_t                            *p_stream       = (stream_t*) p_obj;
     stream_sys_t                        *p_sys          = (stream_sys_t *) p_stream->p_sys;
- 
+    
     free(p_sys);
 }
 /*****************************************************************************
@@ -144,12 +152,12 @@ static void Close(vlc_object_t *p_obj)
 static int  Seek            ( stream_t *p_stream, uint64_t pos )
 {
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
-
+    
     int                 i_ret           = 0;
     unsigned            i_len           = 0;
     long                i_read          = 0;
     
-
+    
     return VLC_SUCCESS;
 }
 
@@ -159,7 +167,7 @@ static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len
     uint8_t             *p_buffer       = (uint8_t*)p_ptr;
     int                 i_ret           = 0;
     int                 i_read          = 0;
-
+    
     
     return VLC_SUCCESS;
 }
@@ -173,6 +181,6 @@ static int  Peek            (stream_t *p_stream, const uint8_t **pp_peek, unsign
 static int  Control         (stream_t *p_stream, int i_query, va_list args)
 {
     stream_sys_t *p_sys = p_stream->p_sys;
-
+    
     return VLC_SUCCESS;
 }

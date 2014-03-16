@@ -27,7 +27,7 @@
 
 #include "PersistentConnection.h"
 
-using namespace dash::http;
+using namespace comcast_dash::http;
 
 const int PersistentConnection::RETRY = 5;
 

@@ -34,7 +34,7 @@
 #include <string>
 #include <stdint.h>
 
-namespace dash
+namespace comcast_dash
 {
     namespace http
     {
