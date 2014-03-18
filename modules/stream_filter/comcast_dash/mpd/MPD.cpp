@@ -130,6 +130,7 @@ std::vector<std::string> MPD::getTimeLineURLs()
                     int tempBandwidth = representations.at(r)->getBandwidth();
                     if(tempBandwidth<minBandwidth){
                         minRepIndex = r;
+                        minBandwidth=tempBandwidth;
                     }
                 }
                 
