@@ -27,7 +27,11 @@
 
 #include "Helper.h"
 
+<<<<<<< HEAD
 using namespace dash;
+=======
+using namespace comcast_dash;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 
 std::string Helper::combinePaths        (const std::string &path1, const std::string &path2)
 {

@@ -26,6 +26,10 @@
 #define DASHDOWNLOADER_H_
 
 #include "http/HTTPConnectionManager.h"
+<<<<<<< HEAD
+=======
+#include "adaptationlogic/IAdaptationLogic.h"
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 #include "buffer/BlockBuffer.h"
 
 #define BLOCKSIZE           32768
@@ -33,11 +37,19 @@
 
 #include <iostream>
 
+<<<<<<< HEAD
 namespace dash
 {
     struct thread_sys_t
     {
         dash::http::HTTPConnectionManager   *conManager;
+=======
+namespace comcast_dash
+{
+    struct thread_sys_t
+    {
+        comcast_dash::http::HTTPConnectionManager   *conManager;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
         buffer::BlockBuffer                 *buffer;
     };
 

@@ -1,5 +1,5 @@
 /*
- * IBufferObserver.h
+ * IDownloadRateObserver.h
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -22,22 +22,22 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef IBUFFEROBSERVER_H_
-#define IBUFFEROBSERVER_H_
+#ifndef IDOWNLOADRATEOBSERVER_H_
+#define IDOWNLOADRATEOBSERVER_H_
 
-#include <vlc_common.h>
+#include <stdint.h>
 
 namespace comcast_dash
 {
-    namespace buffer
+    namespace logic
     {
-        class IBufferObserver
+        class IDownloadRateObserver
         {
             public:
-                virtual ~IBufferObserver(){}
-                virtual void bufferLevelChanged(mtime_t bufferedMicroSec, int bufferedPercent) = 0;
+                virtual void downloadRateChanged(uint64_t bpsAvg, uint64_t bpsLastChunk) = 0;
+                virtual ~IDownloadRateObserver(){}
         };
     }
 }
 
-#endif /* IBUFFEROBSERVER_H_ */
+#endif /* IDOWNLOADRATEOBSERVER_H_ */

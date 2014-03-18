@@ -1,5 +1,6 @@
 /*
  * Representation.h
+<<<<<<< HEAD
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -21,11 +22,15 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
+=======
+ */
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 
 #ifndef REPRESENTATION_H_
 #define REPRESENTATION_H_
 
 #include <string>
+<<<<<<< HEAD
 
 #include "Segment.h"
 
@@ -71,6 +76,50 @@ namespace dash
 		
                 int                                 width;
                 int                                 height;
+=======
+#include <cstdlib>
+#include <vector>
+#include "Segment.h"
+
+namespace   comcast_dash
+{
+    namespace mpd
+    {
+        
+        class Representation
+        {
+        public:
+            Representation();
+            virtual ~Representation ();
+            
+            const std::string&  getId() const;
+            void setId( const std::string &id );
+            /*
+             *  @return The bitrate required for this representation
+             *          in bits per seconds.
+             *          Will be a valid value, as the parser refuses Representation
+             *          without bandwidth.
+             */
+            int getBandwidth() const;
+            void setBandwidth(int bandwidth);
+            
+            int getSampleRate() const;
+            void setSampleRate(int sampleRate);
+            
+            void setWidth(int width);
+            int getWidth() const;
+            
+            void setHeight(int height);
+            int getHeight() const;
+            
+        private:
+            std::string id;
+            int bandwidth;
+            int sampleRate;
+            int width;
+            int height;
+            
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
         };
     }
 }

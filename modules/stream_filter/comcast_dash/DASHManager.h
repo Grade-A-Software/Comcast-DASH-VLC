@@ -27,11 +27,19 @@
 
 #include "http/HTTPConnectionManager.h"
 #include "xml/Node.h"
+<<<<<<< HEAD
 #include "mpd/MPDManager.h"
+=======
+//#include "adaptationlogic/IAdaptationLogic.h"
+//#include "adaptationlogic/AdaptationLogicFactory.h"
+#include "mpd/IMPDManager.h"
+#include "mpd/MPDManagerFactory.h"
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 #include "buffer/BlockBuffer.h"
 #include "DASHDownloader.h"
 #include "mpd/MPD.h"
 
+<<<<<<< HEAD
 using namespace dash;
 using namespace dash::mpd;
 using namespace dash::buffer;
@@ -62,6 +70,37 @@ namespace dash
 
       DASHDownloader                      *downloader;
       BlockBuffer                 *buffer;
+=======
+namespace comcast_dash
+{
+    class DASHManager
+    {
+        public:
+            DASHManager( mpd::MPD *mpd,
+                        // logic::IAdaptationLogic::LogicType type,
+			 stream_t *stream);
+            virtual ~DASHManager    ();
+
+            bool    start         ();
+            int     read          ( void *p_buffer, size_t len );
+            int     peek          ( const uint8_t **pp_peek, size_t i_peek );
+            int     seekBackwards ( unsigned len );
+
+            const mpd::IMPDManager*         getMpdManager   () const;
+          //  const logic::IAdaptationLogic*  getAdaptionLogic() const;
+            const http::Chunk *getCurrentChunk() const;
+
+        private:
+            http::HTTPConnectionManager         *conManager;
+            http::Chunk                         *currentChunk;
+           // logic::IAdaptationLogic             *adaptationLogic;
+           // logic::IAdaptationLogic::LogicType  logicType;
+            mpd::IMPDManager                    *mpdManager;
+            mpd::MPD                            *mpd;
+            stream_t                            *stream;
+            DASHDownloader                      *downloader;
+            buffer::BlockBuffer                 *buffer;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
     };
 }
 

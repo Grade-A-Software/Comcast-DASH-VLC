@@ -1,5 +1,5 @@
 /*
- * IBufferObserver.h
+ * RateBasedAdaptationLogic.h
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -22,22 +22,40 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef IBUFFEROBSERVER_H_
-#define IBUFFEROBSERVER_H_
+#ifndef RATEBASEDADAPTATIONLOGIC_H_
+#define RATEBASEDADAPTATIONLOGIC_H_
+
+#include "adaptationlogic/AbstractAdaptationLogic.h"
+#include "xml/Node.h"
+#include "mpd/IMPDManager.h"
+#include "http/Chunk.h"
+#include "mpd/BasicCMManager.h"
 
 #include <vlc_common.h>
+#include <vlc_stream.h>
+
+#define MINBUFFER 30
 
 namespace comcast_dash
 {
-    namespace buffer
+    namespace logic
     {
-        class IBufferObserver
+        class RateBasedAdaptationLogic : public AbstractAdaptationLogic
         {
             public:
-                virtual ~IBufferObserver(){}
-                virtual void bufferLevelChanged(mtime_t bufferedMicroSec, int bufferedPercent) = 0;
+                RateBasedAdaptationLogic            (comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
+
+                comcast_dash::http::Chunk*      getNextChunk();
+                const comcast_dash::mpd::Representation *getCurrentRepresentation() const;
+
+            private:
+                comcast_dash::mpd::IMPDManager  *mpdManager;
+                size_t                  count;
+                comcast_dash::mpd::Period       *currentPeriod;
+                int                     width;
+                int                     height;
         };
     }
 }
 
-#endif /* IBUFFEROBSERVER_H_ */
+#endif /* RATEBASEDADAPTATIONLOGIC_H_ */

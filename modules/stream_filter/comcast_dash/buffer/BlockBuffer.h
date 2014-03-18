@@ -35,7 +35,7 @@
 #define DEFAULTBUFFERLENGTH 30000000
 #define INTIALPEEKSIZE      32768
 
-namespace dash
+namespace comcast_dash
 {
     namespace buffer
     {

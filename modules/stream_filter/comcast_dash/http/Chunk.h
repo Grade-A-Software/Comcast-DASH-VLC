@@ -34,7 +34,11 @@
 #include <string>
 #include <stdint.h>
 
+<<<<<<< HEAD
 namespace dash
+=======
+namespace comcast_dash
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     namespace http
     {

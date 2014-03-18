@@ -1,11 +1,18 @@
 /*
  * Segment.h
  *****************************************************************************
+<<<<<<< HEAD
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
  * Created on: Aug 10, 2010
  * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
+=======
+ * Copyright (C) 2014 Grade-A-Software
+ *
+ * Created on: March 5, 2014
+ * Author: Scott Allen
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -26,6 +33,7 @@
 #define SEGMENT_H_
 
 #include <string>
+<<<<<<< HEAD
 #include <sstream>
 #include <vector>
 #include "../http/Chunk.h"
@@ -75,6 +83,34 @@ namespace dash
                 int                     endByte;
                 const Representation*   parentRepresentation;
                 int                     size;
+=======
+#include <cstdlib>
+
+namespace comcast_dash
+{
+    namespace mpd
+    {
+        
+        class Segment
+        {
+        public:
+            Segment();
+            virtual ~Segment ();
+            
+            int getDuration();
+            void setDuration(int d);
+            
+            int getRepeat();
+            void setRepeat(int r);
+            
+            int getTime();
+            void setTime(int t);
+            
+        private:
+            int duration;
+            int repeat;
+            int time;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
         };
     }
 }

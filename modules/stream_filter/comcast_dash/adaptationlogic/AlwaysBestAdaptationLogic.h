@@ -1,5 +1,5 @@
 /*
- * IBufferObserver.h
+ * AlwaysBestAdaptationLogic.h
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -22,22 +22,40 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef IBUFFEROBSERVER_H_
-#define IBUFFEROBSERVER_H_
+#ifndef ALWAYSBESTADAPTATIONLOGIC_H_
+#define ALWAYSBESTADAPTATIONLOGIC_H_
 
-#include <vlc_common.h>
+#include "adaptationlogic/AbstractAdaptationLogic.h"
+#include "http/Chunk.h"
+#include "xml/Node.h"
+#include "mpd/IMPDManager.h"
+#include "mpd/Period.h"
+#include "mpd/Segment.h"
+#include "mpd/BasicCMManager.h"
+#include <vector>
 
 namespace comcast_dash
 {
-    namespace buffer
+    namespace logic
     {
-        class IBufferObserver
+        class AlwaysBestAdaptationLogic : public AbstractAdaptationLogic
         {
             public:
-                virtual ~IBufferObserver(){}
-                virtual void bufferLevelChanged(mtime_t bufferedMicroSec, int bufferedPercent) = 0;
+                AlwaysBestAdaptationLogic           (comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
+                virtual ~AlwaysBestAdaptationLogic  ();
+
+                comcast_dash::http::Chunk* getNextChunk();
+                const mpd::Representation *getCurrentRepresentation() const;
+
+            private:
+                std::vector<mpd::Segment *>         schedule;
+                comcast_dash::mpd::IMPDManager              *mpdManager;
+                size_t                              count;
+                comcast_dash::mpd::Representation           *bestRepresentation;
+
+                void initSchedule();
         };
     }
 }
 
-#endif /* IBUFFEROBSERVER_H_ */
+#endif /* ALWAYSBESTADAPTATIONLOGIC_H_ */

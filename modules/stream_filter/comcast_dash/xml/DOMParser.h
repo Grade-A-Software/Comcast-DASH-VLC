@@ -32,7 +32,7 @@
 //#include "mpd/IMPDManager.h"
 #include "Node.h"
 
-namespace dash
+namespace comcast_dash
 {
     namespace xml
     {

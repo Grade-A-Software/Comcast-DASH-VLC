@@ -1,18 +1,20 @@
-## You have arrived! This is the Comcast DASH plugin
+### Comcast DASH plugin
 
-*Details:*
+Note: This plugin is a work in progress.<br/><br/>
+The purpose of this plugin is to play Comcast's version of DASH in VLC.<br />
 
-### Consult README files in appropriate subdirectories for details on those components
+**Plugin Process**<br />
+An overview of the process this plugin will follow can be found [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Plugin-Process)
 
-### hello.c
+#### Files
+
+**[hello.c](https://github.com/Grade-A-Software/Comcast-DASH-VLC/blob/master/modules/stream_filter/comcast_dash/hello.c)**<br />
 
 This is a demonstration of how a module will be loaded. This is trivial, and should be used only for reference.
 
-### dash.cpp
+**[dash.cpp](https://github.com/Grade-A-Software/Comcast-DASH-VLC/blob/master/modules/stream_filter/comcast_dash/dash.cpp)**<br />
 
-This is the module. Contained is the module definition, and essential methods for plugin creation.
-
-### dash.cpp - functions
+This is the module. Contained is the module definition, and essential methods for plugin creation. The functions are:
 
 _Open_
 

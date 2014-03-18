@@ -1,5 +1,6 @@
 /*
  * Representation.cpp
+<<<<<<< HEAD
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -21,6 +22,9 @@
  * along with this program; if not, write to the Free Software Foundation,
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
+=======
+ */
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 #ifdef HAVE_CONFIG_H
 # include "config.h"
 #endif
@@ -29,6 +33,7 @@
 
 #include "Representation.h"
 
+<<<<<<< HEAD
 using namespace dash::mpd;
 
 Representation::Representation  () :
@@ -39,34 +44,63 @@ Representation::Representation  () :
                 height          (0)
 
 {
+=======
+using namespace comcast_dash::mpd;
+
+Representation::Representation  () :
+bandwidth       (0),
+sampleRate      ( 0 ),
+width           (0),
+height          (0)
+
+{
+    
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 }
 
 Representation::~Representation ()
 {
 }
 
+<<<<<<< HEAD
 const std::string&  Representation::getId                   () const
+=======
+const std::string& Representation::getId() const
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     return this->id;
 }
 
+<<<<<<< HEAD
 void    Representation::setId(const std::string &id)
+=======
+void Representation::setId(const std::string &id)
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     if ( id.empty() == false )
         this->id = id;
 }
 
+<<<<<<< HEAD
 uint64_t     Representation::getBandwidth            () const
+=======
+int Representation::getBandwidth() const
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     return this->bandwidth;
 }
 
+<<<<<<< HEAD
 void    Representation::setBandwidth( uint64_t bandwidth )
+=======
+void Representation::setBandwidth( int bandwidth )
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     this->bandwidth = bandwidth;
 }
 
 
+<<<<<<< HEAD
 
 
 const AdaptationSet *Representation::getParentGroup() const
@@ -104,6 +138,31 @@ void                Representation::setHeight               (int height)
     this->height = height;
 }
 int                 Representation::getHeight               () const
+=======
+int Representation::getSampleRate() const
+{
+    return this->sampleRate;
+}
+
+void Representation::setSampleRate( int sampleRate )
+{
+    this->sampleRate = sampleRate;
+}
+
+void Representation::setWidth(int width)
+{
+    this->width = width;
+}
+int Representation::getWidth() const
+{
+    return this->width;
+}
+void Representation::setHeight(int height)
+{
+    this->height = height;
+}
+int Representation::getHeight() const
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     return this->height;
 }

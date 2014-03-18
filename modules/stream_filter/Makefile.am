@@ -17,6 +17,7 @@ libcomcast_dash_plugin_la_SOURCES = \
 	stream_filter/comcast_dash/xml/DOMParser.h \
 	stream_filter/comcast_dash/xml/DOMParser.cpp \
 	stream_filter/comcast_dash/xml/DOMHelper.h \
+<<<<<<< HEAD
 	stream_filter/comcast_dash/xml/DOMHelper.cpp
 	stream_filter/comcast_dash/buffer/BlockBuffer.cpp \
 	stream_filter/comcast_dash/buffer/BlockBuffer.h \
@@ -47,6 +48,19 @@ libcomcast_dash_plugin_la_SOURCES = \
 	stream_filter/comcast_dash/DASHManager.h \
 	stream_filter/comcast_dash/DASHDownloader.cpp \
 	stream_filter/comcast_dash/DASHDownloader.h \
+=======
+	stream_filter/comcast_dash/xml/DOMHelper.cpp \
+    stream_filter/comcast_dash/mpd/AdaptationSet.h \
+	stream_filter/comcast_dash/mpd/AdaptationSet.cpp \
+	stream_filter/comcast_dash/mpd/MPD.h \
+	stream_filter/comcast_dash/mpd/MPD.cpp \
+	stream_filter/comcast_dash/mpd/Period.h \
+	stream_filter/comcast_dash/mpd/Period.cpp \
+	stream_filter/comcast_dash/mpd/Representation.h \
+	stream_filter/comcast_dash/mpd/Representation.cpp \
+    stream_filter/comcast_dash/mpd/Segment.h \
+	stream_filter/comcast_dash/mpd/Segment.cpp
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 libcomcast_dash_plugin_la_CXXFLAGS = $(AM_CFLAGS) -I$(srcdir)/stream_filter/comcast_dash
 libcomcast_dash_plugin_la_LIBADD = $(SOCKET_LIBS)
 stream_filter_LTLIBRARIES += libcomcast_dash_plugin.la

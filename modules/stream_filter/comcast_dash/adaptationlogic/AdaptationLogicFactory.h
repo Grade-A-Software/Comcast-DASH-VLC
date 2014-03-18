@@ -1,5 +1,5 @@
 /*
- * IBufferObserver.h
+ * AdaptationLogicFactory.h
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -22,22 +22,27 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef IBUFFEROBSERVER_H_
-#define IBUFFEROBSERVER_H_
+#ifndef ADAPTATIONLOGICFACTORY_H_
+#define ADAPTATIONLOGICFACTORY_H_
 
-#include <vlc_common.h>
+#include "adaptationlogic/IAdaptationLogic.h"
+#include "xml/Node.h"
+#include "mpd/IMPDManager.h"
+#include "adaptationlogic/AlwaysBestAdaptationLogic.h"
+#include "adaptationlogic/RateBasedAdaptationLogic.h"
+
+struct stream_t;
 
 namespace comcast_dash
 {
-    namespace buffer
+    namespace logic
     {
-        class IBufferObserver
+        class AdaptationLogicFactory
         {
             public:
-                virtual ~IBufferObserver(){}
-                virtual void bufferLevelChanged(mtime_t bufferedMicroSec, int bufferedPercent) = 0;
+                static IAdaptationLogic* create (IAdaptationLogic::LogicType logic, comcast_dash::mpd::IMPDManager *mpdManager, stream_t *stream);
         };
     }
 }
 
-#endif /* IBUFFEROBSERVER_H_ */
+#endif /* ADAPTATIONLOGICFACTORY_H_ */

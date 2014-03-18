@@ -35,6 +35,7 @@
 #include <iostream>
 #include <sstream>
 
+<<<<<<< HEAD
 #include "IHTTPConnection.h"
 #include "Chunk.h"
 #include "../Helper.h"
@@ -46,12 +47,29 @@ namespace dash
     namespace http
     {
       class HTTPConnection //: public IHTTPConnection
+=======
+#include "http/IHTTPConnection.h"
+#include "http/Chunk.h"
+#include "Helper.h"
+
+#define PEEKBUFFER 4096
+
+namespace comcast_dash
+{
+    namespace http
+    {
+        class HTTPConnection : public IHTTPConnection
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
         {
             public:
                 HTTPConnection          (stream_t *stream);
                 virtual ~HTTPConnection ();
 
+<<<<<<< HEAD
                 bool    init        (Chunk *chunk);
+=======
+                virtual bool    init        (Chunk *chunk);
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
                 void            closeSocket ();
                 virtual int     read        (void *p_buffer, size_t len);
                 virtual int     peek        (const uint8_t **pp_peek, size_t i_peek);
@@ -66,7 +84,11 @@ namespace dash
                 bool                sendData        (const std::string& data);
                 bool                parseHeader     ();
                 std::string         readLine        ();
+<<<<<<< HEAD
                 std::string prepareRequest  (Chunk *chunk);
+=======
+                virtual std::string prepareRequest  (Chunk *chunk);
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
                 bool                setUrlRelative  (Chunk *chunk);
         };
     }

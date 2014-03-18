@@ -29,7 +29,7 @@
 
 #include <vector>
 
-using namespace dash::xml;
+using namespace comcast_dash::xml;
 
 
 DOMParser::DOMParser    (stream_t *stream) :

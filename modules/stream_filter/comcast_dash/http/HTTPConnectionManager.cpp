@@ -28,13 +28,19 @@
 #include "HTTPConnectionManager.h"
 #include "mpd/Segment.h"
 
+<<<<<<< HEAD
 using namespace dash::http;
 using namespace dash::mpd;
+=======
+using namespace comcast_dash::http;
+using namespace comcast_dash::logic;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 
 const size_t    HTTPConnectionManager::PIPELINE               = 80;
 const size_t    HTTPConnectionManager::PIPELINELENGTH         = 2;
 const uint64_t  HTTPConnectionManager::CHUNKDEFAULTBITRATE    = 1;
 
+<<<<<<< HEAD
 HTTPConnectionManager::HTTPConnectionManager    (mpd::MPDManager *manager, stream_t *stream) :
   manager                  (manager),
   stream                   (stream),
@@ -46,6 +52,20 @@ HTTPConnectionManager::HTTPConnectionManager    (mpd::MPDManager *manager, strea
   bytesReadChunk           (0),
   timeSession              (0),
   timeChunk                (0)
+=======
+HTTPConnectionManager::HTTPConnectionManager    (//logic::IAdaptationLogic *adaptationLogic,
+						 stream_t *stream) :
+                      // adaptationLogic          (adaptationLogic),
+                       stream                   (stream),
+                       chunkCount               (0),
+                       bpsAvg                   (0),
+                       bpsLastChunk             (0),
+                       bpsCurrentChunk          (0),
+                       bytesReadSession         (0),
+                       bytesReadChunk           (0),
+                       timeSession              (0),
+                       timeChunk                (0)
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
 }
 HTTPConnectionManager::~HTTPConnectionManager   ()
@@ -61,12 +81,21 @@ void                                HTTPConnectionManager::closeAllConnections  
 int                                 HTTPConnectionManager::read                     (block_t *block)
 {
     if(this->downloadQueue.size() == 0)
+<<<<<<< HEAD
       if(!this->addChunk(this->manager->getNextChunk()))
             return 0;
 
     if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
        this->downloadQueue.size() < HTTPConnectionManager::PIPELINELENGTH)
         this->addChunk(this->manager->getNextChunk());
+=======
+       //if(!this->addChunk(this->adaptationLogic->getNextChunk()))
+            return 0;
+
+   /* if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
+       this->downloadQueue.size() < HTTPConnectionManager::PIPELINELENGTH)
+       this->addChunk(this->adaptationLogic->getNextChunk();*/
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 
     int ret = 0;
 
@@ -96,7 +125,21 @@ int                                 HTTPConnectionManager::read                 
 
     return ret;
 }
+<<<<<<< HEAD
 
+=======
+void                                HTTPConnectionManager::attach                   (IDownloadRateObserver *observer)
+{
+    this->rateObservers.push_back(observer);
+}
+void                                HTTPConnectionManager::notify                   ()
+{
+    if ( this->bpsAvg == 0 )
+        return ;
+    for(size_t i = 0; i < this->rateObservers.size(); i++)
+        this->rateObservers.at(i)->downloadRateChanged(this->bpsAvg, this->bpsLastChunk);
+}
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 std::vector<PersistentConnection *> HTTPConnectionManager::getConnectionsForHost    (const std::string &hostname)
 {
     std::vector<PersistentConnection *> cons;
@@ -140,7 +183,11 @@ bool                                HTTPConnectionManager::addChunk             
         this->connectionPool.push_back(con);
         cons.push_back(con);
     }
+<<<<<<< HEAD
 
+=======
+/*
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
     size_t pos = this->chunkCount % cons.size();
 
     cons.at(pos)->addChunk(chunk);
@@ -151,6 +198,12 @@ bool                                HTTPConnectionManager::addChunk             
 
     if(chunk->getBitrate() <= 0)
         chunk->setBitrate(HTTPConnectionManager::CHUNKDEFAULTBITRATE);
+<<<<<<< HEAD
 
     return true;
+=======
+*/
+    return true;
+
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 }

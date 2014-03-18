@@ -27,7 +27,11 @@
 
 #include "Chunk.h"
 
+<<<<<<< HEAD
 using namespace dash::http;
+=======
+using namespace comcast_dash::http;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 
 Chunk::Chunk        () :
        startByte    (0),
@@ -73,7 +77,12 @@ void                Chunk::setUrl               (const std::string& url )
 
     vlc_url_t url_components;
     vlc_UrlParse(&url_components, url.c_str(), 0);
+<<<<<<< HEAD
     this->path          = url_components.psz_path.str().substr(0,-12);
+=======
+
+    this->path          = url_components.psz_path;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
     this->port          = url_components.i_port ? url_components.i_port : 80;
     this->hostname      = url_components.psz_host;
     this->isHostname    = true;

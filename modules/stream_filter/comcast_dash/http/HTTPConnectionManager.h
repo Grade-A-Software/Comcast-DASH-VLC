@@ -34,27 +34,50 @@
 #include <ctime>
 #include <limits.h>
 
+<<<<<<< HEAD
 #include "PersistentConnection.h"
 #include "../mpd/MPDManager.h"
 
 namespace dash
+=======
+#include "http/PersistentConnection.h"
+#include "adaptationlogic/IAdaptationLogic.h"
+
+namespace comcast_dash
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
 {
     namespace http
     {
         class HTTPConnectionManager
         {
             public:
+<<<<<<< HEAD
 	  HTTPConnectionManager          (dash::mpd::MPDManager *manager, stream_t *stream);
+=======
+                HTTPConnectionManager           (//logic::IAdaptationLogic *adaptationLogic,
+							 stream_t *stream);
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
                 virtual ~HTTPConnectionManager  ();
 
                 void    closeAllConnections ();
                 bool    addChunk            (Chunk *chunk);
                 int     read                (block_t *block);
+<<<<<<< HEAD
 
             private:
                 std::deque<Chunk *>                                 downloadQueue;
                 std::vector<PersistentConnection *>                 connectionPool;
 		mpd::MPDManager                                     *manager;
+=======
+                void    attach              (comcast_dash::logic::IDownloadRateObserver *observer);
+                void    notify              ();
+
+            private:
+                std::vector<comcast_dash::logic::IDownloadRateObserver *>   rateObservers;
+                std::deque<Chunk *>                                 downloadQueue;
+                std::vector<PersistentConnection *>                 connectionPool;
+               // logic::IAdaptationLogic                             *adaptationLogic;
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
                 stream_t                                            *stream;
                 int                                                 chunkCount;
                 int64_t                                             bpsAvg;

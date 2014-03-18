@@ -1,5 +1,5 @@
 /*
- * IBufferObserver.h
+ * IAdaptationLogic.h
  *****************************************************************************
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
@@ -22,22 +22,39 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef IBUFFEROBSERVER_H_
-#define IBUFFEROBSERVER_H_
+#ifndef IADAPTATIONLOGIC_H_
+#define IADAPTATIONLOGIC_H_
 
-#include <vlc_common.h>
+#include <http/Chunk.h>
+#include <adaptationlogic/IDownloadRateObserver.h>
+#include "mpd/Representation.h"
+#include "buffer/IBufferObserver.h"
 
 namespace comcast_dash
 {
-    namespace buffer
+    namespace logic
     {
-        class IBufferObserver
+        class IAdaptationLogic : public IDownloadRateObserver, public comcast_dash::buffer::IBufferObserver
         {
             public:
-                virtual ~IBufferObserver(){}
-                virtual void bufferLevelChanged(mtime_t bufferedMicroSec, int bufferedPercent) = 0;
+
+                enum LogicType
+                {
+                    Default,
+                    AlwaysBest,
+                    AlwaysLowest,
+                    RateBased
+                };
+
+                virtual comcast_dash::http::Chunk*                  getNextChunk            ()          = 0;
+                virtual const comcast_dash::mpd::Representation*    getCurrentRepresentation() const    = 0;
+                /**
+                 *  \return     The average bitrate in bits per second.
+                 */
+                virtual uint64_t                getBpsAvg               () const = 0;
+                virtual uint64_t                getBpsLastChunk         () const = 0;
         };
     }
 }
 
-#endif /* IBUFFEROBSERVER_H_ */
+#endif /* IADAPTATIONLOGIC_H_ */

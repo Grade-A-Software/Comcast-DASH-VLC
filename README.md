@@ -1,33 +1,30 @@
-Comcast VLC DASH Plugin
-===============
-Grade A Software
-================
+##### README 
 
-### How to Run the Code
-
-First, check out the source code for our version of VLC from `git clone https://github.com/Grade-A-Software/Comcast-DASH-VLC.git`
-
-Then build [(OSX)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-%28OSX%29),[(Linux)](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-%28Linux%29) the project and the plugin will be in the build directory.
-
-Finally, from within the build directory, execute `./vlc --stream-filter comcast_dash`
-
-### Our code is [right here](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter). PLEASE scroll down to read the README.md file for a breakdown of code.
-
-### We are referencing [this](https://github.com/Grade-A-Software/vlc/tree/master/modules/stream_filter/dash) portion of the VLC codebase as a model for using DASH with VLC.
-
-_We have not identified why this does not work for Comcast_
-
-Welcome to the project GitHub repository!
-
-### We do [SCRUM!](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Scrum-Process)
+###### What is this?
+The goal of this project is to create a plugin for VLC that works with Comcast's version of DASH.
 
 
-### User Stories
+###### Background
+This repository holds the code and product documentation associated with a project for the Computer Science Software Engineering Practices course at Metropolitan State University of Denver. We are students developing a VLC plugin for Comcast that uses a specialized version of [DASH](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/What-is-DASH%3F). Comcast's version of DASH does not work with the current VLC DASH plugin. This repository is a clone of [VLC](https://github.com/videolan/vlc) which we use to build and test the plugin. You’ll find that most of the code here is untouched VLC. 
 
-*User stories are on [Rally](https://rally1.rallydev.com).* 
-_You will need to log in to view this_
+###### Which directory should I be looking in?
+The code for the plugin exists in the [comcast_dash](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash) directory.<br/>
+The comcast_dash directory exists in the [stream_filter](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter) directory.<br/>
+The stream_filter directory is where all plugins for streaming content exists.
 
-### Documentation
+###### What version of VLC is this built on?
+2.2.0
 
-* _PLEASE_ read the README.md files in the [root directory](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/README.md), the [modules/stream_filter directory](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/README.md), and the [modules/stream_filter/comcast_dash](https://github.com/Grade-A-Software/Comcast-DASH-VLC/tree/master/modules/stream_filter/comcast_dash/README.md) directory
-* For full documentation of project requirements, architecture, design, and code available on the [Wiki](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki).
+###### How do I build this repository?
+[OSX](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-(OSX))<br/>
+[Linux](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/Build-Instructions-(Linux))
+
+###### How do I update VLC and use the plugin?
+Instructions are [HERE](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki/How-do-I-update-VLC-and-use-the-plugin%3F)<br/>
+Note: Functionality on future builds of VLC should work but are not guarenteed.
+
+###### How do I run this?
+From within the build directory in your command line, execute `./vlc --stream-filter comcast_dash`
+
+###### Documentation
+[Wiki](https://github.com/Grade-A-Software/Comcast-DASH-VLC/wiki)

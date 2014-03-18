@@ -1,11 +1,18 @@
 /*
  * Segment.cpp
  *****************************************************************************
+<<<<<<< HEAD
  * Copyright (C) 2010 - 2011 Klagenfurt University
  *
  * Created on: Aug 10, 2010
  * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
+=======
+ * Copyright (C) 2014 Grade-A-Software
+ *
+ * Created on: March 5, 2014
+ * Author: Scott Allen
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b
  *
  * This program is free software; you can redistribute it and/or modify it
  * under the terms of the GNU Lesser General Public License as published
@@ -25,6 +32,7 @@
 # include "config.h"
 #endif
 
+<<<<<<< HEAD
 #include "Segment.h"
 #include "Representation.h"
 
@@ -123,3 +131,54 @@ int Segment::getSize() const
 {
   return this->representation->getBandwidth() * std::stoi(this->duration);
 }
+=======
+#include <cstdlib>
+
+#include "Segment.h"
+
+using namespace comcast_dash::mpd;
+
+Segment::Segment() :
+duration(0),
+repeat(0),
+time(0)
+{
+    
+}
+
+Segment::~Segment()
+{
+    
+}
+
+
+int Segment::getDuration()
+{
+    return this->duration;
+}
+void Segment::setDuration(int d)
+{
+    this->duration = d;
+}
+
+int Segment::getRepeat()
+{
+    return this->repeat;
+}
+void Segment::setRepeat(int r)
+{
+    this->repeat = r;
+}
+
+int Segment::getTime()
+{
+    return this->time;
+}
+void Segment::setTime(int t)
+{
+    this->time = t;
+}
+
+
+
+>>>>>>> 69d723081c8842f51f638be671f61258df24ec2b

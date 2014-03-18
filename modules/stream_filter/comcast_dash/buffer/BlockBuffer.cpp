@@ -27,7 +27,7 @@
 
 #include "buffer/BlockBuffer.h"
 
-using namespace dash::buffer;
+using namespace comcast_dash::buffer;
 
 BlockBuffer::BlockBuffer    (stream_t *stream) :
              sizeMicroSec   (0),

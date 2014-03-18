@@ -1,0 +1,2 @@
+./DASHDownloader.cpp:65:        ret = conManager->read(block);
+./DASHDownloader.cpp~:66:        ret = conManager->read(block);
