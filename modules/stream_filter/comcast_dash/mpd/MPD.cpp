@@ -137,10 +137,10 @@ std::vector<std::string> MPD::getTimeLineURLs()
                 for (size_t s = 0; s < segments.size(); s++) {
                     
                     int repeat = segments.at(s)->getRepeat();
+                    int time = segments.at(s)->getTime();
                     for (int l = 0; l<repeat; l++) {
                         
                         std::stringstream ss;
-                        int time = segments.at(s)->getTime();
                         std::stringstream ssTime;
                         ssTime << time;
                         std::string timestr = ssTime.str();
@@ -176,7 +176,7 @@ std::vector<std::string> MPD::getTimeLineURLs()
                             index += toFindString.length();
                         }
                         
-                        
+                        time = time + segments.at(s)->getDuration();
                         ss << adaptationSets.at(a)->getBaseURL() << segmentTemplate;
                         urls.push_back(ss.str());
                         
