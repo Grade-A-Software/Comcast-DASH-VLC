@@ -25,6 +25,7 @@
 # include "config.h"
 #endif
 
+#include <limits>
 #include "MPD.h"
 
 using namespace comcast_dash::mpd;
@@ -35,7 +36,7 @@ MPD::MPD ()
 
 MPD::~MPD   ()
 {
-     vlc_delete_all( this->periods );
+    vlc_delete_all( this->periods );
 }
 
 const std::vector<Period*>& MPD::getPeriods() const
@@ -109,4 +110,81 @@ std::vector<std::string> MPD::getURLs()
     }
     return urls;
     
+}
+
+std::vector<std::string> MPD::getTimeLineURLs()
+{
+    std::vector<std::string> urls;
+    for (size_t p = 0; p < periods.size(); p++) {
+        std::vector<AdaptationSet *>  adaptationSets = periods.at(p)->getAdaptationSets();
+        for (size_t a = 0; a < adaptationSets.size(); a++) {
+            std::string contentType = adaptationSets.at(a)->getContentType();
+            if (contentType.compare("muxed")==0) {
+                
+                
+                std::vector<Representation *>  representations = adaptationSets.at(a)->getRepresentations();
+                std::vector<Segment *>  segments = adaptationSets.at(a)->getSegments();
+                int minBandwidth = std::numeric_limits<int>::max();;
+                int minRepIndex = std::numeric_limits<int>::max();;
+                for (size_t r = 0; r < representations.size(); r++) {
+                    int tempBandwidth = representations.at(r)->getBandwidth();
+                    if(tempBandwidth<minBandwidth){
+                        minRepIndex = r;
+                    }
+                }
+                
+                for (size_t s = 0; s < segments.size(); s++) {
+                    
+                    int repeat = segments.at(s)->getRepeat();
+                    for (int l = 0; l<repeat; l++) {
+                        
+                        std::stringstream ss;
+                        int time = segments.at(s)->getTime();
+                        std::stringstream ssTime;
+                        ssTime << time;
+                        std::string timestr = ssTime.str();
+                        
+                        std::string rep_id = representations.at(minRepIndex)->getId();
+                        
+                        std::string segmentTemplate = adaptationSets.at(a)->getSegmentTemplate();
+                        size_t index = 0;
+                        while (true) {
+                            std::string toFindString = "$RepresentationID$";
+                            /* Locate the substring to replace. */
+                            index = segmentTemplate.find(toFindString, index);
+                            if (index == std::string::npos) break;
+                            
+                            /* Make the replacement. */
+                            segmentTemplate.replace(index, toFindString.length(), rep_id);
+                            
+                            /* Advance index forward so the next iteration doesn't pick it up as well. */
+                            index += toFindString.length();
+                        }
+                        
+                        index = 0;
+                        while (true) {
+                            std::string toFindString = "$Time$";
+                            /* Locate the substring to replace. */
+                            index = segmentTemplate.find(toFindString, index);
+                            if (index == std::string::npos) break;
+                            
+                            /* Make the replacement. */
+                            segmentTemplate.replace(index, toFindString.length(), timestr);
+                            
+                            /* Advance index forward so the next iteration doesn't pick it up as well. */
+                            index += toFindString.length();
+                        }
+                        
+                        
+                        ss << adaptationSets.at(a)->getBaseURL() << segmentTemplate;
+                        urls.push_back(ss.str());
+                        
+                    }
+
+            }
+        }
+    }
+}
+return urls;
+
 }

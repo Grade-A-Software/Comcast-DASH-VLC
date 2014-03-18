@@ -53,6 +53,7 @@ namespace comcast_dash
             
             std::vector<std::string> getURLs();
             
+            std::vector<std::string> getTimeLineURLs();
         private:
             std::vector<Period *> periods;
         };

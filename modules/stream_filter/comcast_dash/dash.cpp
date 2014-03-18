@@ -111,9 +111,16 @@ static int Open(vlc_object_t *p_obj)
         
         std::vector<std::string> urls = mpd->getURLs();
         
-        for (size_t i = 0; i < urls.size(); i++) {
+//        for (size_t i = 0; i < urls.size(); i++) {
+//            
+//            msg_Info(p_stream,urls.at(i).c_str());
+//        }
+        
+        std::vector<std::string> timeLineURLs = mpd->getTimeLineURLs();
+        
+        for (size_t i = 0; i < timeLineURLs.size(); i++) {
             
-            msg_Info(p_stream,urls.at(i).c_str());
+            msg_Info(p_stream,timeLineURLs.at(i).c_str());
         }
     }
     
