@@ -71,12 +71,5 @@ void Segment::setTime(int t)
     this->time = t;
 }
 
-std::string Segment::getSegmentTemplate()
-{
-    return this->segmentTemplate;
-}
-void Segment::setSegmentTemplate(std::string st)
-{
-    this->segmentTemplate = st;
-}
+
 

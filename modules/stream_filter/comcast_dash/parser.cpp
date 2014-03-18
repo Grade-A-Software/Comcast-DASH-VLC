@@ -37,6 +37,10 @@ MPD * Parser::parse() {
             std::string contentType = adaptationSetNodes.at(i)->getAttributeValue("contentType");
             std::string id = adaptationSetNodes.at(i)->getAttributeValue("id");
             
+            Node * segmentTemplateNode = DOMHelper::getElementByTagName(adaptationSetNodes.at(i),"SegmentTemplate",false).at(0);
+            std::string segmentTemplate = segmentTemplateNode->getAttributeValue("media");
+            
+            adaptationSet->setSegmentTemplate(segmentTemplate);
             adaptationSet->setBaseURL(baseURL);
             adaptationSet->setContentType(contentType);
             adaptationSet->setId(id);
@@ -70,10 +74,6 @@ MPD * Parser::parse() {
             std::vector<Node *> segmentNodes = this->getSegments(adaptationSetNodes.at(i));
             for (size_t j = 0; j < segmentNodes.size(); j++) {
                 Segment *segment = new Segment;
-                
-                Node * segmentTemplateNode = DOMHelper::getElementByTagName(adaptationSetNodes.at(i),"SegmentTemplate",false).at(0);
-                std::string segmentTemplate = segmentTemplateNode->getAttributeValue("media");
-                segment->setSegmentTemplate(segmentTemplate);
                 
                 std::string timeString = segmentNodes.at(j)->getAttributeValue("t");
                 std::string durationString = segmentNodes.at(j)->getAttributeValue("d");

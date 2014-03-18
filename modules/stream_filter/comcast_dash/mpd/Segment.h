@@ -46,15 +46,11 @@ namespace comcast_dash
             
             int getTime();
             void setTime(int t);
-
-            std::string getSegmentTemplate();
-            void setSegmentTemplate(std::string st);
             
         private:
             int duration;
             int repeat;
             int time;
-            std::string segmentTemplate;
         };
     }
 }
