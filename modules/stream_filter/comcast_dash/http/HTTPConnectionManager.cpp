@@ -29,15 +29,14 @@
 #include "mpd/Segment.h"
 
 using namespace comcast_dash::http;
-using namespace comcast_dash::logic;
+using namespace comcast_dash::mpd;
 
 const size_t    HTTPConnectionManager::PIPELINE               = 80;
 const size_t    HTTPConnectionManager::PIPELINELENGTH         = 2;
 const uint64_t  HTTPConnectionManager::CHUNKDEFAULTBITRATE    = 1;
 
-HTTPConnectionManager::HTTPConnectionManager    (//logic::IAdaptationLogic *adaptationLogic,
-						 stream_t *stream) :
-                      // adaptationLogic          (adaptationLogic),
+HTTPConnectionManager::HTTPConnectionManager    (MPD *mpd, stream_t *stream) :
+                       mpd     (mpd),
                        stream                   (stream),
                        chunkCount               (0),
                        bpsAvg                   (0),
@@ -62,12 +61,12 @@ void                                HTTPConnectionManager::closeAllConnections  
 int                                 HTTPConnectionManager::read                     (block_t *block)
 {
     if(this->downloadQueue.size() == 0)
-       //if(!this->addChunk(this->adaptationLogic->getNextChunk()))
+       if(!this->addChunk(this->mpd->getNextChunk()))
             return 0;
 
-   /* if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
+    if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
        this->downloadQueue.size() < HTTPConnectionManager::PIPELINELENGTH)
-       this->addChunk(this->adaptationLogic->getNextChunk();*/
+       this->addChunk(this->mpd->getNextChunk());
 
     int ret = 0;
 
@@ -97,17 +96,7 @@ int                                 HTTPConnectionManager::read                 
 
     return ret;
 }
-void                                HTTPConnectionManager::attach                   (IDownloadRateObserver *observer)
-{
-    this->rateObservers.push_back(observer);
-}
-void                                HTTPConnectionManager::notify                   ()
-{
-    if ( this->bpsAvg == 0 )
-        return ;
-    for(size_t i = 0; i < this->rateObservers.size(); i++)
-        this->rateObservers.at(i)->downloadRateChanged(this->bpsAvg, this->bpsLastChunk);
-}
+
 std::vector<PersistentConnection *> HTTPConnectionManager::getConnectionsForHost    (const std::string &hostname)
 {
     std::vector<PersistentConnection *> cons;
@@ -134,7 +123,6 @@ void                                HTTPConnectionManager::updateStatistics     
     if(this->bpsCurrentChunk < 0)
         this->bpsCurrentChunk = 0;
 
-    this->notify();
 }
 bool                                HTTPConnectionManager::addChunk                 (Chunk *chunk)
 {

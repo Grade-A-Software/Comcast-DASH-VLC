@@ -1,0 +1,206 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXFileReference section */
+		C4D8E07E18E1128200AAE599 /* .git */ = {isa = PBXFileReference; lastKnownFileType = folder; path = .git; sourceTree = "<group>"; };
+		C4D8E07F18E1128200AAE599 /* .gitattributes */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitattributes; sourceTree = "<group>"; };
+		C4D8E08018E1128200AAE599 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		C4D8E08118E1128200AAE599 /* .mailmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = .mailmap; sourceTree = "<group>"; };
+		C4D8E08218E1128200AAE599 /* aclocal.m4 */ = {isa = PBXFileReference; lastKnownFileType = text; path = aclocal.m4; sourceTree = "<group>"; };
+		C4D8E08318E1128200AAE599 /* AUTHORS */ = {isa = PBXFileReference; lastKnownFileType = text; path = AUTHORS; sourceTree = "<group>"; };
+		C4D8E08418E1128200AAE599 /* autom4te.cache */ = {isa = PBXFileReference; lastKnownFileType = folder; path = autom4te.cache; sourceTree = "<group>"; };
+		C4D8E08518E1128200AAE599 /* autotools */ = {isa = PBXFileReference; lastKnownFileType = folder; path = autotools; sourceTree = "<group>"; };
+		C4D8E08618E1128200AAE599 /* bin */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bin; sourceTree = "<group>"; };
+		C4D8E08718E1128200AAE599 /* bootstrap */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = bootstrap; sourceTree = "<group>"; };
+		C4D8E08818E1128200AAE599 /* build */ = {isa = PBXFileReference; lastKnownFileType = folder; path = build; sourceTree = "<group>"; };
+		C4D8E08918E1128200AAE599 /* compat */ = {isa = PBXFileReference; lastKnownFileType = folder; path = compat; sourceTree = "<group>"; };
+		C4D8E08A18E1128200AAE599 /* config.h.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = config.h.in; sourceTree = "<group>"; };
+		C4D8E08B18E1128200AAE599 /* configure */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = configure; sourceTree = "<group>"; };
+		C4D8E08C18E1128200AAE599 /* configure.ac */ = {isa = PBXFileReference; lastKnownFileType = text; path = configure.ac; sourceTree = "<group>"; };
+		C4D8E08D18E1128200AAE599 /* contrib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = contrib; sourceTree = "<group>"; };
+		C4D8E08E18E1128200AAE599 /* COPYING */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING; sourceTree = "<group>"; };
+		C4D8E08F18E1128200AAE599 /* COPYING.LIB */ = {isa = PBXFileReference; lastKnownFileType = text; path = COPYING.LIB; sourceTree = "<group>"; };
+		C4D8E09018E1128200AAE599 /* doc */ = {isa = PBXFileReference; lastKnownFileType = folder; path = doc; sourceTree = "<group>"; };
+		C4D8E09118E1128200AAE599 /* extras */ = {isa = PBXFileReference; lastKnownFileType = folder; path = extras; sourceTree = "<group>"; };
+		C4D8E09218E1128200AAE599 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; path = include; sourceTree = "<group>"; };
+		C4D8E09318E1128200AAE599 /* INSTALL */ = {isa = PBXFileReference; lastKnownFileType = text; path = INSTALL; sourceTree = "<group>"; };
+		C4D8E09418E1128200AAE599 /* lib */ = {isa = PBXFileReference; lastKnownFileType = folder; path = lib; sourceTree = "<group>"; };
+		C4D8E09518E1128200AAE599 /* m4 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = m4; sourceTree = "<group>"; };
+		C4D8E09618E1128200AAE599 /* make-alias */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = "make-alias"; sourceTree = "<group>"; };
+		C4D8E09718E1128200AAE599 /* Makefile.am */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.am; sourceTree = "<group>"; };
+		C4D8E09818E1128200AAE599 /* Makefile.in */ = {isa = PBXFileReference; lastKnownFileType = text; path = Makefile.in; sourceTree = "<group>"; };
+		C4D8E09918E1128200AAE599 /* modules */ = {isa = PBXFileReference; lastKnownFileType = folder; path = modules; sourceTree = "<group>"; };
+		C4D8E09A18E1128200AAE599 /* NEWS */ = {isa = PBXFileReference; lastKnownFileType = text; path = NEWS; sourceTree = "<group>"; };
+		C4D8E09B18E1128200AAE599 /* po */ = {isa = PBXFileReference; lastKnownFileType = folder; path = po; sourceTree = "<group>"; };
+		C4D8E09C18E1128200AAE599 /* README */ = {isa = PBXFileReference; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		C4D8E09D18E1128200AAE599 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
+		C4D8E09E18E1128200AAE599 /* share */ = {isa = PBXFileReference; lastKnownFileType = folder; path = share; sourceTree = "<group>"; };
+		C4D8E09F18E1128200AAE599 /* src */ = {isa = PBXFileReference; lastKnownFileType = folder; path = src; sourceTree = "<group>"; };
+		C4D8E0A018E1128200AAE599 /* test */ = {isa = PBXFileReference; lastKnownFileType = folder; path = test; sourceTree = "<group>"; };
+		C4D8E0A118E1128200AAE599 /* THANKS */ = {isa = PBXFileReference; lastKnownFileType = text; path = THANKS; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		C4D8E07818E1128200AAE599 = {
+			isa = PBXGroup;
+			children = (
+				C4D8E07E18E1128200AAE599 /* .git */,
+				C4D8E07F18E1128200AAE599 /* .gitattributes */,
+				C4D8E08018E1128200AAE599 /* .gitignore */,
+				C4D8E08118E1128200AAE599 /* .mailmap */,
+				C4D8E08218E1128200AAE599 /* aclocal.m4 */,
+				C4D8E08318E1128200AAE599 /* AUTHORS */,
+				C4D8E08418E1128200AAE599 /* autom4te.cache */,
+				C4D8E08518E1128200AAE599 /* autotools */,
+				C4D8E08618E1128200AAE599 /* bin */,
+				C4D8E08718E1128200AAE599 /* bootstrap */,
+				C4D8E08818E1128200AAE599 /* build */,
+				C4D8E08918E1128200AAE599 /* compat */,
+				C4D8E08A18E1128200AAE599 /* config.h.in */,
+				C4D8E08B18E1128200AAE599 /* configure */,
+				C4D8E08C18E1128200AAE599 /* configure.ac */,
+				C4D8E08D18E1128200AAE599 /* contrib */,
+				C4D8E08E18E1128200AAE599 /* COPYING */,
+				C4D8E08F18E1128200AAE599 /* COPYING.LIB */,
+				C4D8E09018E1128200AAE599 /* doc */,
+				C4D8E09118E1128200AAE599 /* extras */,
+				C4D8E09218E1128200AAE599 /* include */,
+				C4D8E09318E1128200AAE599 /* INSTALL */,
+				C4D8E09418E1128200AAE599 /* lib */,
+				C4D8E09518E1128200AAE599 /* m4 */,
+				C4D8E09618E1128200AAE599 /* make-alias */,
+				C4D8E09718E1128200AAE599 /* Makefile.am */,
+				C4D8E09818E1128200AAE599 /* Makefile.in */,
+				C4D8E09918E1128200AAE599 /* modules */,
+				C4D8E09A18E1128200AAE599 /* NEWS */,
+				C4D8E09B18E1128200AAE599 /* po */,
+				C4D8E09C18E1128200AAE599 /* README */,
+				C4D8E09D18E1128200AAE599 /* README.md */,
+				C4D8E09E18E1128200AAE599 /* share */,
+				C4D8E09F18E1128200AAE599 /* src */,
+				C4D8E0A018E1128200AAE599 /* test */,
+				C4D8E0A118E1128200AAE599 /* THANKS */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXLegacyTarget section */
+		C4D8E07D18E1128200AAE599 /* MPDParserDevelopment */ = {
+			isa = PBXLegacyTarget;
+			buildArgumentsString = "$(ACTION)";
+			buildConfigurationList = C4D8E0A218E1128200AAE599 /* Build configuration list for PBXLegacyTarget "MPDParserDevelopment" */;
+			buildPhases = (
+			);
+			buildToolPath = /usr/bin/make;
+			buildWorkingDirectory = /Users/Hector/VLC/MPDParserDevelopment;
+			dependencies = (
+			);
+			name = MPDParserDevelopment;
+			passBuildSettingsInEnvironment = 1;
+			productName = MPDParserDevelopment;
+		};
+/* End PBXLegacyTarget section */
+
+/* Begin PBXProject section */
+		C4D8E07918E1128200AAE599 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = C4D8E07C18E1128200AAE599 /* Build configuration list for PBXProject "MPDParserDevelopment" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = C4D8E07818E1128200AAE599;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C4D8E07D18E1128200AAE599 /* MPDParserDevelopment */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin XCBuildConfiguration section */
+		C4D8E07A18E1128200AAE599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		C4D8E07B18E1128200AAE599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+		C4D8E0A318E1128200AAE599 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				DEBUGGING_SYMBOLS = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = MPDParserDevelopment;
+			};
+			name = Debug;
+		};
+		C4D8E0A418E1128200AAE599 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				OTHER_CFLAGS = "";
+				OTHER_LDFLAGS = "";
+				PRODUCT_NAME = MPDParserDevelopment;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C4D8E07C18E1128200AAE599 /* Build configuration list for PBXProject "MPDParserDevelopment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4D8E07A18E1128200AAE599 /* Debug */,
+				C4D8E07B18E1128200AAE599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C4D8E0A218E1128200AAE599 /* Build configuration list for PBXLegacyTarget "MPDParserDevelopment" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C4D8E0A318E1128200AAE599 /* Debug */,
+				C4D8E0A418E1128200AAE599 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C4D8E07918E1128200AAE599 /* Project object */;
+}

@@ -10,8 +10,14 @@ endif
 
 libcomcast_dash_plugin_la_SOURCES = \
 	stream_filter/comcast_dash/dash.cpp \
+	stream_filter/comcast_dash/DASHManager.h \
+	stream_filter/comcast_dash/DASHManager.cpp \
+	stream_filter/comcast_dash/DASHDownloader.h \
+	stream_filter/comcast_dash/DASHDownloader.cpp \
 	stream_filter/comcast_dash/parser.h \
 	stream_filter/comcast_dash/parser.cpp \
+	stream_filter/comcast_dash/Helper.h \
+	stream_filter/comcast_dash/Helper.cpp \
 	stream_filter/comcast_dash/xml/Node.h \
 	stream_filter/comcast_dash/xml/Node.cpp \
 	stream_filter/comcast_dash/xml/DOMParser.h \
@@ -20,6 +26,16 @@ libcomcast_dash_plugin_la_SOURCES = \
 	stream_filter/comcast_dash/xml/DOMHelper.cpp \
     stream_filter/comcast_dash/mpd/AdaptationSet.h \
 	stream_filter/comcast_dash/mpd/AdaptationSet.cpp \
+    stream_filter/comcast_dash/http/Chunk.h \
+	stream_filter/comcast_dash/http/Chunk.cpp \
+    stream_filter/comcast_dash/http/HTTPConnectionManager.h \
+	stream_filter/comcast_dash/http/HTTPConnectionManager.cpp \
+    stream_filter/comcast_dash/http/HTTPConnection.h \
+	stream_filter/comcast_dash/http/HTTPConnection.cpp \
+    stream_filter/comcast_dash/buffer/BlockBuffer.h \
+    stream_filter/comcast_dash/buffer/BlockBuffer.cpp \
+    stream_filter/comcast_dash/http/PersistentConnection.h \
+	stream_filter/comcast_dash/http/PersistentConnection.cpp \
 	stream_filter/comcast_dash/mpd/MPD.h \
 	stream_filter/comcast_dash/mpd/MPD.cpp \
 	stream_filter/comcast_dash/mpd/Period.h \

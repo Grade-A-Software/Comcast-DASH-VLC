@@ -32,6 +32,7 @@
 #include <vlc_common.h>
 #include <vlc_plugin.h>
 
+#include "DASHManager.h"
 #include "xml/DOMParser.h"
 #include "parser.h"
 #include <errno.h>
@@ -40,6 +41,7 @@
 
 using namespace comcast_dash;
 using namespace comcast_dash::mpd;
+using namespace comcast_dash::http;
 
 
 
@@ -78,6 +80,7 @@ vlc_module_end ()
  *****************************************************************************/
 struct stream_sys_t
 {
+    MPD * p_mpd;
     uint64_t                            position;
     bool                                isLive;
 };
@@ -115,13 +118,31 @@ static int Open(vlc_object_t *p_obj)
 //            
 //            msg_Info(p_stream,urls.at(i).c_str());
 //        }
+//        msg_Info(p_stream,"sssadasdass");
+//        Chunk *chunk = mpd->getNextChunk();
+//        while(chunk){
+//            msg_Info(p_stream,chunk->getUrl().c_str());
+//            chunk = mpd->getNextChunk();
+//        }
+//        msg_Info(p_stream,"sss");
+        stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
+        if (unlikely(p_sys == NULL))
+            return VLC_ENOMEM;
+        p_sys->p_mpd = mpd;
         
-        std::vector<std::string> timeLineURLs = mpd->getTimeLineURLs();
+        DASHManager* p_dashManager = new DASHManager(p_sys->p_mpd, p_stream);
         
-        for (size_t i = 0; i < timeLineURLs.size(); i++) {
-            
-            msg_Info(p_stream,timeLineURLs.at(i).c_str());
+        if(!p_dashManager->start())
+        {
+            msg_Info(p_stream,"sss");
+        }else{
+            msg_Info(p_stream,"aaa");
         }
+//        std::vector<std::string> timeLineURLs = mpd->getTimeLineURLs();
+//        for (size_t i = 0; i < timeLineURLs.size(); i++) {
+//            
+//            msg_Info(p_stream,timeLineURLs.at(i).c_str());
+//        }
     }
     
     

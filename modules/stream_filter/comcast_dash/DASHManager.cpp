@@ -41,7 +41,7 @@ DASHManager::DASHManager   ( MPD *mpd,
              currentChunk   ( NULL ),
             // adaptationLogic( NULL ),
              //logicType      ( type ),
-             mpdManager     ( NULL ),
+//             mpdManager     ( NULL ),
              mpd            ( mpd ),
              stream         ( stream ),
              downloader     ( NULL ),
@@ -54,14 +54,14 @@ DASHManager::~DASHManager   ()
     delete this->buffer;
     delete this->conManager;
   //  delete this->adaptationLogic;
-    delete this->mpdManager;
+//    delete this->mpdManager;
 }
 
 bool    DASHManager::start()
 {
-    this->mpdManager = mpd::MPDManagerFactory::create( mpd );
+    //this->mpdManager = mpd::MPDManagerFactory::create( mpd );
 
-    if ( this->mpdManager == NULL )
+    if ( this->mpd == NULL )
         return false;
 
    /* this->adaptationLogic = AdaptationLogicFactory::create( this->logicType, this->mpdManager, this->stream);
@@ -70,7 +70,7 @@ bool    DASHManager::start()
         return false;
 */
     this->conManager = new comcast_dash::http::HTTPConnectionManager(
-				//this->adaptationLogic,
+				this->mpd,
 						 this->stream);
     this->buffer     = new BlockBuffer(this->stream);
     this->downloader = new DASHDownloader(this->conManager, this->buffer);
@@ -95,10 +95,10 @@ int     DASHManager::peek( const uint8_t **pp_peek, size_t i_peek )
     return this->buffer->peek(pp_peek, i_peek);
 }
 
-const mpd::IMPDManager*         DASHManager::getMpdManager() const
-{
-    return this->mpdManager;
-}
+//const mpd::IMPDManager*         DASHManager::getMpdManager() const
+//{
+//    return this->mpdManager;
+//}
 /*
 const logic::IAdaptationLogic*  DASHManager::getAdaptionLogic() const
 {

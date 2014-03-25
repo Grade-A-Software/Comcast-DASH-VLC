@@ -29,8 +29,9 @@
 #include "MPD.h"
 
 using namespace comcast_dash::mpd;
+using namespace comcast_dash::http;
 
-MPD::MPD ()
+MPD::MPD () : count(0)
 {
 }
 
@@ -47,6 +48,45 @@ const std::vector<Period*>& MPD::getPeriods() const
 void MPD::addPeriod(Period *period)
 {
     this->periods.push_back(period);
+}
+
+
+
+Chunk* MPD::getNextChunk(){
+    Chunk *chunk = new Chunk();
+    if (count++ < this->getTimeLineURLs().size()){
+        chunk->setUrl(this->getTimeLineURLs().at(count-1));
+        chunk->setBitrate(this->getWorstRepresentation()->getBandwidth());
+        return chunk;
+    }
+    return NULL;
+}
+
+Representation* MPD::getWorstRepresentation() {
+    Representation *toReturn = NULL;
+    for (size_t p = 0; p < periods.size(); p++) {
+        std::vector<AdaptationSet *>  adaptationSets = periods.at(p)->getAdaptationSets();
+        for (size_t a = 0; a < adaptationSets.size(); a++) {
+            std::string contentType = adaptationSets.at(a)->getContentType();
+            if (contentType.compare("muxed")==0) {
+                
+                
+                std::vector<Representation *>  representations = adaptationSets.at(a)->getRepresentations();
+                std::vector<Segment *>  segments = adaptationSets.at(a)->getSegments();
+                int minBandwidth = std::numeric_limits<int>::max();;
+                int minRepIndex = std::numeric_limits<int>::max();;
+                for (size_t r = 0; r < representations.size(); r++) {
+                    int tempBandwidth = representations.at(r)->getBandwidth();
+                    if(tempBandwidth<minBandwidth){
+                        minRepIndex = r;
+                        minBandwidth=tempBandwidth;
+                    }
+                }
+                toReturn = representations.at(minRepIndex);
+            }
+        }
+    }
+    return toReturn;
 }
 
 std::vector<std::string> MPD::getURLs()

@@ -36,6 +36,7 @@
 
 #include "http/PersistentConnection.h"
 #include "adaptationlogic/IAdaptationLogic.h"
+#include "mpd/MPD.h"
 
 namespace comcast_dash
 {
@@ -44,16 +45,13 @@ namespace comcast_dash
         class HTTPConnectionManager
         {
             public:
-                HTTPConnectionManager           (//logic::IAdaptationLogic *adaptationLogic,
-							 stream_t *stream);
+            HTTPConnectionManager           (mpd::MPD * mpd, stream_t *stream);
                 virtual ~HTTPConnectionManager  ();
 
                 void    closeAllConnections ();
                 bool    addChunk            (Chunk *chunk);
                 int     read                (block_t *block);
-                void    attach              (comcast_dash::logic::IDownloadRateObserver *observer);
-                void    notify              ();
-
+               
             private:
                 std::vector<comcast_dash::logic::IDownloadRateObserver *>   rateObservers;
                 std::deque<Chunk *>                                 downloadQueue;
@@ -68,6 +66,7 @@ namespace comcast_dash
                 int64_t                                             bytesReadChunk;
                 double                                              timeSession;
                 double                                              timeChunk;
+                mpd::MPD    *mpd;
 
                 static const size_t     PIPELINE;
                 static const size_t     PIPELINELENGTH;

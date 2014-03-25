@@ -36,6 +36,7 @@
 #include "mpd/Representation.h"
 #include "mpd/Segment.h"
 #include "mpd/AdaptationSet.h"
+#include "http/Chunk.h"
 
 namespace comcast_dash
 {
@@ -52,10 +53,14 @@ namespace comcast_dash
             void addPeriod(Period *period);
             
             std::vector<std::string> getURLs();
-            
+            http::Chunk * getNextChunk();
             std::vector<std::string> getTimeLineURLs();
+            
+            Representation* getWorstRepresentation();
         private:
             std::vector<Period *> periods;
+            uint64_t count;
+            std::vector<std::string> schedule;
         };
     }
 }
