@@ -143,24 +143,18 @@ bool                PersistentConnection::addChunk          (Chunk *chunk)
   msg_Info(this->stream,chunk->getUrl().c_str());
     if(chunk == NULL)
         return false;
-    msg_Info(this->stream,"Test1");
     if(!this->isInit)
         return this->init(chunk);
-    msg_Info(this->stream,"Test2");
     if(!chunk->hasHostname())
         if(!this->setUrlRelative(chunk))
             return false;
-    msg_Info(this->stream,"Test3");
     if(chunk->getHostname().compare(this->hostname))
         return false;
-    msg_Info(this->stream,"Test4");
     if(this->sendData(this->prepareRequest(chunk)))
     {
-    msg_Info(this->stream,"Test5");
         this->chunkQueue.push_back(chunk);
         return true;
     }
-    msg_Info(this->stream,"Test1");
     return false;
 }
 bool                PersistentConnection::initChunk         (Chunk *chunk)

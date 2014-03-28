@@ -70,6 +70,7 @@ bool DASHDownloader::start() {
     stream_t *stream = t_sys->stream;
     int                     ret                 = 0;
 
+    int i = 0;
     do {
       
       msg_Info(stream,"READING");
@@ -87,8 +88,9 @@ bool DASHDownloader::start() {
 
             bufBlock->i_length = block->i_length;
             buffer->put(bufBlock);
-        } 
-    }while(!buffer->getEOF());
+        }
+        i++;
+    }while(i<5);
     buffer->setEOF(true);
     block_Release(block);
 

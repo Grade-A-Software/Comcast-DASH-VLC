@@ -81,6 +81,7 @@ vlc_module_end ()
 struct stream_sys_t
 {
     MPD * p_mpd;
+    DASHManager   *p_dashManager;
     uint64_t                            position;
     bool                                isLive;
 };
@@ -107,62 +108,40 @@ static int Open(vlc_object_t *p_obj)
         msg_Dbg( p_stream, "Could not parse mpd file." );
         return VLC_EGENERIC;
     }
-    else {
+    
         //      parser.print();
         Parser * dashParser = new Parser(parser.getRootNode(),p_stream);
         MPD *mpd = dashParser->parse();
         
-        std::vector<std::string> urls = mpd->getURLs();
+        if(mpd == NULL)
+            return VLC_EGENERIC;
         
-//        for (size_t i = 0; i < urls.size(); i++) {
-//            
-//            msg_Info(p_stream,urls.at(i).c_str());
-//        }
-//        msg_Info(p_stream,"sssadasdass");
-//        Chunk *chunk = mpd->getNextChunk();
-//        while(chunk){
-//            msg_Info(p_stream,chunk->getUrl().c_str());
-//            chunk = mpd->getNextChunk();
-//        }
-//        msg_Info(p_stream,"sss");
         stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
         if (unlikely(p_sys == NULL))
             return VLC_ENOMEM;
-        p_sys->p_mpd = mpd;
-        
+
+         p_sys->p_mpd = mpd;
         DASHManager* p_dashManager = new DASHManager(p_sys->p_mpd, p_stream);
+        
         
         if(!p_dashManager->start())
         {
-            msg_Info(p_stream,"sss");
-        }else{
-            msg_Info(p_stream,"aaa");
+            delete p_dashManager;
+            free( p_sys );
+            return VLC_EGENERIC;
         }
-//        std::vector<std::string> timeLineURLs = mpd->getTimeLineURLs();
-//        for (size_t i = 0; i < timeLineURLs.size(); i++) {
-//            
-//            msg_Info(p_stream,timeLineURLs.at(i).c_str());
-//        }
-    }
-    
-    
-    
-    
-    
-    stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
-    if (unlikely(p_sys == NULL))
-        return VLC_ENOMEM;
-    
-    
-    p_sys->position         = 0;
-    p_sys->isLive           = true;
-    p_stream->p_sys         = p_sys;
-    p_stream->pf_read       = Read;
-    p_stream->pf_peek       = Peek;
-    p_stream->pf_control    = Control;
-    
-    
-    return VLC_SUCCESS;
+        
+        p_sys->p_dashManager    = p_dashManager;
+        p_sys->position         = 0;
+        p_sys->isLive           = false;
+        p_stream->p_sys         = p_sys;
+        p_stream->pf_read       = Read;
+        p_stream->pf_peek       = Peek;
+        p_stream->pf_control    = Control;
+        
+        
+        return VLC_SUCCESS;
+
 }
 /*****************************************************************************
  * Close:
@@ -192,10 +171,42 @@ static int  Seek            ( stream_t *p_stream, uint64_t pos )
 static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len)
 {
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
+    DASHManager   *p_dashManager  = p_sys->p_dashManager;
     uint8_t             *p_buffer       = (uint8_t*)p_ptr;
     int                 i_ret           = 0;
     int                 i_read          = 0;
     
+    msg_Info(p_stream,"sss");
+    
+    while( i_len > 0 )
+    {
+        i_read = p_dashManager->read( p_buffer, i_len );
+        if( i_read < 0 )
+            break;
+        p_buffer += i_read;
+        i_ret += i_read;
+        i_len -= i_read;
+    }
+    p_buffer -= i_ret;
+    
+    if (i_read < 0)
+    {
+        switch (errno)
+        {
+            case EINTR:
+            case EAGAIN:
+                break;
+            default:
+                msg_Dbg(p_stream, "DASH Read: failed to read (%s)",
+                        vlc_strerror_c(errno));
+                return 0;
+        }
+        return 0;
+    }
+    
+    p_sys->position += i_ret;
+    
+    return i_ret;
     
     return VLC_SUCCESS;
 }
@@ -203,7 +214,9 @@ static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len
 static int  Peek            (stream_t *p_stream, const uint8_t **pp_peek, unsigned int i_peek)
 {
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
-    return 0;
+    DASHManager   *p_dashManager  = p_sys->p_dashManager;
+    return p_dashManager->peek( pp_peek, i_peek );
+
 }
 
 static int  Control         (stream_t *p_stream, int i_query, va_list args)

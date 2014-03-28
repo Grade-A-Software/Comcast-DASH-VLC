@@ -24,7 +24,9 @@
 #ifdef HAVE_CONFIG_H
 # include "config.h"
 #endif
-
+#include <string>
+#include <sstream>
+#include <iostream>
 #include "buffer/BlockBuffer.h"
 
 using namespace comcast_dash::buffer;
@@ -61,7 +63,6 @@ BlockBuffer::~BlockBuffer   ()
 int     BlockBuffer::peek                 (const uint8_t **pp_peek, unsigned int len)
 {
     vlc_mutex_lock(&this->monitorMutex);
-
     while(this->sizeBytes == 0 && !this->isEOF)
         vlc_cond_wait(&this->full, &this->monitorMutex);
 
@@ -69,6 +70,7 @@ int     BlockBuffer::peek                 (const uint8_t **pp_peek, unsigned int
     {
         vlc_cond_signal(&this->empty);
         vlc_mutex_unlock(&this->monitorMutex);
+        
         return 0;
     }
 
@@ -81,6 +83,9 @@ int     BlockBuffer::peek                 (const uint8_t **pp_peek, unsigned int
     *pp_peek = this->peekBlock->p_buffer;
 
     vlc_mutex_unlock(&this->monitorMutex);
+    std::stringstream ss;
+    ss<<"Is Peeking length: "<<ret;
+    msg_Info(stream,ss.str().c_str());
     return ret;
 }
 
@@ -101,6 +106,8 @@ int     BlockBuffer::seekBackwards       (unsigned len)
 
 int     BlockBuffer::get                  (void *p_data, unsigned int len)
 {
+    
+    msg_Info(stream, "eeee");
     vlc_mutex_lock(&this->monitorMutex);
 
     while(this->sizeBytes == 0 && !this->isEOF)

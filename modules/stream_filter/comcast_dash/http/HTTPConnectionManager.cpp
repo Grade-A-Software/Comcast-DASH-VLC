@@ -65,9 +65,7 @@ int                                 HTTPConnectionManager::read                 
     if(this->downloadQueue.size() == 0)
        if(!this->addChunk(this->mpd->getNextChunk()))
             return 0;
-  std::stringstream ss2;
-  ss2 << this->downloadQueue.size() << " <- size";
-  msg_Info(stream,ss2.str().c_str());
+    
     if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
        this->downloadQueue.size() < HTTPConnectionManager::PIPELINELENGTH)
        this->addChunk(this->mpd->getNextChunk());
@@ -133,25 +131,19 @@ bool                                HTTPConnectionManager::addChunk             
 
     if(chunk == NULL)
         return false;
-    std::stringstream ss;
-    ss << &(this->stream); //"adding chunk " << chunk->getUrl();
-    msg_Info(this->stream,ss.str().c_str());
+    
     this->downloadQueue.push_back(chunk);
-    msg_Info(this->stream,"test");   
     std::vector<PersistentConnection *> cons = this->getConnectionsForHost(chunk->getHostname());
-   msg_Info(this->stream,"tes2");
    if(cons.size() == 0)
-     {   msg_Info(this->stream,"test3");
+     {
         PersistentConnection *con = new PersistentConnection(this->stream);
         this->connectionPool.push_back(con);
         cons.push_back(con);
-	msg_Info(this->stream,"test4");
      }
 
     size_t pos = this->chunkCount % cons.size();
  
     cons.at(pos)->addChunk(chunk);
-    msg_Info(this->stream,"Chunk aaaaaaaaah");
     chunk->setConnection(cons.at(pos));
 
     this->chunkCount++;
