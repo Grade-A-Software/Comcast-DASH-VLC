@@ -31,10 +31,13 @@ using namespace comcast_dash::http;
 
 const int PersistentConnection::RETRY = 5;
 
-PersistentConnection::PersistentConnection  (stream_t *stream) :
+PersistentConnection::PersistentConnection  (stream_t * const stream) :
                       HTTPConnection        (stream),
                       isInit                (false)
 {
+  std::stringstream ss;
+  ss <<"old -> "<< &stream; //"shit!"; //net_ConnectTCP(stream,"nh.lab.xcal.tv",80) << " Connection Persists";
+  msg_Info(stream, ss.str().c_str());
 }
 PersistentConnection::~PersistentConnection ()
 {
@@ -102,6 +105,7 @@ std::string         PersistentConnection::prepareRequest    (Chunk *chunk)
 
         request = req.str();
     }
+    msg_Info(this->stream,request.c_str());
     return request;
 }
 bool                PersistentConnection::init              (Chunk *chunk)
@@ -115,9 +119,13 @@ bool                PersistentConnection::init              (Chunk *chunk)
     if(!chunk->hasHostname())
         if(!this->setUrlRelative(chunk))
             return false;
-
+    msg_Info(this->stream,"Does it work?");
+    std::stringstream ss;
+    ss<<&(this->stream) << "<- init";
+    msg_Info(this->stream,ss.str().c_str());
+    msg_Info(this->stream,chunk->getHostname().c_str());
     this->httpSocket = net_ConnectTCP(this->stream, chunk->getHostname().c_str(), chunk->getPort());
-
+    msg_Info(this->stream,"It does!");
     if(this->httpSocket == -1)
         return false;
 
@@ -131,25 +139,28 @@ bool                PersistentConnection::init              (Chunk *chunk)
 }
 bool                PersistentConnection::addChunk          (Chunk *chunk)
 {
+  msg_Info(this->stream,"Added chunk to persistent connection");
+  msg_Info(this->stream,chunk->getUrl().c_str());
     if(chunk == NULL)
         return false;
-
+    msg_Info(this->stream,"Test1");
     if(!this->isInit)
         return this->init(chunk);
-
+    msg_Info(this->stream,"Test2");
     if(!chunk->hasHostname())
         if(!this->setUrlRelative(chunk))
             return false;
-
+    msg_Info(this->stream,"Test3");
     if(chunk->getHostname().compare(this->hostname))
         return false;
-
+    msg_Info(this->stream,"Test4");
     if(this->sendData(this->prepareRequest(chunk)))
     {
+    msg_Info(this->stream,"Test5");
         this->chunkQueue.push_back(chunk);
         return true;
     }
-
+    msg_Info(this->stream,"Test1");
     return false;
 }
 bool                PersistentConnection::initChunk         (Chunk *chunk)

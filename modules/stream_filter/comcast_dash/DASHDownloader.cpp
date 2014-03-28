@@ -33,11 +33,13 @@ using namespace comcast_dash::logic;
 using namespace comcast_dash::buffer;
 
 
-DASHDownloader::DASHDownloader  (HTTPConnectionManager *conManager, BlockBuffer *buffer)
+DASHDownloader::DASHDownloader  (HTTPConnectionManager *conManager, BlockBuffer *buffer, stream_t *stream) : stream(stream)
 {
     this->t_sys                     = (thread_sys_t *) malloc(sizeof(thread_sys_t));
     this->t_sys->conManager         = conManager;
     this->t_sys->buffer             = buffer;
+    this->t_sys->stream = stream;
+
 }
 DASHDownloader::~DASHDownloader ()
 {
@@ -46,24 +48,38 @@ DASHDownloader::~DASHDownloader ()
     free(this->t_sys);
 }
 
-bool        DASHDownloader::start       ()
+/*bool        DASHDownloader::start       ()
 {
-    if(vlc_clone(&(this->dashDLThread), download, (void*)this->t_sys, VLC_THREAD_PRIORITY_LOW))
-        return false;
+  msg_Info(this->stream, "Starting DOWNLOAD");
+  vlc_join(this->dashDLThread, NULL);
+  if(vlc_clone(&(this->dashDLThread), download, (void*)this->t_sys, VLC_THREAD_PRIORITY_LOW))
+    return false;
 
     return true;
-}
+    }*/
+
 void*       DASHDownloader::download    (void *thread_sys)
 {
-    thread_sys_t            *t_sys              = (thread_sys_t *) thread_sys;
+}
+
+bool DASHDownloader::start() {
+  thread_sys_t            *t_sys              = this->t_sys;;
     HTTPConnectionManager   *conManager         = t_sys->conManager;
     BlockBuffer             *buffer             = t_sys->buffer;
     block_t                 *block              = block_Alloc(BLOCKSIZE);
+    stream_t *stream = t_sys->stream;
     int                     ret                 = 0;
 
-    do
-    {
+    do {
+      
+      msg_Info(stream,"READING");
+      std::stringstream ss;
+      ss<<net_ConnectTCP(stream,"nh.lab.xcal.tv",80) << " :)";
+      msg_Info(stream,ss.str().c_str());
         ret = conManager->read(block);
+	std::stringstream ss2;
+	ss2<<ret<<" bytes returned!!!!!!";
+	msg_Info(stream,ss2.str().c_str());
         if(ret > 0)
         {
             block_t *bufBlock = block_Alloc(ret);
@@ -71,11 +87,10 @@ void*       DASHDownloader::download    (void *thread_sys)
 
             bufBlock->i_length = block->i_length;
             buffer->put(bufBlock);
-        }
-    }while(ret && !buffer->getEOF());
-
+        } 
+    }while(!buffer->getEOF());
     buffer->setEOF(true);
     block_Release(block);
 
-    return NULL;
+    return true;
 }

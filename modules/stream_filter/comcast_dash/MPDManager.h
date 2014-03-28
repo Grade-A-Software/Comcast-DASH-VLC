@@ -1,9 +1,9 @@
 /*
- * DASHDownloader.h
+ * IsoffMainManager.h
  *****************************************************************************
- * Copyright (C) 2010 - 2011 Klagenfurt University
+ * Copyright (C) 2010 - 2012 Klagenfurt University
  *
- * Created on: Aug 10, 2010
+ * Created on: Jan 27, 2010
  * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
  *
@@ -22,41 +22,43 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef DASHDOWNLOADER_H_
-#define DASHDOWNLOADER_H_
-
-#include "http/HTTPConnectionManager.h"
-#include "adaptationlogic/IAdaptationLogic.h"
-#include "buffer/BlockBuffer.h"
-
-#define BLOCKSIZE           32768
-#define CHUNKDEFAULTBITRATE 1
+#ifndef ISOFFMAINMANAGER_H_
+#define ISOFFMAINMANAGER_H_
 
 #include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
-namespace comcast_dash
+#include "mpd/MPD.h"
+#include "mpd/Period.h"
+#include "mpd/AdaptationSet.h"
+#include "mpd/Representation.h"
+#include "mpd/SegmentInfo.h"
+#include "mpd/Segment.h"
+#include "mpd/IMPDManager.h"
+
+namespace dash
 {
-    struct thread_sys_t
+  namespace mpd
+  {
+    class IsoffMainManager : public IMPDManager
     {
-        comcast_dash::http::HTTPConnectionManager   *conManager;
-        buffer::BlockBuffer                 *buffer;
-      stream_t * stream;
+    public:
+      MPDManager(mpd::MPD *mpd);
+      virtual ~MPDManager();
+      
+      const std::vector<Period *>& getPeriods() const;
+      Period* getFirstPeriod();
+      Representation* getBestRepresentation(Period *period);
+      std::vector<Segment *> getSegments(const Representation *rep);
+      Representation* getRepresentation(Period *period, uint64_t bitrate) const;
+      const MPD* getMPD() const;
+      Representation* getRepresentation(Period *period, uint64_t bitrate, int width, int height) const;
+      
+    private:
+      MPD *mpd;
     };
-
-    class DASHDownloader
-    {
-        public:
-      DASHDownloader          (http::HTTPConnectionManager *conManager, buffer::BlockBuffer *buffer, stream_t *stream);
-            virtual ~DASHDownloader ();
-
-            bool            start       ();
-            static void*    download    (void *);
-	    
-        private:
-            thread_sys_t    *t_sys;
-            vlc_thread_t    dashDLThread;
-	    stream_t *stream;
-    };
+  }
 }
 
-#endif /* DASHDOWNLOADER_H_ */
+#endif /* ISOFFMAINMANAGER_H_ */

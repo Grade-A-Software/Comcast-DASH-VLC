@@ -53,11 +53,11 @@ namespace comcast_dash
                 int     read                (block_t *block);
                
             private:
-                std::vector<comcast_dash::logic::IDownloadRateObserver *>   rateObservers;
+		//                std::vector<comcast_dash::logic::IDownloadRateObserver *>   rateObservers;
                 std::deque<Chunk *>                                 downloadQueue;
                 std::vector<PersistentConnection *>                 connectionPool;
                // logic::IAdaptationLogic                             *adaptationLogic;
-                stream_t                                            *stream;
+                stream_t                                            * const stream;
                 int                                                 chunkCount;
                 int64_t                                             bpsAvg;
                 int64_t                                             bpsLastChunk;
