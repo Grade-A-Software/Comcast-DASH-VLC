@@ -31,7 +31,7 @@
 using namespace comcast_dash::mpd;
 using namespace comcast_dash::http;
 
-MPD::MPD () : count(0)
+MPD::MPD () : count(0), duration(0)
 {
 }
 
@@ -50,7 +50,9 @@ void MPD::addPeriod(Period *period)
     this->periods.push_back(period);
 }
 
-
+int MPD::getDuration() const {
+  return this->duration;
+}
 
 Chunk* MPD::getNextChunk(){
     Chunk *chunk = new Chunk();
@@ -62,8 +64,8 @@ Chunk* MPD::getNextChunk(){
     return NULL;
 }
 
-Representation* MPD::getWorstRepresentation() {
-    Representation *toReturn = NULL;
+Representation* MPD::getWorstRepresentation() {  
+  Representation *toReturn = NULL;
     for (size_t p = 0; p < periods.size(); p++) {
         std::vector<AdaptationSet *>  adaptationSets = periods.at(p)->getAdaptationSets();
         for (size_t a = 0; a < adaptationSets.size(); a++) {
@@ -155,6 +157,7 @@ std::vector<std::string> MPD::getURLs()
 std::vector<std::string> MPD::getTimeLineURLs()
 {
     std::vector<std::string> urls;
+    this->duration = 0;
     for (size_t p = 0; p < periods.size(); p++) {
         std::vector<AdaptationSet *>  adaptationSets = periods.at(p)->getAdaptationSets();
         for (size_t a = 0; a < adaptationSets.size(); a++) {
@@ -175,7 +178,7 @@ std::vector<std::string> MPD::getTimeLineURLs()
                 }
                 
                 for (size_t s = 0; s < segments.size(); s++) {
-                    
+		    this->duration += segments.at(s)->getDuration();
                     int repeat = segments.at(s)->getRepeat();
                     int time = segments.at(s)->getTime();
                     for (int l = 0; l<repeat; l++) {

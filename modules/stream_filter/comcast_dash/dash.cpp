@@ -150,8 +150,9 @@ static void Close(vlc_object_t *p_obj)
 {
     stream_t                            *p_stream       = (stream_t*) p_obj;
     stream_sys_t                        *p_sys          = (stream_sys_t *) p_stream->p_sys;
+    comcast_dash::DASHManager                   *p_dashManager  = p_sys->p_dashManager;
     
-    free(p_sys);
+    delete(p_dashManager);
 }
 /*****************************************************************************
  * Callbacks:
@@ -159,24 +160,50 @@ static void Close(vlc_object_t *p_obj)
 static int  Seek            ( stream_t *p_stream, uint64_t pos )
 {
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
-    
+    comcast_dash::DASHManager   *p_dashManager  = p_sys->p_dashManager;
     int                 i_ret           = 0;
     unsigned            i_len           = 0;
     long                i_read          = 0;
     
+    if( pos < p_sys->position )
+    {
+        if( p_sys->position - pos > UINT_MAX )
+        {
+            msg_Err( p_stream, "Cannot seek backward that far!" );
+            return VLC_EGENERIC;
+        }
+        i_len = p_sys->position - pos;
+        i_ret = p_dashManager->seekBackwards( i_len );
+        if( i_ret == VLC_EGENERIC )
+        {
+            msg_Err( p_stream, "Cannot seek backward outside the current block :-/" );
+            return VLC_EGENERIC;
+        }
+        else
+            return VLC_SUCCESS;
+    }
     
-    return VLC_SUCCESS;
+    /* Seek forward */
+    if( pos - p_sys->position > UINT_MAX )
+    {
+        msg_Err( p_stream, "Cannot seek forward that far!" );
+        return VLC_EGENERIC;
+    }
+    i_len = pos - p_sys->position;
+    i_read = Read( p_stream, (void *)NULL, i_len );
+    if( (unsigned)i_read == i_len )
+        return VLC_SUCCESS;
+    else
+        return VLC_EGENERIC;
 }
 
 static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len)
 {
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
-    DASHManager   *p_dashManager  = p_sys->p_dashManager;
+    comcast_dash::DASHManager   *p_dashManager  = p_sys->p_dashManager;
     uint8_t             *p_buffer       = (uint8_t*)p_ptr;
     int                 i_ret           = 0;
     int                 i_read          = 0;
-    
-    msg_Info(p_stream,"sss");
     
     while( i_len > 0 )
     {
@@ -207,21 +234,68 @@ static int  Read            (stream_t *p_stream, void *p_ptr, unsigned int i_len
     p_sys->position += i_ret;
     
     return i_ret;
-    
-    return VLC_SUCCESS;
 }
 
 static int  Peek            (stream_t *p_stream, const uint8_t **pp_peek, unsigned int i_peek)
 {
     stream_sys_t        *p_sys          = (stream_sys_t *) p_stream->p_sys;
-    DASHManager   *p_dashManager  = p_sys->p_dashManager;
+    comcast_dash::DASHManager   *p_dashManager  = p_sys->p_dashManager;
+    
     return p_dashManager->peek( pp_peek, i_peek );
-
 }
 
 static int  Control         (stream_t *p_stream, int i_query, va_list args)
 {
     stream_sys_t *p_sys = p_stream->p_sys;
     
+    switch (i_query)
+    {
+        case STREAM_CAN_SEEK:
+        case STREAM_CAN_FASTSEEK:
+            /*TODO Support Seek */
+            *(va_arg (args, bool *)) = SEEK;
+            break;
+        case STREAM_CAN_PAUSE:
+        case STREAM_CAN_CONTROL_PACE:
+            *(va_arg (args, bool *)) = false; /* TODO */
+            break;
+            
+        case STREAM_GET_POSITION:
+            *(va_arg (args, uint64_t *)) = p_sys->position;
+            break;
+        case STREAM_SET_POSITION:
+        {
+            uint64_t pos = (uint64_t)va_arg(args, uint64_t);
+            if(Seek(p_stream, pos) == VLC_SUCCESS)
+            {
+                p_sys->position = pos;
+                break;
+            }
+            else
+                return VLC_EGENERIC;
+        }
+        case STREAM_GET_SIZE:
+        {
+            uint64_t*   res = (va_arg (args, uint64_t *));
+            if(p_sys->isLive)
+                *res = 0;
+            else
+            {
+                const comcast_dash::mpd::Representation *rep = p_sys->p_mpd->getWorstRepresentation();
+                if ( rep == NULL )
+                    *res = 0;
+                else
+                    *res = p_sys->p_mpd->getDuration() * rep->getBandwidth() / 8;
+            }
+            break;
+        }
+        case STREAM_GET_PTS_DELAY:
+            *va_arg (args, int64_t *) =
+            var_InheritInteger(p_stream, "network-caching");
+            break;
+            
+        default:
+            return VLC_EGENERIC;
+    }
     return VLC_SUCCESS;
 }

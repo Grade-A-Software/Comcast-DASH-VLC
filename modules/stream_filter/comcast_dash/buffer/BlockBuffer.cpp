@@ -107,7 +107,6 @@ int     BlockBuffer::seekBackwards       (unsigned len)
 int     BlockBuffer::get                  (void *p_data, unsigned int len)
 {
     
-    msg_Info(stream, "eeee");
     vlc_mutex_lock(&this->monitorMutex);
 
     while(this->sizeBytes == 0 && !this->isEOF)

@@ -55,9 +55,10 @@ namespace comcast_dash
             std::vector<std::string> getURLs();
             http::Chunk * getNextChunk();
             std::vector<std::string> getTimeLineURLs();
-            
+            int getDuration() const;
             Representation* getWorstRepresentation();
         private:
+	    int duration;
             std::vector<Period *> periods;
             uint64_t count;
             std::vector<std::string> schedule;
