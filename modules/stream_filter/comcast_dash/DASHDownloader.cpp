@@ -45,7 +45,7 @@ DASHDownloader::~DASHDownloader ()
 {
     this->t_sys->buffer->setEOF(true);
     vlc_join(this->dashDLThread, NULL);
-    free(this->t_sys);
+  //  free(this->t_sys);
 }
 
 bool        DASHDownloader::start       ()
