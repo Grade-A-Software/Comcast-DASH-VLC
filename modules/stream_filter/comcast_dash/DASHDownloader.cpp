@@ -48,22 +48,20 @@ DASHDownloader::~DASHDownloader ()
     free(this->t_sys);
 }
 
-/*bool        DASHDownloader::start       ()
+bool        DASHDownloader::start       ()
 {
   msg_Info(this->stream, "Starting DOWNLOAD");
-  vlc_join(this->dashDLThread, NULL);
+
   if(vlc_clone(&(this->dashDLThread), download, (void*)this->t_sys, VLC_THREAD_PRIORITY_LOW))
     return false;
 
     return true;
-    }*/
+    }
 
 void*       DASHDownloader::download    (void *thread_sys)
 {
-}
 
-bool DASHDownloader::start() {
-  thread_sys_t            *t_sys              = this->t_sys;;
+  thread_sys_t            *t_sys              = (thread_sys_t*)thread_sys;
     HTTPConnectionManager   *conManager         = t_sys->conManager;
     BlockBuffer             *buffer             = t_sys->buffer;
     block_t                 *block              = block_Alloc(BLOCKSIZE);
@@ -73,10 +71,10 @@ bool DASHDownloader::start() {
     int i = 0;
     do {
       
-      msg_Info(stream,"READING");
-      std::stringstream ss;
-      ss<<net_ConnectTCP(stream,"nh.lab.xcal.tv",80) << " :)";
-      msg_Info(stream,ss.str().c_str());
+      //      msg_Info(stream,"READING");
+      //std::stringstream ss;
+      //ss<<net_ConnectTCP(stream,"nh.lab.xcal.tv",80) << " :)";
+      //msg_Info(stream,ss.str().c_str());
         ret = conManager->read(block);
 	std::stringstream ss2;
 	ss2<<ret<<" bytes returned!!!!!!";
@@ -90,9 +88,9 @@ bool DASHDownloader::start() {
             buffer->put(bufBlock);
         }
         i++;
-    }while(i<5);
+    }while(ret>0 && !buffer->getEOF());
     buffer->setEOF(true);
     block_Release(block);
 
-    return true;
+    return NULL;
 }
