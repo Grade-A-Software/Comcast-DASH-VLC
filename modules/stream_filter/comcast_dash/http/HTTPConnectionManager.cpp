@@ -58,15 +58,15 @@ int                                 HTTPConnectionManager::read                 
   msg_Info(stream,ss3.str().c_str());
   msg_Info(stream,"^ Works2"); 
   */
-  std::stringstream ss1;
-  ss1 << (this->mpd->getNextChunk()->getUrl()) << " <- true";
-  msg_Info(stream,ss1.str().c_str());
+  //std::stringstream ss1;
+  //ss1 << (this->mpd->getNextChunk()->getUrl()) << " <- true";
+  //msg_Info(stream,ss1.str().c_str());
 
-    if(this->downloadQueue.size() == 0)
-       if(!this->addChunk(this->mpd->getNextChunk()))
+    if(this->downloadQueue.size() == 0) {
+       if(!this->addChunk(this->mpd->getNextChunk())) {
             return 0;
-    
-    if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
+       }
+    } else if(this->downloadQueue.front()->getPercentDownloaded() > HTTPConnectionManager::PIPELINE &&
        this->downloadQueue.size() < HTTPConnectionManager::PIPELINELENGTH)
        this->addChunk(this->mpd->getNextChunk());
 
