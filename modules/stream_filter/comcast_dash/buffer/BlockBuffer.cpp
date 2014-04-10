@@ -142,6 +142,9 @@ void    BlockBuffer::put                  (block_t *block)
     while(this->sizeMicroSec >= this->capacityMicroSec && !this->isEOF)
         vlc_cond_wait(&this->empty, &this->monitorMutex);
 
+    /*HotFix to make video playback somewhat smoother*/
+    msleep(350000);
+
     if(this->isEOF)
     {
         vlc_cond_signal(&this->full);
