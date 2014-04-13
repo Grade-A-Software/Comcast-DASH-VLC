@@ -59,27 +59,16 @@ DASHManager::~DASHManager   ()
 
 bool    DASHManager::start()
 {
-    //this->mpdManager = mpd::MPDManagerFactory::create( mpd );
-
     if ( this->mpd == NULL )
         return false;
 
-   /* this->adaptationLogic = AdaptationLogicFactory::create( this->logicType, this->mpdManager, this->stream);
-
-    if ( this->adaptationLogic == NULL )
-        return false;
-*/
-    this->conManager = new comcast_dash::http::HTTPConnectionManager(
-				this->mpd,
-						 this->stream);
+    this->conManager = new comcast_dash::http::HTTPConnectionManager(this->mpd,this->stream);
     this->buffer     = new BlockBuffer(this->stream);
     this->downloader = new DASHDownloader(this->conManager, this->buffer);
 
-   // this->conManager->attach(this->adaptationLogic);
-   // this->buffer->attach(this->adaptationLogic);
-
     return this->downloader->start();
 }
+
 int     DASHManager::read( void *p_buffer, size_t len )
 {
     return this->buffer->get(p_buffer, len);
