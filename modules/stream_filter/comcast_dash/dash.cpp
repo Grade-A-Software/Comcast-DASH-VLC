@@ -101,48 +101,34 @@ static int Open(vlc_object_t *p_obj)
         msg_Info(p_stream,"Is DASH!");
     
     //Build a XML tree
-    comcast_dash::xml::DOMParser        parser(p_stream->p_source);
+    comcast_dash::xml::DOMParser parser(p_stream->p_source);
     if( !parser.parse() )
     {
         msg_Dbg( p_stream, "Could not parse mpd file." );
         return VLC_EGENERIC;
     }
     else {
-        //      parser.print();
+     
+        //Create MPD object    
         Parser * dashParser = new Parser(parser.getRootNode(),p_stream);
         MPD *mpd = dashParser->parse();
-        
-        std::vector<std::string> urls = mpd->getURLs();
-        
-//        for (size_t i = 0; i < urls.size(); i++) {
-//            
-//            msg_Info(p_stream,urls.at(i).c_str());
-//        }
-//        msg_Info(p_stream,"sssadasdass");
-//        Chunk *chunk = mpd->getNextChunk();
-//        while(chunk){
-//            msg_Info(p_stream,chunk->getUrl().c_str());
-//            chunk = mpd->getNextChunk();
-//        }
-//        msg_Info(p_stream,"sss");
+         
+        //Create p_sys    
         stream_sys_t        *p_sys = (stream_sys_t *) malloc(sizeof(stream_sys_t));
         if (unlikely(p_sys == NULL))
             return VLC_ENOMEM;
         p_sys->p_mpd = mpd;
         
+        //Create DASHManager    
         DASHManager* p_dashManager = new DASHManager(p_sys->p_mpd, p_stream);
-        
+            
+        //Start DASHManager    
         if(!p_dashManager->start())
         {
-            msg_Info(p_stream,"sss");
+            msg_Info(p_stream,"Start Fail");
         }else{
-            msg_Info(p_stream,"aaa");
+            msg_Info(p_stream,"Start Success");
         }
-//        std::vector<std::string> timeLineURLs = mpd->getTimeLineURLs();
-//        for (size_t i = 0; i < timeLineURLs.size(); i++) {
-//            
-//            msg_Info(p_stream,timeLineURLs.at(i).c_str());
-//        }
     }
     
     
