@@ -45,6 +45,6 @@ AdaptationLogic allows for switching to different bitrates depending on a varyin
 
 ######	AbstractAdaptationLogic extends IAdaptationLogic
 	
-######	IadaptationLogic extends AdaptationLogicDownloadRateObserver and dash::buffer::IBufferObserver
+######	IadaptationLogic extends AdaptationLogic::IDownloadRateObserver and dash::buffer::IBufferObserver
 
 	
