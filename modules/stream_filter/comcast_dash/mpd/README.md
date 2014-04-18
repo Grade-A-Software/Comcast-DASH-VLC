@@ -1,28 +1,23 @@
-MPD
+####MPD
 
-Overview:
+#####Overview:
 An MPD object holds the data that is represented in the different nodes of an XML document tree.
-The format of the XML that is parsed (by different classes) into Nodes and eventually into an MPD object is
-	<Period>
-	    <AdaptationSet>
-	   	 <Representation/>
-			.
-			.
-	   	 <Representation/>
-	   	 <Segment/>   
-	    </AdaptationSet>
-	    <AdaptationSet>		
-		   .
-		   .
-	 	   .
-	</Period>
+The format of the XML that is parsed (by different classes) into Nodes and eventually into an MPD object is   
+&nbsp;&nbsp;&nbsp; Period  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AdaptationSet  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Representation  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Segment  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;More AdaptationSets  
 
-An MPD object has Periods.
-	A Period has AdaptationSets.
-		AdaptationSets have Representations and a Segment.
+
+An MPD object has Periods.  
+&nbsp;&nbsp;&nbsp;&nbsp;A Period has AdaptationSets.  
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AdaptationSets have Representations and a Segment.  
+
+
 An MPD object is instantiated in Comcast_dash\parser.cpp
 
-MPD.cpp
+#####MPD.cpp
 	An MPD object has a vector<Period *> .
 	getPeriods() returns the vector<Period *>.
 	addPeriod(Period*) adds a pointer to a period to the end of the vector. 
@@ -38,14 +33,14 @@ MPD.cpp
 	getTimeLineURLs()
 		Creates a vector<string> of Urls
 
-Period.cpp
+#####Period.cpp
 	A Period has a collection of pointers to AdaptationSets stored in a vector<AdaptationSet *>
 	getAdaptationSets() 
 		returns the address of the vector<AdaptationSet *>
 	addAdaptationSet(AdaptationSet *AdapationSet)
 		adds a pointer to the end of the vector<AdaptationSet *>
 
-AdaptationSet.cpp
+#####AdaptationSet.cpp
 	An AdaptationSet a vector<Representation *> and a vector<Segment *> as well as strings representing the 
 	attributes found in the xml:
 		id
@@ -54,7 +49,7 @@ AdaptationSet.cpp
 		segmentTemplate
 	The class also has accessor/mutator functions for each of the data members. 
 
-Representation.cpp
+#####Representation.cpp
 	A Representation has data members representing the attributues found in the xml:
 		string id
 		int bandwidth
@@ -66,7 +61,7 @@ Representation.cpp
 		Returns the bitrate required for this representation in bits per second. 
 		The validity of this value is checked in the parser. 
 
-Segment.cpp
+#####Segment.cpp
 	A Segment has three data members along with functions for setting/getting their values:
 		int duration
 		    repeat
