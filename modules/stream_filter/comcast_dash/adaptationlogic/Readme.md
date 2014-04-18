@@ -1,24 +1,21 @@
-AdaptationLogic
-===============
+#####AdaptationLogic
 
 AdaptationLogic allows for switching to different bitrates depending on a varying bandwidth. 
 
-There are two types of AdaptationLogic:
+######There are two types of AdaptationLogic:
 	1. RateBasedAdaptationLogic	
 	2. AlwaysBestAdaptationLogic
 
 	They each have a method to get the current representation:
-		**getCurentRepresentation()**
+		getCurentRepresentation()
 
-	RateBasedAdaptationLogic
-	------------------------
+######	RateBasedAdaptationLogic
 		getNextChunk()
 		uses the mpdManager to get the Representation from the currentPeriod at the 
 		specified bitrate. The segments of that Representation are then assigned to 
 		a vector<Segment*>. The Url is then obtained from those Segments. 
 
-	AlwaysBestAdaptationLogic
-	-------------------------
+######	AlwaysBestAdaptationLogic
 		initSchedule() 
 		uses the mpdManager to get the best Representation and assigns the Segments from that
 		Representation to a vector<Segment *>
@@ -26,10 +23,9 @@ There are two types of AdaptationLogic:
 		GetNextChunk() 
 		Gets the Url from the segments in the vector<Segment*>
 
-	Both RateBased and AlwaysBest extend AbstractAdaptationLogic
+######	Both RateBased and AlwaysBest extend AbstractAdaptationLogic
 	
-	AbstractAdaptationLogic
-	-----------------------
+######	AbstractAdaptationLogic
 		bufferLevelChanged(mtime_t,int)
 		bufferedMicroSec and bufferedPercent are both set with the parameters passed to the method.
 
@@ -47,8 +43,8 @@ There are two types of AdaptationLogic:
 
 
 
-	AbstractAdaptationLogic extends IAdaptationLogic
+######	AbstractAdaptationLogic extends IAdaptationLogic
 	
-	IadaptationLogic extends AdaptationLogicDownloadRateObserver and dash::buffer::IBufferObserver
+######	IadaptationLogic extends AdaptationLogicDownloadRateObserver and dash::buffer::IBufferObserver
 
 	
