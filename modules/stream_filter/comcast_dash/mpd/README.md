@@ -31,7 +31,7 @@ An MPD object is instantiated in Comcast_dash\parser.cpp
 		After these values have been replaced, concatenate the baseUrl of the adaptationSet and this segmentTemplate and 
 		append this string to the end of the urls vector. 
 	getTimeLineURLs()
-		Creates a vector<string> of Urls
+		Creates a vector<string> of Urls with the lowest bitrate. 
 
 #####Period.cpp
 	A Period has a collection of pointers to AdaptationSets stored in a vector<AdaptationSet *>
