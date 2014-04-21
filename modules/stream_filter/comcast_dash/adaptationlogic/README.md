@@ -1,4 +1,5 @@
-#####AdaptationLogic
+AdaptationLogic
+===============
 
 AdaptationLogic allows for switching to different bitrates depending on a varying bandwidth. 
 
