@@ -41,15 +41,15 @@ _put_
 
 _setEOF_
 
-    The setEOF
+    This method sets the local End Of File boolean flag, and toggles the empty and full tags so that the buffer is considered full.
 
 _getEOF_
 
-    The getEOF
-	
+    Returns the local boolean End Of File value, after locking the buffer's monitor mutex.
+    
 _attach_
 
-    The attach
+    This method takes in a bufferObserver object and appends it to the local list of bufferObservers.
   
 _notify_
 
