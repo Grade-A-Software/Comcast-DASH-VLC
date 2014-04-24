@@ -14,7 +14,6 @@ An overview of the process this plugin will follow can be found [HERE](https://g
 
 **[BlockBuffer.h](https://github.com/Grade-A-Software/Comcast-DASH-VLC/blob/master/modules/stream_filter/comcast_dash/buffer/BlockBuffer.h)**<br />
 
-BlockBuffer.h-
 
 **[BlockBuffer.cpp](https://github.com/Grade-A-Software/Comcast-DASH-VLC/blob/master/modules/stream_filter/comcast_dash/buffer/BlockBuffer.cpp)**<br />
 
