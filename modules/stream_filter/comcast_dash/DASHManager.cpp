@@ -62,9 +62,28 @@ bool    DASHManager::start()
     if ( this->mpd == NULL )
         return false;
 
+<<<<<<< HEAD
     this->conManager = new comcast_dash::http::HTTPConnectionManager(this->mpd,this->stream);
     this->buffer     = new BlockBuffer(this->stream);
     this->downloader = new DASHDownloader(this->conManager, this->buffer);
+=======
+   /* this->adaptationLogic = AdaptationLogicFactory::create( this->logicType, this->mpdManager, this->stream);
+
+    if ( this->adaptationLogic == NULL )
+        return false;
+*/
+    std::stringstream ss;
+    ss << this->mpd->getTimeLineURLs().size();
+    msg_Info(this->stream,ss.str().c_str());
+    this->conManager = new comcast_dash::http::HTTPConnectionManager(
+				this->mpd,
+						 this->stream);
+    this->buffer     = new BlockBuffer(this->stream);
+    this->downloader = new DASHDownloader(this->conManager, this->buffer, this->stream);
+    
+   // this->conManager->attach(this->adaptationLogic);
+   // this->buffer->attach(this->adaptationLogic);
+>>>>>>> dash_manager
 
     return this->downloader->start();
 }

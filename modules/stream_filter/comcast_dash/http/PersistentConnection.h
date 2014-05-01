@@ -35,7 +35,7 @@ namespace comcast_dash
         class PersistentConnection : public HTTPConnection
         {
             public:
-                PersistentConnection            (stream_t *stream);
+                PersistentConnection            (stream_t * const stream);
                 virtual ~PersistentConnection   ();
 
                 virtual int         read        (void *p_buffer, size_t len);

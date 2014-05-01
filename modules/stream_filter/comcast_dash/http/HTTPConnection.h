@@ -39,7 +39,7 @@
 #include "http/Chunk.h"
 #include "Helper.h"
 
-#define PEEKBUFFER 4096
+#define PEEKBUFFER 16384
 
 namespace comcast_dash
 {

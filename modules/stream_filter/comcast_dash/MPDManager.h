@@ -1,9 +1,9 @@
 /*
- * MPD.h
+ * IsoffMainManager.h
  *****************************************************************************
- * Copyright (C) 2010 - 2011 Klagenfurt University
+ * Copyright (C) 2010 - 2012 Klagenfurt University
  *
- * Created on: Aug 10, 2010
+ * Created on: Jan 27, 2010
  * Authors: Christopher Mueller <christopher.mueller@itec.uni-klu.ac.at>
  *          Christian Timmerer  <christian.timmerer@itec.uni-klu.ac.at>
  *
@@ -22,47 +22,43 @@
  * Inc., 51 Franklin Street, Fifth Floor, Boston MA 02110-1301, USA.
  *****************************************************************************/
 
-#ifndef MPD_H_
-#define MPD_H_
+#ifndef ISOFFMAINMANAGER_H_
+#define ISOFFMAINMANAGER_H_
 
-#include <vector>
-#include <string>
-#include <map>
-#include <vlc_common.h>
-#include <vlc_arrays.h>
-#include <sstream>
+#include <iostream>
+#include <stdio.h>
+#include <stdlib.h>
 
-#include "Period.h"
-#include "mpd/Representation.h"
-#include "mpd/Segment.h"
+#include "mpd/MPD.h"
+#include "mpd/Period.h"
 #include "mpd/AdaptationSet.h"
-#include "http/Chunk.h"
+#include "mpd/Representation.h"
+#include "mpd/SegmentInfo.h"
+#include "mpd/Segment.h"
+#include "mpd/IMPDManager.h"
 
-namespace comcast_dash
+namespace dash
 {
-    namespace mpd
+  namespace mpd
+  {
+    class IsoffMainManager : public IMPDManager
     {
-        class MPD
-        {
-        public:
-            MPD();
-            virtual ~MPD();
-            
-            const std::vector<Period *>& getPeriods() const;
-            
-            void addPeriod(Period *period);
-            
-            std::vector<std::string> getURLs();
-            http::Chunk * getNextChunk();
-            std::vector<std::string> getTimeLineURLs();
-            int getDuration() const;
-            Representation* getWorstRepresentation();
-        private:
-	    int duration;
-            std::vector<Period *> periods;
-            uint64_t count;
-            std::vector<std::string> schedule;
-        };
-    }
+    public:
+      MPDManager(mpd::MPD *mpd);
+      virtual ~MPDManager();
+      
+      const std::vector<Period *>& getPeriods() const;
+      Period* getFirstPeriod();
+      Representation* getBestRepresentation(Period *period);
+      std::vector<Segment *> getSegments(const Representation *rep);
+      Representation* getRepresentation(Period *period, uint64_t bitrate) const;
+      const MPD* getMPD() const;
+      Representation* getRepresentation(Period *period, uint64_t bitrate, int width, int height) const;
+      
+    private:
+      MPD *mpd;
+    };
+  }
 }
-#endif /* MPD_H_ */
+
+#endif /* ISOFFMAINMANAGER_H_ */

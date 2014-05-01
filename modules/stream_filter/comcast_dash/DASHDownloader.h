@@ -40,20 +40,22 @@ namespace comcast_dash
     {
         comcast_dash::http::HTTPConnectionManager   *conManager;
         buffer::BlockBuffer                 *buffer;
+      stream_t * stream;
     };
 
     class DASHDownloader
     {
         public:
-            DASHDownloader          (http::HTTPConnectionManager *conManager, buffer::BlockBuffer *buffer);
+      DASHDownloader          (http::HTTPConnectionManager *conManager, buffer::BlockBuffer *buffer, stream_t *stream);
             virtual ~DASHDownloader ();
 
             bool            start       ();
             static void*    download    (void *);
-
+	    
         private:
             thread_sys_t    *t_sys;
             vlc_thread_t    dashDLThread;
+	    stream_t *stream;
     };
 }
 
